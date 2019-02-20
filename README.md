@@ -1,4 +1,4 @@
-# AirbnbEstimatorBackend
+# AirbnbEstimatorFrontend
 
 *Team members*: Abraham Villaroman, Kenny Tan and Phillip Li
 
