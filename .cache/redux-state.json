@@ -235,7 +235,7 @@
       "resolve": "/Users/candicezhong/Documents/Github/AirbnbEstimatorFrontend",
       "id": "7374ebf2-d961-52ee-92a2-c25e7cb387a9",
       "name": "default-site-plugin",
-      "version": "d41d8cd98f00b204e9800998ecf8427e",
+      "version": "76712a0c21b08bc23a5e05250c4da82e",
       "pluginOptions": {
         "plugins": []
       },
@@ -270,7 +270,7 @@
       "parent": null,
       "children": [],
       "internal": {
-        "contentDigest": "c611ee04161e699e83b8d8d78f8f1508",
+        "contentDigest": "f366cfc412fdd2be26a6c2200a1cbf1b",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -384,12 +384,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2019-02-21T16:14:44.213Z",
+      "buildTime": "2019-02-27T01:52:00.544Z",
       "id": "Site",
       "parent": null,
       "children": [],
       "internal": {
-        "contentDigest": "695cab74274cd067baa7c4776a216c90",
+        "contentDigest": "c6242c6c81c598ebb048214d827d1f3d",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -417,7 +417,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "3b2a5b8858928e990452714ffa70a7b4"
+    "PLUGINS_HASH": "8d0cf17a36015d7c106cdf7562b98047"
   },
   "componentDataDependencies": {
     "nodes": {},
