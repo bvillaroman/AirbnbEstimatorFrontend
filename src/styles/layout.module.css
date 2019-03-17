@@ -1,0 +1,14 @@
+
+.mainContainer {
+  margin: 3rem auto;
+  max-width: 600px;
+  height: 65vh;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 1.2rem;
+  background-color:#DCD8FF;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  color: white;
+  text-align: center;
+}
