@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "airbnb-price-estimator",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "An airbnb price estimator to give the best price on an airbnb listing, for the lister and the guest",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -12,9 +12,17 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "gatsby": "^2.1.11",
+    "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-react-helmet": "^3.0.10",
+    "gatsby-plugin-sharp": "^2.0.29",
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.16.4",
+    "prop-types": "^15.7.2",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "react-helmet": "^5.2.0"
   },
   "repository": {
     "type": "git",
