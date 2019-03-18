@@ -40,7 +40,7 @@ class App extends React.Component {
           <button onClick={this.onSubmit}> Submit </button>
           <br/>
           <br/>
-          <div>{this.state.responseText}</div>
+          <div>response: {this.state.responseText}</div>
         </div>
       </Layout>
     )
