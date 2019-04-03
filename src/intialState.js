@@ -17,5 +17,6 @@ export const initialState = {
     state: "",
     zipCode: 0
   },
-  page:0
+  page:0,
+  response:{}
 }

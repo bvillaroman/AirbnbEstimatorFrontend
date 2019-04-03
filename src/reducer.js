@@ -2,7 +2,10 @@ import {
   SUBMIT_PLACE_TYPE,
   SUBMIT_BEDROOMS,
   SUBMIT_BATHROOMS,
-  SUBMIT_LOCATION
+  SUBMIT_LOCATION,
+  SUBMIT_LISTING,
+  SUBMIT_LISTING_SUCCESS,
+  SUBMIT_LISTING_ERROR,
 } from './constants'
 import {initialState} from "./intialState"
 
@@ -16,6 +19,12 @@ export default (state = initialState, action) => {
       return { ...state, bathrooms: action.payload };
     case SUBMIT_LOCATION:
       return { ...state, location: action.payload };
+    case SUBMIT_LISTING:
+      return  { ...state }
+    case SUBMIT_LISTING_SUCCESS:
+      return  { ...state, response: action.payload }
+    case SUBMIT_LISTING_ERROR:
+      return  { ...state, response: action.payload }
     default:
       return state;
   }

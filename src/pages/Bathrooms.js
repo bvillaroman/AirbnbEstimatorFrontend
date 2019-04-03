@@ -1,14 +1,13 @@
 import React from "react"
-import Layout from "../components/presentational/layout"
 import Input from "../components/presentational/Input"
 import { connect } from 'react-redux';
 import ContainerStyles from "../styles/layout.module.css"
-import {sendListing} from "../utils/Listing"
-import Header from "../components/presentational/Header";
+import {submitBathrooms,submitListing} from '../actions'
 
 class Bathrooms extends React.Component {
   state = {
     bathrooms:"", 
+    responseText: ""
   }
 
   handleInput = (evt) => {
@@ -18,11 +17,11 @@ class Bathrooms extends React.Component {
 
   onSubmit = (evt) => {
 
-    const data = {  
-     ...this.state
-    }
+    const data = parseInt(this.state.bathrooms)
     
-    this.props.advance()
+    this.props.submitBathrooms(data)
+    this.props.submitListing()
+
   }
 
   render(){
@@ -31,10 +30,19 @@ class Bathrooms extends React.Component {
           <div className={ContainerStyles.formTitle}> Bathrooms </div>
           <Input label="How many bathrooms are there?" name={"bathrooms"} value={this.state.bathrooms} handleInput={this.handleInput}/>
           <button onClick={this.onSubmit}> Submit </button>
+          <div className={ContainerStyles.formTitle}> {this.state.responseText} </div>
         </div>
     )
   }
 }
 
-export default connect()(Bathrooms);
+const mapStateToProps = state => ({
+  ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+  submitBathrooms: (data) => dispatch(submitBathrooms(data)),
+  submitListing: () => dispatch(submitListing())
+ })
+export default connect(mapStateToProps, mapDispatchToProps)(Bathrooms);
 

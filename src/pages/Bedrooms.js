@@ -4,12 +4,13 @@ import Input from "../components/presentational/Input"
 import ContainerStyles from "../styles/layout.module.css"
 import {sendListing} from "../utils/Listing"
 import { connect } from 'react-redux';
+import { submitBedrooms } from "./../actions"
 
 class Bedrooms extends React.Component {
   state = {
     guests:"",
     numOfBedrooms:"", 
-    numOfBeds: ""
+    numOfBedsAvailable: ""
   }
 
   handleInput = (evt) => {
@@ -23,6 +24,7 @@ class Bedrooms extends React.Component {
      ...this.state
     }
     
+    this.props.submitBedrooms(data)
     this.props.advance()
   }
 
@@ -32,12 +34,18 @@ class Bedrooms extends React.Component {
           <div className={ContainerStyles.formTitle}> Bedrooms </div>
           <Input label="How many guests are you accomodating?" name={"guests"} value={this.state.guests} handleInput={this.handleInput}/>
           <Input label="How many bedrooms are there?" name={"numOfBedrooms"} value={this.state.numOfBedrooms} handleInput={this.handleInput}/>
-          <Input label="How Many beds are there?" name={"numOfBeds"} value={this.state.numOfBeds} handleInput={this.handleInput}/>
+          <Input label="How Many beds are there?" name={"numOfBedsAvailable"} value={this.state.numOfBedsAvailable} handleInput={this.handleInput}/>
           <button onClick={this.onSubmit}> Submit </button>
         </div>
     )
   }
 }
+const mapStateToProps = state => ({
+  ...state
+ })
 
-export default connect()(Bedrooms);
+const mapDispatchToProps = dispatch => ({
+  submitBedrooms: (data) => dispatch(submitBedrooms(data))
+ })
+export default connect(mapStateToProps, mapDispatchToProps)(Bedrooms);
 

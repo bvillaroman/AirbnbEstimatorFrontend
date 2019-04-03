@@ -23,7 +23,7 @@ class PlaceType extends React.Component {
      ...this.state
     }
 
-    // submitPlaceType(data);
+    this.props.submitPlaceType(data);
     this.props.advance()
   }
 
@@ -39,7 +39,6 @@ class PlaceType extends React.Component {
     )
   }
 }
-
 
 const mapStateToProps = state => ({
   ...state

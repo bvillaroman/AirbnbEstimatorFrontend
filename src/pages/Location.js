@@ -4,6 +4,8 @@ import Input from "../components/presentational/Input"
 import { connect } from 'react-redux';
 import ContainerStyles from "../styles/layout.module.css"
 import {sendListing} from "../utils/Listing"
+import {submitLocation} from '../actions'
+
 
 class Location extends React.Component {
   state = {
@@ -26,7 +28,8 @@ class Location extends React.Component {
      ...this.state
     }
     
-    this.props.advance()
+    this.props.submitLocation(data);
+    this.props.advance();
   }
 
   render(){
@@ -43,5 +46,13 @@ class Location extends React.Component {
   }
 }
 
-export default connect()(Location);
+const mapStateToProps = state => ({
+  ...state
+ })
+
+const mapDispatchToProps = dispatch => ({
+  submitLocation: (data) => dispatch(submitLocation(data))
+ })
+
+export default connect(mapStateToProps, mapDispatchToProps)(Location);
 
