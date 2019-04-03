@@ -5851,9 +5851,7 @@ function (_React$Component) {
   var _proto = Bathrooms.prototype;
 
   _proto.render = function render() {
-    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.mainContainer
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.formTitle
     }, " Bathrooms "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: "How many bathrooms are there?",
@@ -5967,9 +5965,7 @@ function (_React$Component) {
   var _proto = Bedrooms.prototype;
 
   _proto.render = function render() {
-    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.mainContainer
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.formTitle
     }, " Bedrooms "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_5__["default"], {
       label: "How many guests are you accomodating?",
@@ -6091,9 +6087,7 @@ function (_React$Component) {
   var _proto = Location.prototype;
 
   _proto.render = function render() {
-    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.mainContainer
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.formTitle
     }, " Location "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_5__["default"], {
       label: "Address:",
@@ -6217,9 +6211,7 @@ function (_React$Component) {
   var _proto = PlaceType.prototype;
 
   _proto.render = function render() {
-    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.mainContainer
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_layout_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.formTitle
     }, " Place Type "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_5__["default"], {
       label: "What kind of place are you listing?",
