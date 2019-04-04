@@ -5,6 +5,8 @@ import ContainerStyles from "../styles/layout.module.css"
 import {sendListing} from "../utils/Listing"
 import { connect } from 'react-redux';
 import { submitBedrooms } from "./../actions"
+import Button from '@material-ui/core/Button';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 class Bedrooms extends React.Component {
   state = {
@@ -30,12 +32,12 @@ class Bedrooms extends React.Component {
 
   render(){
     return (
-        <div className={ContainerStyles.mainContainer}>
+        <div >
           <div className={ContainerStyles.formTitle}> Bedrooms </div>
           <Input label="How many guests are you accomodating?" name={"guests"} value={this.state.guests} handleInput={this.handleInput}/>
           <Input label="How many bedrooms are there?" name={"numOfBedrooms"} value={this.state.numOfBedrooms} handleInput={this.handleInput}/>
           <Input label="How Many beds are there?" name={"numOfBedsAvailable"} value={this.state.numOfBedsAvailable} handleInput={this.handleInput}/>
-          <button onClick={this.onSubmit}> Submit </button>
+          <Button onClick={this.onSubmit}> Bathrooms <ArrowForward /></Button>
         </div>
     )
   }

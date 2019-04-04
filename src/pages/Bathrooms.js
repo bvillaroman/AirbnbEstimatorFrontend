@@ -3,6 +3,8 @@ import Input from "../components/presentational/Input"
 import { connect } from 'react-redux';
 import ContainerStyles from "../styles/layout.module.css"
 import {submitBathrooms,submitListing} from '../actions'
+import Button from '@material-ui/core/Button';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 class Bathrooms extends React.Component {
   state = {
@@ -26,10 +28,10 @@ class Bathrooms extends React.Component {
 
   render(){
     return (
-        <div className={ContainerStyles.mainContainer}>
+        <div >
           <div className={ContainerStyles.formTitle}> Bathrooms </div>
           <Input label="How many bathrooms are there?" name={"bathrooms"} value={this.state.bathrooms} handleInput={this.handleInput}/>
-          <button onClick={this.onSubmit}> Submit </button>
+          <Button onClick={this.onSubmit}> Submit <ArrowForward /></Button>
           <div className={ContainerStyles.formTitle}> {this.state.responseText} </div>
         </div>
     )

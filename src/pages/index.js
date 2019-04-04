@@ -1,6 +1,5 @@
 import React from "react"
 import { Provider } from 'react-redux'
-import configureStore from '../store';
 import Layout from "../components/presentational/layout"
 import ContainerStyles from "../styles/layout.module.css"
 import Bathrooms from "./Bathrooms.js"
@@ -25,13 +24,11 @@ class App extends React.Component {
                       : <div> sorry, there was an error, please refresh page </div>
 
     return (
-      <Provider store={configureStore()}>
-        <Layout>
-          <div className={ContainerStyles.mainContainer}>
-            {currentPage}
-          </div>
-        </Layout>
-      </Provider>
+      <Layout>
+        <div className={ContainerStyles.mainContainer}>
+          {currentPage}
+        </div>
+      </Layout>
     )
   }
 }

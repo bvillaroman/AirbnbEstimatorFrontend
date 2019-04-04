@@ -58,7 +58,6 @@ export function submitListing() {
       location: givenListing.location,
       placeType: givenListing.placeType,
     }
-    console.log(listing)
     return sendListing(`${process.env.API_URL}/listings`,listing)
             .then((res) => { dispatch(submitListingSuccess(res)) })
             .catch((err) => {dispatch(submitListingError(err))})
