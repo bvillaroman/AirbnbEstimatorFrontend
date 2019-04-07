@@ -1,8 +1,8 @@
 import React from "react"
 import Input from "../components/presentational/Input"
 import { connect } from 'react-redux';
-import ContainerStyles from "../styles/layout.module.css"
-import {submitLocation} from '../actions'
+import ContainerStyles from "../styles/form.module.css"
+import {submitLocation,switchPages} from '../actions'
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 
@@ -28,7 +28,7 @@ class Location extends React.Component {
     }
     
     this.props.submitLocation(data);
-    this.props.advance();
+    this.props.switchPages(2);
   }
 
   render(){
@@ -45,11 +45,10 @@ class Location extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state
- })
+const mapStateToProps = ({reducer}) => ({page: reducer.page})
 
 const mapDispatchToProps = dispatch => ({
+  switchPages: (pageNumber) => dispatch(switchPages(pageNumber)),
   submitLocation: (data) => dispatch(submitLocation(data))
  })
 

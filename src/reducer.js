@@ -6,6 +6,7 @@ import {
   SUBMIT_LISTING,
   SUBMIT_LISTING_SUCCESS,
   SUBMIT_LISTING_ERROR,
+  SWITCH_PAGES,
 } from './constants'
 import {initialState} from "./intialState"
 
@@ -25,6 +26,8 @@ export default (state = initialState, action) => {
       return  { ...state, response: action.payload }
     case SUBMIT_LISTING_ERROR:
       return  { ...state, response: action.payload }
+    case SWITCH_PAGES:
+      return  { ...state, page: action.payload }
     default:
       return state;
   }

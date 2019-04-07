@@ -4,9 +4,17 @@ import {
   SUBMIT_BATHROOMS,
   SUBMIT_LOCATION,
   SUBMIT_LISTING_SUCCESS,
-  SUBMIT_LISTING_ERROR
+  SUBMIT_LISTING_ERROR,
+  SWITCH_PAGES,
 } from './constants'
 import { sendListing } from "./utils/Listing"
+
+export const switchPages = pageNumber => dispatch => {
+  dispatch({ 
+    type: SWITCH_PAGES,
+    payload: pageNumber
+  })
+}
 
 export const submitPlaceType = data => dispatch => {
  dispatch({ 

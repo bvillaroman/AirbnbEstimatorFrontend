@@ -1,7 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Header from "./Header"
-import Provider from "react-redux"
 // import PropTypes from "prop-types"
 
 export default ({children}) => (

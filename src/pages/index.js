@@ -1,26 +1,20 @@
 import React from "react"
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux';
 import Layout from "../components/presentational/layout"
-import ContainerStyles from "../styles/layout.module.css"
+import ContainerStyles from "../styles/form.module.css"
 import Bathrooms from "./Bathrooms.js"
 import Bedrooms from "./Bedrooms.js"
 import Location from "./Location.js"
 import PlaceType from "./PlaceType.js"
+import {switchPages} from "../actions"
 
 class App extends React.Component {
-  state = {
-    currentPage: 0,
-  }
-  nextPage = (e) => {
-    const currentPage = this.state.currentPage;
-    this.setState({currentPage : currentPage + 1})
-  }
   render(){
-
-    const currentPage = this.state.currentPage === 0 ? <PlaceType advance={this.nextPage}/>
-                      : this.state.currentPage === 1 ? <Location advance={this.nextPage}/>
-                      : this.state.currentPage === 2 ? <Bedrooms advance={this.nextPage}/>
-                      : this.state.currentPage === 3 ? <Bathrooms advance={this.nextPage}/>
+    const pageNumber = this.props.page ? this.props.page : 0;
+    const currentPage = pageNumber === 0 ? <PlaceType />
+                      : pageNumber === 1 ? <Location />
+                      : pageNumber === 2 ? <Bedrooms />
+                      : pageNumber === 3 ? <Bathrooms />
                       : <div> sorry, there was an error, please refresh page </div>
 
     return (
@@ -33,4 +27,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({reducer}) => ({page: reducer.page})
+
+const mapDispatchToProps = dispatch => ({
+  switchPages: (pageNumber) => dispatch(switchPages(pageNumber)),
+ })
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
