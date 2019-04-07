@@ -11,6 +11,6 @@ const composeEnhancers = (typeof window !== `undefined`) ? (window.__REDUX_DEVTO
 export default function configureStore() {
   return createStore(
     rootReducer,
-     composeEnhancers(applyMiddleware(thunk))
+    composeEnhancers(applyMiddleware(thunk))
   );
  }

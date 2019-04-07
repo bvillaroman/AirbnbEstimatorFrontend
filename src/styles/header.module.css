@@ -1,5 +1,13 @@
 .headerContainer {
   width: 100%;
-  text-align: center;
-  font-size: 3rem;
+  text-align: left;
+  font-size: 2rem;
+  font-weight: light;
+  color: #222222;
+}
+
+.title {
+  padding-left: 1rem;
+  text-decoration: none;
+  color: #2A2B2A;
 }
