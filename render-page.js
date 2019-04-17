@@ -16780,7 +16780,6 @@ var submitLocation = function submitLocation(data) {
   };
 };
 function submitListingWorker() {
-  console.log("listing");
   return function (dispatch, getState) {
     var listing = getState();
     return Object(_utils_Listing__WEBPACK_IMPORTED_MODULE_1__["sendListing"])("https://3xgrqs0bn4.execute-api.us-east-1.amazonaws.com/dev" + "/listings", listing).then(function (response) {
@@ -16985,7 +16984,11 @@ var initialState = {
     zipCode: 0
   },
   page: 0,
-  response: {}
+  response: {
+    isFetching: false,
+    caughtError: false,
+    body: {}
+  }
 };
 
 /***/ }),
@@ -17014,6 +17017,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/icons/ArrowForward */ "./node_modules/@material-ui/icons/ArrowForward.js");
 /* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _utils_Listing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/Listing */ "./src/utils/Listing.js");
+
 
 
 
@@ -17058,6 +17063,20 @@ function (_React$Component) {
       _this.props.submitBathrooms(data);
 
       _this.props.submitListing();
+
+      var listing = {
+        bathrooms: data,
+        bedrooms: _this.props.listing.bedrooms,
+        location: _this.props.listing.bedrooms,
+        placeType: _this.props.listing.placeType
+      };
+      Object(_utils_Listing__WEBPACK_IMPORTED_MODULE_9__["sendListing"])("http://localhost:3000/listings/", listing).then(function (data) {
+        var price = data.Prediction ? "$ " + data.Prediction.LinearRegression.toFixed(2) : "";
+
+        _this.setState({
+          responseText: price
+        });
+      });
     };
 
     return _this;
@@ -17075,7 +17094,7 @@ function (_React$Component) {
       handleInput: this.handleInput
     }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
       onClick: this.onSubmit
-    }, " Submit ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8___default.a, null)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    }, " Submit ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8___default.a, null)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: _styles_form_module_css__WEBPACK_IMPORTED_MODULE_5___default.a.formTitle
     }, " ", this.state.responseText, " "));
   };
@@ -17088,7 +17107,9 @@ function (_React$Component) {
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducer = _ref.reducer;
   return {
-    page: reducer.page
+    page: reducer.page,
+    response: reducer.response,
+    listing: reducer
   };
 };
 
@@ -17613,16 +17634,27 @@ __webpack_require__.r(__webpack_exports__);
       });
 
     case _constants__WEBPACK_IMPORTED_MODULE_1__["SUBMIT_LISTING"]:
-      return Object.assign({}, state);
+      return Object.assign({}, state, {
+        response: {
+          isFetching: true
+        }
+      });
 
     case _constants__WEBPACK_IMPORTED_MODULE_1__["SUBMIT_LISTING_SUCCESS"]:
       return Object.assign({}, state, {
-        response: action.payload
+        response: {
+          isFetching: false,
+          body: action.payload
+        }
       });
 
     case _constants__WEBPACK_IMPORTED_MODULE_1__["SUBMIT_LISTING_ERROR"]:
       return Object.assign({}, state, {
-        response: action.payload
+        response: {
+          isFetching: false,
+          caughtError: true,
+          body: action.payload
+        }
       });
 
     case _constants__WEBPACK_IMPORTED_MODULE_1__["SWITCH_PAGES"]:
@@ -17739,7 +17771,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var Axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(Axios__WEBPACK_IMPORTED_MODULE_0__);
 
 function sendListing(url, listingData) {
-  console.log(listingData);
   var options = {
     method: 'post',
     url: url,
