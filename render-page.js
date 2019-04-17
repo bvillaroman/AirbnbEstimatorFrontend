@@ -17070,7 +17070,7 @@ function (_React$Component) {
         location: _this.props.listing.bedrooms,
         placeType: _this.props.listing.placeType
       };
-      Object(_utils_Listing__WEBPACK_IMPORTED_MODULE_9__["sendListing"])("http://localhost:3000/listings/", listing).then(function (data) {
+      Object(_utils_Listing__WEBPACK_IMPORTED_MODULE_9__["sendListing"])("https://3xgrqs0bn4.execute-api.us-east-1.amazonaws.com/dev" + "/listings", listing).then(function (data) {
         var price = data.Prediction ? "$ " + data.Prediction.LinearRegression.toFixed(2) : "";
 
         _this.setState({
