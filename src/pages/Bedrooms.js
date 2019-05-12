@@ -40,7 +40,7 @@ class Bedrooms extends React.Component {
     )
   }
 }
-const mapStateToProps = ({reducer}) => ({page: reducer.page})
+const mapStateToProps = ({state}) => ({page: state.page})
 
 const mapDispatchToProps = dispatch => ({
   switchPages: (pageNumber) => dispatch(switchPages(pageNumber)),

@@ -45,8 +45,6 @@ export const submitLocation = data => dispatch => {
 }
 
 export function submitListingWorker() {
-  console.log("listing")
-
   return (dispatch,getState) => {
     const listing = getState()
     return sendListing(`${process.env.API_URL}/listings`,listing)

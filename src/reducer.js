@@ -21,11 +21,21 @@ export default (state = initialState, action) => {
     case SUBMIT_LOCATION:
       return { ...state, location: action.payload };
     case SUBMIT_LISTING:
-      return  { ...state }
+      return  { ...state, response: {
+        isFetching: true,
+      } }
     case SUBMIT_LISTING_SUCCESS:
-      return  { ...state, response: action.payload }
+      return  { ...state, response: {
+        isFetching: false,
+        body: action.payload }
+      }
     case SUBMIT_LISTING_ERROR:
-      return  { ...state, response: action.payload }
+      return  { ...state, response: {
+        isFetching: false,
+        caughtError: true,
+        body: action.payload 
+      }
+      }
     case SWITCH_PAGES:
       return  { ...state, page: action.payload }
     default:

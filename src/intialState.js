@@ -18,5 +18,9 @@ export const initialState = {
     zipCode: 0
   },
   page:0,
-  response:{}
+  response:{
+    isFetching: false,
+    caughtError: false,
+    body: {}
+  }
 }
