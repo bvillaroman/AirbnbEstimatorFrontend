@@ -1,8 +1,7 @@
 export const initialState = {
   placeType: {  
-    placeType: "",
-    propertyType: "",
-    guestSpace: 0
+    roomType:"",
+    propertyType:"", 
   },
   bedrooms: {
     guests: 0,
