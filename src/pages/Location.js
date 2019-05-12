@@ -11,9 +11,7 @@ class Location extends React.Component {
     address: "",
     apartmentNumber: "",
     city: "",
-    state: "",
     zipCode: "",
-    country: ""
   }
 
   handleInput = (evt) => {
@@ -32,14 +30,17 @@ class Location extends React.Component {
   }
 
   render(){
+    const {address,city,zipCode} = this.state
+    const disableButton = !(address && city && (zipCode.length === 5))
+
     return (
-        <div >
+        <div>
           <div className={ContainerStyles.formTitle}> Location </div>
-          <Input label="Address:" name={"address"} value={this.state.address} handleInput={this.handleInput}/>
-          <Input label="Apartment Number (if any):" name={"apartmentNumber"} value={this.state.apartmentNumber} handleInput={this.handleInput}/>
+          <Input label="Address:" name={"address"} value={this.state.address} handleInput={this.handleInput} required/>
+          <Input label="Apartment Number (if any):" name={"apartmentNumber"} value={this.state.apartmentNumber} handleInput={this.handleInput} required/>
           <Input label="City:" name={"city"} value={this.state.city} handleInput={this.handleInput}/>
           <Input label="Zip Code:" name={"zipCode"} value={this.state.zipCode} handleInput={this.handleInput}/>
-          <Button onClick={this.onSubmit}>Bedrooms <ArrowForward /></Button>
+          <Button disabled={disableButton} onClick={this.onSubmit}>Bedrooms <ArrowForward /></Button>
         </div>
     )
   }
