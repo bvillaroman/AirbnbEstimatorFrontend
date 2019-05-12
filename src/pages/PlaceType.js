@@ -86,6 +86,8 @@ class PlaceType extends React.Component {
   }
 
   render(){
+    const { roomType, propertyType } = this.state
+    const disabled = !(roomType && propertyType)
     return (
       <div>
         <div className={ContainerStyles.formTitle}> Place Type </div>
@@ -128,7 +130,7 @@ class PlaceType extends React.Component {
             </Select>
           </FormControl>
         </div>
-        <Button onClick={this.onSubmit}>Location <ArrowForward /></Button>
+        <Button disabled={disabled} onClick={this.onSubmit}>Location <ArrowForward /></Button>
       </div>
     )
   }
