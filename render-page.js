@@ -24301,9 +24301,9 @@ function (_React$Component) {
     var disabled = !(roomType && propertyType);
     return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_form_module_css__WEBPACK_IMPORTED_MODULE_5___default.a.formTitle
-    }, " Place Type "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+    }, " Place Type "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default.a, {
       className: _styles_component_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.inputContainerDropDown
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default.a, null, "What kind of place are you listing?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default.a, {
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default.a, null, "What kind of place are you listing?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default.a, {
       value: this.state.propertyType,
       onChange: this.handleInput,
       name: "propertyType"
@@ -24337,7 +24337,9 @@ function (_React$Component) {
       value: "Hostel"
     }, "Hostel"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
       value: "Timeshare"
-    }, "Timeshare"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default.a, null, "What type of access are you giving to your guests?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default.a, {
+    }, "Timeshare"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      className: _styles_component_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.inputContainerDropDown
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default.a, null, "What type of access are you giving to your guests?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default.a, {
       value: this.state.roomType,
       onChange: this.handleInput,
       name: "roomType"
