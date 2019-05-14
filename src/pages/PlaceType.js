@@ -2,7 +2,6 @@ import React from "react"
 import Input from "../components/presentational/Input"
 import ContainerStyles from "../styles/form.module.css"
 import ComponentStyles from "../styles/component.module.css"
-
 import { connect } from 'react-redux';
 import {submitPlaceType,switchPages} from '../actions'
 import Button from '@material-ui/core/Button';
@@ -23,58 +22,6 @@ class PlaceType extends React.Component {
     const { value,name } = evt.target;
     console.log(value)
     this.setState({ [name] : value})
-  }
-
-  handlePropertyType = property => {
-    let value = 1;
-    switch(property) {
-      case "Apartment": 
-        value = 1;
-        break;
-      case "House": 
-        value = 2;
-        break;  
-      case "Townhouse": 
-        value = 3;
-        break;    
-      case "Loft": 
-        value = 4;
-        break;
-      case "Condominium": 
-        value = 5;
-        break;       
-      case "Serviced Apartment": 
-        value = 6;
-        break;   
-      case "Guest Suite": 
-        value = 7;
-        break;   
-      case "Other": 
-        value = 8;
-        break;   
-      case "Bed & Breakfast": 
-        value = 9;
-        break;   
-      case "Boutique Hotel": 
-        value = 10;
-        break;  
-      case "Resort": 
-        value = 11;
-        break;    
-      case "Guest House": 
-        value = 12;
-        break;   
-      case "Hostel": 
-        value = 13;
-        break;   
-      case "Timeshare": 
-        value = 15;
-        break;   
-      default: 
-        value = 1;
-        break;   
-    }
-    return value;
   }
 
   onSubmit = (evt) => {
