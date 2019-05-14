@@ -38,8 +38,8 @@ class PlaceType extends React.Component {
     return (
       <div>
         <div className={ContainerStyles.formTitle}> Place Type </div>
-        <div className={ComponentStyles.inputContainerDropDown}>
-          <FormControl >
+        <div >
+          <FormControl className={ComponentStyles.inputContainerDropDown}>
             <FormLabel>What kind of place are you listing?</FormLabel>
             <Select
               value={this.state.propertyType}
@@ -63,7 +63,7 @@ class PlaceType extends React.Component {
               <MenuItem value={"Timeshare"}>Timeshare</MenuItem>
             </Select>
           </FormControl>
-          <FormControl >
+          <FormControl className={ComponentStyles.inputContainerDropDown}>
             <FormLabel>What type of access are you giving to your guests?</FormLabel>
             <Select
               value={this.state.roomType}
