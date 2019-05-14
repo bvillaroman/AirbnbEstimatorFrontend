@@ -1,8 +1,7 @@
 export const initialState = {
   placeType: {  
-    placeType: "",
-    propertyType: "",
-    guestSpace: 0
+    roomType:"",
+    propertyType:"", 
   },
   bedrooms: {
     guests: 0,
@@ -18,5 +17,9 @@ export const initialState = {
     zipCode: 0
   },
   page:0,
-  response:{}
+  response:{
+    isFetching: false,
+    caughtError: false,
+    body: {}
+  }
 }

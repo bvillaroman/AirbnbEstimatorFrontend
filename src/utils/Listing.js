@@ -2,7 +2,6 @@
 import Axios from "Axios"
 
 export function sendListing(url,listingData){
-  console.log(listingData)
   const options = {
     method: 'post',
     url: url,
