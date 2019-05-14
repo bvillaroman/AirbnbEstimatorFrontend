@@ -1507,6 +1507,117 @@ module.exports = _typeof;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/Backdrop/Backdrop.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/Backdrop/Backdrop.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _Fade = _interopRequireDefault(__webpack_require__(/*! ../Fade */ "./node_modules/@material-ui/core/Fade/index.js"));
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    zIndex: -1,
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    top: 0,
+    left: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    // Remove grey highlight
+    WebkitTapHighlightColor: 'transparent',
+    // Disable scroll capabilities.
+    touchAction: 'none'
+  },
+
+  /* Styles applied to the root element if `invisible={true}`. */
+  invisible: {
+    backgroundColor: 'transparent'
+  }
+};
+exports.styles = styles;
+
+function Backdrop(props) {
+  var classes = props.classes,
+      className = props.className,
+      invisible = props.invisible,
+      open = props.open,
+      transitionDuration = props.transitionDuration,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "invisible", "open", "transitionDuration"]);
+  return _react.default.createElement(_Fade.default, (0, _extends2.default)({
+    in: open,
+    timeout: transitionDuration
+  }, other), _react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.invisible, invisible), className),
+    "aria-hidden": "true"
+  }));
+}
+
+ false ? undefined : void 0;
+Backdrop.defaultProps = {
+  invisible: false
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiBackdrop'
+})(Backdrop);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Backdrop/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Backdrop/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Backdrop.default;
+  }
+});
+
+var _Backdrop = _interopRequireDefault(__webpack_require__(/*! ./Backdrop */ "./node_modules/@material-ui/core/Backdrop/Backdrop.js"));
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/Button/Button.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@material-ui/core/Button/Button.js ***!
@@ -2926,6 +3037,4074 @@ var _ButtonBase = _interopRequireDefault(__webpack_require__(/*! ./ButtonBase */
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/Fade/Fade.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@material-ui/core/Fade/Fade.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf3 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _Transition = _interopRequireDefault(__webpack_require__(/*! react-transition-group/Transition */ "./node_modules/react-transition-group/Transition.js"));
+
+var _transitions = __webpack_require__(/*! ../styles/transitions */ "./node_modules/@material-ui/core/styles/transitions.js");
+
+var _withTheme = _interopRequireDefault(__webpack_require__(/*! ../styles/withTheme */ "./node_modules/@material-ui/core/styles/withTheme.js"));
+
+var _utils = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@material-ui/core/transitions/utils.js");
+
+// @inheritedComponent Transition
+var styles = {
+  entering: {
+    opacity: 1
+  },
+  entered: {
+    opacity: 1
+  }
+};
+/**
+ * The Fade transition is used by the [Modal](/utils/modal/) component.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */
+
+var Fade =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Fade, _React$Component);
+
+  function Fade() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Fade);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(Fade)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _this.handleEnter = function (node) {
+      var theme = _this.props.theme;
+      (0, _utils.reflow)(node); // So the animation always start from the start.
+
+      var transitionProps = (0, _utils.getTransitionProps)(_this.props, {
+        mode: 'enter'
+      });
+      node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
+      node.style.transition = theme.transitions.create('opacity', transitionProps);
+
+      if (_this.props.onEnter) {
+        _this.props.onEnter(node);
+      }
+    };
+
+    _this.handleExit = function (node) {
+      var theme = _this.props.theme;
+      var transitionProps = (0, _utils.getTransitionProps)(_this.props, {
+        mode: 'exit'
+      });
+      node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
+      node.style.transition = theme.transitions.create('opacity', transitionProps);
+
+      if (_this.props.onExit) {
+        _this.props.onExit(node);
+      }
+    };
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Fade, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          onEnter = _this$props.onEnter,
+          onExit = _this$props.onExit,
+          styleProp = _this$props.style,
+          theme = _this$props.theme,
+          other = (0, _objectWithoutProperties2.default)(_this$props, ["children", "onEnter", "onExit", "style", "theme"]);
+      var style = (0, _extends2.default)({}, styleProp, _react.default.isValidElement(children) ? children.props.style : {});
+      return _react.default.createElement(_Transition.default, (0, _extends2.default)({
+        appear: true,
+        onEnter: this.handleEnter,
+        onExit: this.handleExit
+      }, other), function (state, childProps) {
+        return _react.default.cloneElement(children, (0, _extends2.default)({
+          style: (0, _extends2.default)({
+            opacity: 0
+          }, styles[state], style)
+        }, childProps));
+      });
+    }
+  }]);
+  return Fade;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Fade.defaultProps = {
+  timeout: {
+    enter: _transitions.duration.enteringScreen,
+    exit: _transitions.duration.leavingScreen
+  }
+};
+
+var _default = (0, _withTheme.default)()(Fade);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Fade/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Fade/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Fade.default;
+  }
+});
+
+var _Fade = _interopRequireDefault(__webpack_require__(/*! ./Fade */ "./node_modules/@material-ui/core/Fade/Fade.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormControl/FormControl.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormControl/FormControl.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _utils2 = __webpack_require__(/*! ../InputBase/utils */ "./node_modules/@material-ui/core/InputBase/utils.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _helpers = __webpack_require__(/*! ../utils/helpers */ "./node_modules/@material-ui/core/utils/helpers.js");
+
+var _reactHelpers = __webpack_require__(/*! ../utils/reactHelpers */ "./node_modules/@material-ui/core/utils/reactHelpers.js");
+
+var _FormControlContext = _interopRequireDefault(__webpack_require__(/*! ./FormControlContext */ "./node_modules/@material-ui/core/FormControl/FormControlContext.js"));
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    display: 'inline-flex',
+    flexDirection: 'column',
+    position: 'relative',
+    // Reset fieldset default style.
+    minWidth: 0,
+    padding: 0,
+    margin: 0,
+    border: 0,
+    verticalAlign: 'top' // Fix alignment issue on Safari.
+
+  },
+
+  /* Styles applied to the root element if `margin="normal"`. */
+  marginNormal: {
+    marginTop: 16,
+    marginBottom: 8
+  },
+
+  /* Styles applied to the root element if `margin="dense"`. */
+  marginDense: {
+    marginTop: 8,
+    marginBottom: 4
+  },
+
+  /* Styles applied to the root element if `fullWidth={true}`. */
+  fullWidth: {
+    width: '100%'
+  }
+};
+/**
+ * Provides context such as filled/focused/error/required for form inputs.
+ * Relying on the context provides high flexibility and ensures that the state always stays
+ * consistent across the children of the `FormControl`.
+ * This context is used by the following components:
+ *  - FormLabel
+ *  - FormHelperText
+ *  - Input
+ *  - InputLabel
+ *
+ * ⚠️ Only one input can be used within a FormControl.
+ */
+
+exports.styles = styles;
+
+var FormControl =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(FormControl, _React$Component);
+  (0, _createClass2.default)(FormControl, null, [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, state) {
+      if (props.disabled && state.focused) {
+        return {
+          focused: false
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  function FormControl(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, FormControl);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(FormControl).call(this));
+
+    _this.handleFocus = function () {
+      _this.setState(function (state) {
+        return !state.focused ? {
+          focused: true
+        } : null;
+      });
+    };
+
+    _this.handleBlur = function () {
+      _this.setState(function (state) {
+        return state.focused ? {
+          focused: false
+        } : null;
+      });
+    };
+
+    _this.handleDirty = function () {
+      if (!_this.state.filled) {
+        _this.setState({
+          filled: true
+        });
+      }
+    };
+
+    _this.handleClean = function () {
+      if (_this.state.filled) {
+        _this.setState({
+          filled: false
+        });
+      }
+    };
+
+    _this.state = {
+      adornedStart: false,
+      filled: false,
+      focused: false
+    }; // We need to iterate through the children and find the Input in order
+    // to fully support server-side rendering.
+
+    var children = props.children;
+
+    if (children) {
+      _react.default.Children.forEach(children, function (child) {
+        if (!(0, _reactHelpers.isMuiElement)(child, ['Input', 'Select'])) {
+          return;
+        }
+
+        if ((0, _utils2.isFilled)(child.props, true)) {
+          _this.state.filled = true;
+        }
+
+        var input = (0, _reactHelpers.isMuiElement)(child, ['Select']) ? child.props.input : child;
+
+        if (input && (0, _utils2.isAdornedStart)(input.props)) {
+          _this.state.adornedStart = true;
+        }
+      });
+    }
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(FormControl, [{
+    key: "render",
+    value: function render() {
+      var _classNames;
+
+      var _this$props = this.props,
+          classes = _this$props.classes,
+          className = _this$props.className,
+          Component = _this$props.component,
+          disabled = _this$props.disabled,
+          error = _this$props.error,
+          fullWidth = _this$props.fullWidth,
+          margin = _this$props.margin,
+          required = _this$props.required,
+          variant = _this$props.variant,
+          other = (0, _objectWithoutProperties2.default)(_this$props, ["classes", "className", "component", "disabled", "error", "fullWidth", "margin", "required", "variant"]);
+      var _this$state = this.state,
+          adornedStart = _this$state.adornedStart,
+          filled = _this$state.filled,
+          focused = _this$state.focused;
+      var childContext = {
+        adornedStart: adornedStart,
+        disabled: disabled,
+        error: error,
+        filled: filled,
+        focused: focused,
+        margin: margin,
+        onBlur: this.handleBlur,
+        onEmpty: this.handleClean,
+        onFilled: this.handleDirty,
+        onFocus: this.handleFocus,
+        required: required,
+        variant: variant
+      };
+      return _react.default.createElement(_FormControlContext.default.Provider, {
+        value: childContext
+      }, _react.default.createElement(Component, (0, _extends2.default)({
+        className: (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes["margin".concat((0, _helpers.capitalize)(margin))], margin !== 'none'), (0, _defineProperty2.default)(_classNames, classes.fullWidth, fullWidth), _classNames), className)
+      }, other)));
+    }
+  }]);
+  return FormControl;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+FormControl.defaultProps = {
+  component: 'div',
+  disabled: false,
+  error: false,
+  fullWidth: false,
+  margin: 'none',
+  required: false,
+  variant: 'standard'
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiFormControl'
+})(FormControl);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormControl/FormControlContext.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormControl/FormControlContext.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+/**
+ * @ignore - internal component.
+ */
+var FormControlContext = _react.default.createContext();
+
+var _default = FormControlContext;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormControl/formControlState.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormControl/formControlState.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = formControlState;
+
+function formControlState(_ref) {
+  var props = _ref.props,
+      states = _ref.states,
+      muiFormControl = _ref.muiFormControl;
+  return states.reduce(function (acc, state) {
+    acc[state] = props[state];
+
+    if (muiFormControl) {
+      if (typeof props[state] === 'undefined') {
+        acc[state] = muiFormControl[state];
+      }
+    }
+
+    return acc;
+  }, {});
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormControl/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormControl/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _FormControl.default;
+  }
+});
+
+var _FormControl = _interopRequireDefault(__webpack_require__(/*! ./FormControl */ "./node_modules/@material-ui/core/FormControl/FormControl.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormControl/withFormControlContext.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormControl/withFormControlContext.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = withFormControlContext;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _hoistNonReactStatics = _interopRequireDefault(__webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js"));
+
+var _FormControlContext = _interopRequireDefault(__webpack_require__(/*! ./FormControlContext */ "./node_modules/@material-ui/core/FormControl/FormControlContext.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+function withFormControlContext(Component) {
+  var EnhancedComponent = function EnhancedComponent(props) {
+    return _react.default.createElement(_FormControlContext.default.Consumer, null, function (context) {
+      return _react.default.createElement(Component, (0, _extends2.default)({
+        muiFormControl: context
+      }, props));
+    });
+  };
+
+  if (false) {}
+
+  (0, _hoistNonReactStatics.default)(EnhancedComponent, Component);
+  return EnhancedComponent;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormLabel/FormLabel.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormLabel/FormLabel.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _formControlState = _interopRequireDefault(__webpack_require__(/*! ../FormControl/formControlState */ "./node_modules/@material-ui/core/FormControl/formControlState.js"));
+
+var _withFormControlContext = _interopRequireDefault(__webpack_require__(/*! ../FormControl/withFormControlContext */ "./node_modules/@material-ui/core/FormControl/withFormControlContext.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      fontFamily: theme.typography.fontFamily,
+      color: theme.palette.text.secondary,
+      fontSize: theme.typography.pxToRem(16),
+      lineHeight: 1,
+      padding: 0,
+      '&$focused': {
+        color: theme.palette.primary[theme.palette.type === 'light' ? 'dark' : 'light']
+      },
+      '&$disabled': {
+        color: theme.palette.text.disabled
+      },
+      '&$error': {
+        color: theme.palette.error.main
+      }
+    },
+
+    /* Styles applied to the root element if `focused={true}`. */
+    focused: {},
+
+    /* Styles applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `error={true}`. */
+    error: {},
+
+    /* Styles applied to the root element if `filled={true}`. */
+    filled: {},
+
+    /* Styles applied to the root element if `required={true}`. */
+    required: {},
+    asterisk: {
+      '&$error': {
+        color: theme.palette.error.main
+      }
+    }
+  };
+};
+
+exports.styles = styles;
+
+function FormLabel(props) {
+  var _classNames;
+
+  var children = props.children,
+      classes = props.classes,
+      classNameProp = props.className,
+      Component = props.component,
+      disabled = props.disabled,
+      error = props.error,
+      filled = props.filled,
+      focused = props.focused,
+      muiFormControl = props.muiFormControl,
+      required = props.required,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "component", "disabled", "error", "filled", "focused", "muiFormControl", "required"]);
+  var fcs = (0, _formControlState.default)({
+    props: props,
+    muiFormControl: muiFormControl,
+    states: ['required', 'focused', 'disabled', 'error', 'filled']
+  });
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.disabled, fcs.disabled), (0, _defineProperty2.default)(_classNames, classes.error, fcs.error), (0, _defineProperty2.default)(_classNames, classes.filled, fcs.filled), (0, _defineProperty2.default)(_classNames, classes.focused, fcs.focused), (0, _defineProperty2.default)(_classNames, classes.required, fcs.required), _classNames), classNameProp)
+  }, other), children, fcs.required && _react.default.createElement("span", {
+    className: (0, _classnames.default)(classes.asterisk, (0, _defineProperty2.default)({}, classes.error, fcs.error))
+  }, "\u2009*"));
+}
+
+ false ? undefined : void 0;
+FormLabel.defaultProps = {
+  component: 'label'
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiFormLabel'
+})((0, _withFormControlContext.default)(FormLabel));
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/FormLabel/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/FormLabel/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _FormLabel.default;
+  }
+});
+
+var _FormLabel = _interopRequireDefault(__webpack_require__(/*! ./FormLabel */ "./node_modules/@material-ui/core/FormLabel/FormLabel.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Grow/Grow.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@material-ui/core/Grow/Grow.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf3 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _Transition = _interopRequireDefault(__webpack_require__(/*! react-transition-group/Transition */ "./node_modules/react-transition-group/Transition.js"));
+
+var _withTheme = _interopRequireDefault(__webpack_require__(/*! ../styles/withTheme */ "./node_modules/@material-ui/core/styles/withTheme.js"));
+
+var _utils = __webpack_require__(/*! ../transitions/utils */ "./node_modules/@material-ui/core/transitions/utils.js");
+
+// @inheritedComponent Transition
+function getScale(value) {
+  return "scale(".concat(value, ", ").concat(Math.pow(value, 2), ")");
+}
+
+var styles = {
+  entering: {
+    opacity: 1,
+    transform: getScale(1)
+  },
+  entered: {
+    opacity: 1,
+    // Use translateZ to scrolling issue on Chrome.
+    transform: "".concat(getScale(1), " translateZ(0)")
+  }
+};
+/**
+ * The Grow transition is used by the [Tooltip](/demos/tooltips/) and
+ * [Popover](/utils/popover/) components.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */
+
+var Grow =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Grow, _React$Component);
+
+  function Grow() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Grow);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(Grow)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _this.handleEnter = function (node) {
+      var _this$props = _this.props,
+          theme = _this$props.theme,
+          timeout = _this$props.timeout;
+      (0, _utils.reflow)(node); // So the animation always start from the start.
+
+      var _getTransitionProps = (0, _utils.getTransitionProps)(_this.props, {
+        mode: 'enter'
+      }),
+          transitionDuration = _getTransitionProps.duration,
+          delay = _getTransitionProps.delay;
+
+      var duration = 0;
+
+      if (timeout === 'auto') {
+        duration = theme.transitions.getAutoHeightDuration(node.clientHeight);
+        _this.autoTimeout = duration;
+      } else {
+        duration = transitionDuration;
+      }
+
+      node.style.transition = [theme.transitions.create('opacity', {
+        duration: duration,
+        delay: delay
+      }), theme.transitions.create('transform', {
+        duration: duration * 0.666,
+        delay: delay
+      })].join(',');
+
+      if (_this.props.onEnter) {
+        _this.props.onEnter(node);
+      }
+    };
+
+    _this.handleExit = function (node) {
+      var _this$props2 = _this.props,
+          theme = _this$props2.theme,
+          timeout = _this$props2.timeout;
+      var duration = 0;
+
+      var _getTransitionProps2 = (0, _utils.getTransitionProps)(_this.props, {
+        mode: 'exit'
+      }),
+          transitionDuration = _getTransitionProps2.duration,
+          delay = _getTransitionProps2.delay;
+
+      if (timeout === 'auto') {
+        duration = theme.transitions.getAutoHeightDuration(node.clientHeight);
+        _this.autoTimeout = duration;
+      } else {
+        duration = transitionDuration;
+      }
+
+      node.style.transition = [theme.transitions.create('opacity', {
+        duration: duration,
+        delay: delay
+      }), theme.transitions.create('transform', {
+        duration: duration * 0.666,
+        delay: delay || duration * 0.333
+      })].join(',');
+      node.style.opacity = '0';
+      node.style.transform = getScale(0.75);
+
+      if (_this.props.onExit) {
+        _this.props.onExit(node);
+      }
+    };
+
+    _this.addEndListener = function (_, next) {
+      if (_this.props.timeout === 'auto') {
+        _this.timer = setTimeout(next, _this.autoTimeout || 0);
+      }
+    };
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Grow, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearTimeout(this.timer);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          children = _this$props3.children,
+          onEnter = _this$props3.onEnter,
+          onExit = _this$props3.onExit,
+          styleProp = _this$props3.style,
+          theme = _this$props3.theme,
+          timeout = _this$props3.timeout,
+          other = (0, _objectWithoutProperties2.default)(_this$props3, ["children", "onEnter", "onExit", "style", "theme", "timeout"]);
+      var style = (0, _extends2.default)({}, styleProp, _react.default.isValidElement(children) ? children.props.style : {});
+      return _react.default.createElement(_Transition.default, (0, _extends2.default)({
+        appear: true,
+        onEnter: this.handleEnter,
+        onExit: this.handleExit,
+        addEndListener: this.addEndListener,
+        timeout: timeout === 'auto' ? null : timeout
+      }, other), function (state, childProps) {
+        return _react.default.cloneElement(children, (0, _extends2.default)({
+          style: (0, _extends2.default)({
+            opacity: 0,
+            transform: getScale(0.75)
+          }, styles[state], style)
+        }, childProps));
+      });
+    }
+  }]);
+  return Grow;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Grow.defaultProps = {
+  timeout: 'auto'
+};
+Grow.muiSupportAuto = true;
+
+var _default = (0, _withTheme.default)()(Grow);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Grow/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Grow/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Grow.default;
+  }
+});
+
+var _Grow = _interopRequireDefault(__webpack_require__(/*! ./Grow */ "./node_modules/@material-ui/core/Grow/Grow.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Input/Input.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Input/Input.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _InputBase = _interopRequireDefault(__webpack_require__(/*! ../InputBase */ "./node_modules/@material-ui/core/InputBase/index.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+// @inheritedComponent InputBase
+var styles = function styles(theme) {
+  var light = theme.palette.type === 'light';
+  var bottomLineColor = light ? 'rgba(0, 0, 0, 0.42)' : 'rgba(255, 255, 255, 0.7)';
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      position: 'relative'
+    },
+
+    /* Styles applied to the root element if the component is a descendant of `FormControl`. */
+    formControl: {
+      'label + &': {
+        marginTop: 16
+      }
+    },
+
+    /* Styles applied to the root element if the component is focused. */
+    focused: {},
+
+    /* Styles applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `disableUnderline={false}`. */
+    underline: {
+      '&:after': {
+        borderBottom: "2px solid ".concat(theme.palette.primary[light ? 'dark' : 'light']),
+        left: 0,
+        bottom: 0,
+        // Doing the other way around crash on IE 11 "''" https://github.com/cssinjs/jss/issues/242
+        content: '""',
+        position: 'absolute',
+        right: 0,
+        transform: 'scaleX(0)',
+        transition: theme.transitions.create('transform', {
+          duration: theme.transitions.duration.shorter,
+          easing: theme.transitions.easing.easeOut
+        }),
+        pointerEvents: 'none' // Transparent to the hover style.
+
+      },
+      '&$focused:after': {
+        transform: 'scaleX(1)'
+      },
+      '&$error:after': {
+        borderBottomColor: theme.palette.error.main,
+        transform: 'scaleX(1)' // error is always underlined in red
+
+      },
+      '&:before': {
+        borderBottom: "1px solid ".concat(bottomLineColor),
+        left: 0,
+        bottom: 0,
+        // Doing the other way around crash on IE 11 "''" https://github.com/cssinjs/jss/issues/242
+        content: '"\\00a0"',
+        position: 'absolute',
+        right: 0,
+        transition: theme.transitions.create('border-bottom-color', {
+          duration: theme.transitions.duration.shorter
+        }),
+        pointerEvents: 'none' // Transparent to the hover style.
+
+      },
+      '&:hover:not($disabled):not($focused):not($error):before': {
+        borderBottom: "2px solid ".concat(theme.palette.text.primary),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          borderBottom: "1px solid ".concat(bottomLineColor)
+        }
+      },
+      '&$disabled:before': {
+        borderBottomStyle: 'dotted'
+      }
+    },
+
+    /* Styles applied to the root element if `error={true}`. */
+    error: {},
+
+    /* Styles applied to the root element if `multiline={true}`. */
+    multiline: {},
+
+    /* Styles applied to the root element if `fullWidth={true}`. */
+    fullWidth: {},
+
+    /* Styles applied to the `input` element. */
+    input: {},
+
+    /* Styles applied to the `input` element if `margin="dense"`. */
+    inputMarginDense: {},
+
+    /* Styles applied to the `input` element if `multiline={true}`. */
+    inputMultiline: {},
+
+    /* Styles applied to the `input` element if `type` is not "text"`. */
+    inputType: {},
+
+    /* Styles applied to the `input` element if `type="search"`. */
+    inputTypeSearch: {}
+  };
+};
+
+exports.styles = styles;
+
+function Input(props) {
+  var disableUnderline = props.disableUnderline,
+      classes = props.classes,
+      other = (0, _objectWithoutProperties2.default)(props, ["disableUnderline", "classes"]);
+  return _react.default.createElement(_InputBase.default, (0, _extends2.default)({
+    classes: (0, _extends2.default)({}, classes, {
+      root: (0, _classnames.default)(classes.root, (0, _defineProperty2.default)({}, classes.underline, !disableUnderline)),
+      underline: null
+    })
+  }, other));
+}
+
+ false ? undefined : void 0;
+_InputBase.default.defaultProps = {
+  fullWidth: false,
+  inputComponent: 'input',
+  multiline: false,
+  type: 'text'
+};
+Input.muiName = 'Input';
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiInput'
+})(Input);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Input/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Input/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Input.default;
+  }
+});
+
+var _Input = _interopRequireDefault(__webpack_require__(/*! ./Input */ "./node_modules/@material-ui/core/Input/Input.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/InputBase/InputBase.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@material-ui/core/InputBase/InputBase.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/@material-ui/core/node_modules/warning/warning.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _formControlState = _interopRequireDefault(__webpack_require__(/*! ../FormControl/formControlState */ "./node_modules/@material-ui/core/FormControl/formControlState.js"));
+
+var _FormControlContext = _interopRequireDefault(__webpack_require__(/*! ../FormControl/FormControlContext */ "./node_modules/@material-ui/core/FormControl/FormControlContext.js"));
+
+var _withFormControlContext = _interopRequireDefault(__webpack_require__(/*! ../FormControl/withFormControlContext */ "./node_modules/@material-ui/core/FormControl/withFormControlContext.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _reactHelpers = __webpack_require__(/*! ../utils/reactHelpers */ "./node_modules/@material-ui/core/utils/reactHelpers.js");
+
+var _Textarea = _interopRequireDefault(__webpack_require__(/*! ./Textarea */ "./node_modules/@material-ui/core/InputBase/Textarea.js"));
+
+var _utils2 = __webpack_require__(/*! ./utils */ "./node_modules/@material-ui/core/InputBase/utils.js");
+
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+var styles = function styles(theme) {
+  var light = theme.palette.type === 'light';
+  var placeholder = {
+    color: 'currentColor',
+    opacity: light ? 0.42 : 0.5,
+    transition: theme.transitions.create('opacity', {
+      duration: theme.transitions.duration.shorter
+    })
+  };
+  var placeholderHidden = {
+    opacity: 0
+  };
+  var placeholderVisible = {
+    opacity: light ? 0.42 : 0.5
+  };
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      // Mimics the default input display property used by browsers for an input.
+      fontFamily: theme.typography.fontFamily,
+      color: theme.palette.text.primary,
+      fontSize: theme.typography.pxToRem(16),
+      lineHeight: '1.1875em',
+      // Reset (19px), match the native input line-height
+      cursor: 'text',
+      display: 'inline-flex',
+      alignItems: 'center',
+      '&$disabled': {
+        color: theme.palette.text.disabled,
+        cursor: 'default'
+      }
+    },
+
+    /* Styles applied to the root element if the component is a descendant of `FormControl`. */
+    formControl: {},
+
+    /* Styles applied to the root element if the component is focused. */
+    focused: {},
+
+    /* Styles applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `startAdornment` is provided. */
+    adornedStart: {},
+
+    /* Styles applied to the root element if `endAdornment` is provided. */
+    adornedEnd: {},
+
+    /* Styles applied to the root element if `error={true}`. */
+    error: {},
+
+    /* Styles applied to the `input` element if `margin="dense"`. */
+    marginDense: {},
+
+    /* Styles applied to the root element if `multiline={true}`. */
+    multiline: {
+      padding: "".concat(8 - 2, "px 0 ").concat(8 - 1, "px")
+    },
+
+    /* Styles applied to the root element if `fullWidth={true}`. */
+    fullWidth: {
+      width: '100%'
+    },
+
+    /* Styles applied to the `input` element. */
+    input: {
+      font: 'inherit',
+      color: 'currentColor',
+      padding: "".concat(8 - 2, "px 0 ").concat(8 - 1, "px"),
+      border: 0,
+      boxSizing: 'content-box',
+      background: 'none',
+      margin: 0,
+      // Reset for Safari
+      // Remove grey highlight
+      WebkitTapHighlightColor: 'transparent',
+      display: 'block',
+      // Make the flex item shrink with Firefox
+      minWidth: 0,
+      width: '100%',
+      // Fix IE 11 width issue
+      '&::-webkit-input-placeholder': placeholder,
+      '&::-moz-placeholder': placeholder,
+      // Firefox 19+
+      '&:-ms-input-placeholder': placeholder,
+      // IE 11
+      '&::-ms-input-placeholder': placeholder,
+      // Edge
+      '&:focus': {
+        outline: 0
+      },
+      // Reset Firefox invalid required input style
+      '&:invalid': {
+        boxShadow: 'none'
+      },
+      '&::-webkit-search-decoration': {
+        // Remove the padding when type=search.
+        '-webkit-appearance': 'none'
+      },
+      // Show and hide the placeholder logic
+      'label[data-shrink=false] + $formControl &': {
+        '&::-webkit-input-placeholder': placeholderHidden,
+        '&::-moz-placeholder': placeholderHidden,
+        // Firefox 19+
+        '&:-ms-input-placeholder': placeholderHidden,
+        // IE 11
+        '&::-ms-input-placeholder': placeholderHidden,
+        // Edge
+        '&:focus::-webkit-input-placeholder': placeholderVisible,
+        '&:focus::-moz-placeholder': placeholderVisible,
+        // Firefox 19+
+        '&:focus:-ms-input-placeholder': placeholderVisible,
+        // IE 11
+        '&:focus::-ms-input-placeholder': placeholderVisible // Edge
+
+      },
+      '&$disabled': {
+        opacity: 1 // Reset iOS opacity
+
+      }
+    },
+
+    /* Styles applied to the `input` element if `margin="dense"`. */
+    inputMarginDense: {
+      paddingTop: 4 - 1
+    },
+
+    /* Styles applied to the `input` element if `multiline={true}`. */
+    inputMultiline: {
+      resize: 'none',
+      padding: 0
+    },
+
+    /* Styles applied to the `input` element if `type` is not "text"`. */
+    inputType: {
+      // type="date" or type="time", etc. have specific styles we need to reset.
+      height: '1.1875em' // Reset (19px), match the native input line-height
+
+    },
+
+    /* Styles applied to the `input` element if `type="search"`. */
+    inputTypeSearch: {
+      // Improve type search style.
+      '-moz-appearance': 'textfield',
+      '-webkit-appearance': 'textfield'
+    },
+
+    /* Styles applied to the `input` element if `startAdornment` is provided. */
+    inputAdornedStart: {},
+
+    /* Styles applied to the `input` element if `endAdornment` is provided. */
+    inputAdornedEnd: {}
+  };
+};
+/**
+ * `InputBase` contains as few styles as possible.
+ * It aims to be a simple building block for creating an input.
+ * It contains a load of style reset and some state logic.
+ */
+
+
+exports.styles = styles;
+
+var InputBase =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(InputBase, _React$Component);
+  (0, _createClass2.default)(InputBase, null, [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, state) {
+      // The blur won't fire when the disabled state is set on a focused input.
+      // We need to book keep the focused state manually.
+      if (props.disabled && state.focused) {
+        return {
+          focused: false
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  function InputBase(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, InputBase);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(InputBase).call(this, props));
+    _this.state = {
+      focused: false
+    };
+
+    _this.handleFocus = function (event) {
+      var muiFormControl = _this.props.muiFormControl; // Fix a bug with IE 11 where the focus/blur events are triggered
+      // while the input is disabled.
+
+      if ((0, _formControlState.default)({
+        props: _this.props,
+        muiFormControl: muiFormControl,
+        states: ['disabled']
+      }).disabled) {
+        event.stopPropagation();
+        return;
+      }
+
+      _this.setState({
+        focused: true
+      });
+
+      if (_this.props.onFocus) {
+        _this.props.onFocus(event);
+      }
+
+      if (muiFormControl && muiFormControl.onFocus) {
+        muiFormControl.onFocus(event);
+      }
+    };
+
+    _this.handleBlur = function (event) {
+      _this.setState({
+        focused: false
+      });
+
+      if (_this.props.onBlur) {
+        _this.props.onBlur(event);
+      }
+
+      var muiFormControl = _this.props.muiFormControl;
+
+      if (muiFormControl && muiFormControl.onBlur) {
+        muiFormControl.onBlur(event);
+      }
+    };
+
+    _this.handleChange = function () {
+      if (!_this.isControlled) {
+        _this.checkDirty(_this.inputRef);
+      } // Perform in the willUpdate
+
+
+      if (_this.props.onChange) {
+        var _this$props;
+
+        (_this$props = _this.props).onChange.apply(_this$props, arguments);
+      }
+    };
+
+    _this.handleRefInput = function (ref) {
+      _this.inputRef = ref;
+       false ? undefined : void 0;
+      var refProp;
+
+      if (_this.props.inputRef) {
+        refProp = _this.props.inputRef;
+      } else if (_this.props.inputProps && _this.props.inputProps.ref) {
+        refProp = _this.props.inputProps.ref;
+      }
+
+      (0, _reactHelpers.setRef)(refProp, ref);
+    };
+
+    _this.handleClick = function (event) {
+      if (_this.inputRef && event.currentTarget === event.target) {
+        _this.inputRef.focus();
+      }
+
+      if (_this.props.onClick) {
+        _this.props.onClick(event);
+      }
+    };
+
+    _this.isControlled = props.value != null;
+
+    if (_this.isControlled) {
+      _this.checkDirty(props);
+    }
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(InputBase, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (!this.isControlled) {
+        this.checkDirty(this.inputRef);
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // Book keep the focused state.
+      if (!prevProps.disabled && this.props.disabled) {
+        var muiFormControl = this.props.muiFormControl;
+
+        if (muiFormControl && muiFormControl.onBlur) {
+          muiFormControl.onBlur();
+        }
+      }
+
+      if (this.isControlled) {
+        this.checkDirty(this.props);
+      } // else performed in the onChange
+
+    }
+  }, {
+    key: "checkDirty",
+    value: function checkDirty(obj) {
+      var muiFormControl = this.props.muiFormControl;
+
+      if ((0, _utils2.isFilled)(obj)) {
+        if (muiFormControl && muiFormControl.onFilled) {
+          muiFormControl.onFilled();
+        }
+
+        if (this.props.onFilled) {
+          this.props.onFilled();
+        }
+
+        return;
+      }
+
+      if (muiFormControl && muiFormControl.onEmpty) {
+        muiFormControl.onEmpty();
+      }
+
+      if (this.props.onEmpty) {
+        this.props.onEmpty();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames, _classNames2;
+
+      var _this$props2 = this.props,
+          autoComplete = _this$props2.autoComplete,
+          autoFocus = _this$props2.autoFocus,
+          classes = _this$props2.classes,
+          classNameProp = _this$props2.className,
+          defaultValue = _this$props2.defaultValue,
+          disabled = _this$props2.disabled,
+          endAdornment = _this$props2.endAdornment,
+          error = _this$props2.error,
+          fullWidth = _this$props2.fullWidth,
+          id = _this$props2.id,
+          inputComponent = _this$props2.inputComponent,
+          _this$props2$inputPro = _this$props2.inputProps;
+      _this$props2$inputPro = _this$props2$inputPro === void 0 ? {} : _this$props2$inputPro;
+      var inputPropsClassName = _this$props2$inputPro.className,
+          inputPropsProp = (0, _objectWithoutProperties2.default)(_this$props2$inputPro, ["className"]),
+          inputRef = _this$props2.inputRef,
+          margin = _this$props2.margin,
+          muiFormControl = _this$props2.muiFormControl,
+          multiline = _this$props2.multiline,
+          name = _this$props2.name,
+          onBlur = _this$props2.onBlur,
+          onChange = _this$props2.onChange,
+          onClick = _this$props2.onClick,
+          onEmpty = _this$props2.onEmpty,
+          onFilled = _this$props2.onFilled,
+          onFocus = _this$props2.onFocus,
+          onKeyDown = _this$props2.onKeyDown,
+          onKeyUp = _this$props2.onKeyUp,
+          placeholder = _this$props2.placeholder,
+          readOnly = _this$props2.readOnly,
+          renderPrefix = _this$props2.renderPrefix,
+          rows = _this$props2.rows,
+          rowsMax = _this$props2.rowsMax,
+          startAdornment = _this$props2.startAdornment,
+          type = _this$props2.type,
+          value = _this$props2.value,
+          other = (0, _objectWithoutProperties2.default)(_this$props2, ["autoComplete", "autoFocus", "classes", "className", "defaultValue", "disabled", "endAdornment", "error", "fullWidth", "id", "inputComponent", "inputProps", "inputRef", "margin", "muiFormControl", "multiline", "name", "onBlur", "onChange", "onClick", "onEmpty", "onFilled", "onFocus", "onKeyDown", "onKeyUp", "placeholder", "readOnly", "renderPrefix", "rows", "rowsMax", "startAdornment", "type", "value"]);
+      var ariaDescribedby = other['aria-describedby'];
+      delete other['aria-describedby'];
+      var fcs = (0, _formControlState.default)({
+        props: this.props,
+        muiFormControl: muiFormControl,
+        states: ['disabled', 'error', 'margin', 'required', 'filled']
+      });
+      var focused = muiFormControl ? muiFormControl.focused : this.state.focused;
+      var className = (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.disabled, fcs.disabled), (0, _defineProperty2.default)(_classNames, classes.error, fcs.error), (0, _defineProperty2.default)(_classNames, classes.fullWidth, fullWidth), (0, _defineProperty2.default)(_classNames, classes.focused, focused), (0, _defineProperty2.default)(_classNames, classes.formControl, muiFormControl), (0, _defineProperty2.default)(_classNames, classes.marginDense, fcs.margin === 'dense'), (0, _defineProperty2.default)(_classNames, classes.multiline, multiline), (0, _defineProperty2.default)(_classNames, classes.adornedStart, startAdornment), (0, _defineProperty2.default)(_classNames, classes.adornedEnd, endAdornment), _classNames), classNameProp);
+      var inputClassName = (0, _classnames.default)(classes.input, (_classNames2 = {}, (0, _defineProperty2.default)(_classNames2, classes.disabled, fcs.disabled), (0, _defineProperty2.default)(_classNames2, classes.inputType, type !== 'text'), (0, _defineProperty2.default)(_classNames2, classes.inputTypeSearch, type === 'search'), (0, _defineProperty2.default)(_classNames2, classes.inputMultiline, multiline), (0, _defineProperty2.default)(_classNames2, classes.inputMarginDense, fcs.margin === 'dense'), (0, _defineProperty2.default)(_classNames2, classes.inputAdornedStart, startAdornment), (0, _defineProperty2.default)(_classNames2, classes.inputAdornedEnd, endAdornment), _classNames2), inputPropsClassName);
+      var InputComponent = inputComponent;
+      var inputProps = (0, _extends2.default)({}, inputPropsProp, {
+        ref: this.handleRefInput
+      });
+
+      if (typeof InputComponent !== 'string') {
+        inputProps = (0, _extends2.default)({
+          // Rename ref to inputRef as we don't know the
+          // provided `inputComponent` structure.
+          inputRef: this.handleRefInput,
+          type: type
+        }, inputProps, {
+          ref: null
+        });
+      } else if (multiline) {
+        if (rows && !rowsMax) {
+          InputComponent = 'textarea';
+        } else {
+          inputProps = (0, _extends2.default)({
+            rowsMax: rowsMax,
+            textareaRef: this.handleRefInput
+          }, inputProps, {
+            ref: null
+          });
+          InputComponent = _Textarea.default;
+        }
+      } else {
+        inputProps = (0, _extends2.default)({
+          type: type
+        }, inputProps);
+      }
+
+      return _react.default.createElement("div", (0, _extends2.default)({
+        className: className,
+        onClick: this.handleClick
+      }, other), renderPrefix ? renderPrefix((0, _extends2.default)({}, fcs, {
+        startAdornment: startAdornment,
+        focused: focused
+      })) : null, startAdornment, _react.default.createElement(_FormControlContext.default.Provider, {
+        value: null
+      }, _react.default.createElement(InputComponent, (0, _extends2.default)({
+        "aria-invalid": fcs.error,
+        "aria-describedby": ariaDescribedby,
+        autoComplete: autoComplete,
+        autoFocus: autoFocus,
+        className: inputClassName,
+        defaultValue: defaultValue,
+        disabled: fcs.disabled,
+        id: id,
+        name: name,
+        onBlur: this.handleBlur,
+        onChange: this.handleChange,
+        onFocus: this.handleFocus,
+        onKeyDown: onKeyDown,
+        onKeyUp: onKeyUp,
+        placeholder: placeholder,
+        readOnly: readOnly,
+        required: fcs.required,
+        rows: rows,
+        value: value
+      }, inputProps))), endAdornment);
+    }
+  }]);
+  return InputBase;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+InputBase.defaultProps = {
+  fullWidth: false,
+  inputComponent: 'input',
+  multiline: false,
+  type: 'text'
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiInputBase'
+})((0, _withFormControlContext.default)(InputBase));
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/InputBase/Textarea.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@material-ui/core/InputBase/Textarea.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _debounce = _interopRequireDefault(__webpack_require__(/*! debounce */ "./node_modules/debounce/index.js"));
+
+var _reactEventListener = _interopRequireDefault(__webpack_require__(/*! react-event-listener */ "./node_modules/react-event-listener/dist/react-event-listener.cjs.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _reactHelpers = __webpack_require__(/*! ../utils/reactHelpers */ "./node_modules/@material-ui/core/utils/reactHelpers.js");
+
+// < 1kb payload overhead when lodash/debounce is > 3kb.
+var ROWS_HEIGHT = 19;
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    position: 'relative',
+    // because the shadow has position: 'absolute',
+    width: '100%'
+  },
+  textarea: {
+    width: '100%',
+    height: '100%',
+    resize: 'none',
+    font: 'inherit',
+    padding: 0,
+    cursor: 'inherit',
+    boxSizing: 'border-box',
+    lineHeight: 'inherit',
+    border: 'none',
+    outline: 'none',
+    background: 'transparent'
+  },
+  shadow: {
+    // Overflow also needed to here to remove the extra row
+    // added to textareas in Firefox.
+    overflow: 'hidden',
+    // Visibility needed to hide the extra text area on iPads
+    visibility: 'hidden',
+    position: 'absolute',
+    height: 'auto',
+    whiteSpace: 'pre-wrap'
+  }
+};
+/**
+ * @ignore - internal component.
+ */
+
+exports.styles = styles;
+
+var Textarea =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Textarea, _React$Component);
+
+  function Textarea(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Textarea);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Textarea).call(this));
+
+    _this.handleRefInput = function (ref) {
+      _this.inputRef = ref;
+      (0, _reactHelpers.setRef)(_this.props.textareaRef, ref);
+    };
+
+    _this.handleRefSinglelineShadow = function (ref) {
+      _this.singlelineShadowRef = ref;
+    };
+
+    _this.handleRefShadow = function (ref) {
+      _this.shadowRef = ref;
+    };
+
+    _this.handleChange = function (event) {
+      _this.value = event.target.value;
+
+      if (!_this.isControlled) {
+        // The component is not controlled, we need to update the shallow value.
+        _this.shadowRef.value = _this.value;
+
+        _this.syncHeightWithShadow();
+      }
+
+      if (_this.props.onChange) {
+        _this.props.onChange(event);
+      }
+    };
+
+    _this.isControlled = props.value != null; // <Input> expects the components it renders to respond to 'value'
+    // so that it can check whether they are filled.
+
+    _this.value = props.value || props.defaultValue || '';
+    _this.state = {
+      height: Number(props.rows) * ROWS_HEIGHT
+    };
+
+    if (typeof window !== 'undefined') {
+      _this.handleResize = (0, _debounce.default)(function () {
+        _this.syncHeightWithShadow();
+      }, 166); // Corresponds to 10 frames at 60 Hz.
+    }
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Textarea, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.syncHeightWithShadow();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.syncHeightWithShadow();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.handleResize.clear();
+    }
+  }, {
+    key: "syncHeightWithShadow",
+    value: function syncHeightWithShadow() {
+      var props = this.props; // Guarding for **broken** shallow rendering method that call componentDidMount
+      // but doesn't handle refs correctly.
+      // To remove once the shallow rendering has been fixed.
+
+      if (!this.shadowRef) {
+        return;
+      }
+
+      if (this.isControlled) {
+        // The component is controlled, we need to update the shallow value.
+        this.shadowRef.value = props.value == null ? '' : String(props.value);
+      }
+
+      var lineHeight = this.singlelineShadowRef.scrollHeight; // The Textarea might not be visible (p.ex: display: none).
+      // In this case, the layout values read from the DOM will be 0.
+
+      lineHeight = lineHeight === 0 ? ROWS_HEIGHT : lineHeight;
+      var newHeight = this.shadowRef.scrollHeight; // Guarding for jsdom, where scrollHeight isn't present.
+      // See https://github.com/tmpvar/jsdom/issues/1013
+
+      if (newHeight === undefined) {
+        return;
+      }
+
+      if (Number(props.rowsMax) >= Number(props.rows)) {
+        newHeight = Math.min(Number(props.rowsMax) * lineHeight, newHeight);
+      }
+
+      newHeight = Math.max(newHeight, lineHeight); // Need a large enough different to update the height.
+      // This prevents infinite rendering loop.
+
+      if (Math.abs(this.state.height - newHeight) > 1) {
+        this.setState({
+          height: newHeight
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          classes = _this$props.classes,
+          className = _this$props.className,
+          defaultValue = _this$props.defaultValue,
+          onChange = _this$props.onChange,
+          rows = _this$props.rows,
+          rowsMax = _this$props.rowsMax,
+          style = _this$props.style,
+          textareaRef = _this$props.textareaRef,
+          value = _this$props.value,
+          other = (0, _objectWithoutProperties2.default)(_this$props, ["classes", "className", "defaultValue", "onChange", "rows", "rowsMax", "style", "textareaRef", "value"]);
+      return _react.default.createElement("div", {
+        className: classes.root
+      }, _react.default.createElement(_reactEventListener.default, {
+        target: "window",
+        onResize: this.handleResize
+      }), _react.default.createElement("textarea", {
+        "aria-hidden": "true",
+        className: (0, _classnames.default)(classes.textarea, classes.shadow),
+        readOnly: true,
+        ref: this.handleRefSinglelineShadow,
+        rows: "1",
+        tabIndex: -1,
+        value: ""
+      }), _react.default.createElement("textarea", {
+        "aria-hidden": "true",
+        className: (0, _classnames.default)(classes.textarea, classes.shadow),
+        defaultValue: defaultValue,
+        readOnly: true,
+        ref: this.handleRefShadow,
+        rows: rows,
+        tabIndex: -1,
+        value: value
+      }), _react.default.createElement("textarea", (0, _extends2.default)({
+        rows: rows,
+        className: (0, _classnames.default)(classes.textarea, className),
+        defaultValue: defaultValue,
+        value: value,
+        onChange: this.handleChange,
+        ref: this.handleRefInput,
+        style: (0, _extends2.default)({
+          height: this.state.height
+        }, style)
+      }, other)));
+    }
+  }]);
+  return Textarea;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Textarea.defaultProps = {
+  rows: 1
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiPrivateTextarea'
+})(Textarea);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/InputBase/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/InputBase/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _InputBase.default;
+  }
+});
+
+var _InputBase = _interopRequireDefault(__webpack_require__(/*! ./InputBase */ "./node_modules/@material-ui/core/InputBase/InputBase.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/InputBase/utils.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/InputBase/utils.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.hasValue = hasValue;
+exports.isFilled = isFilled;
+exports.isAdornedStart = isAdornedStart;
+
+// Supports determination of isControlled().
+// Controlled input accepts its current value as a prop.
+//
+// @see https://facebook.github.io/react/docs/forms.html#controlled-components
+// @param value
+// @returns {boolean} true if string (including '') or number (including zero)
+function hasValue(value) {
+  return value != null && !(Array.isArray(value) && value.length === 0);
+} // Determine if field is empty or filled.
+// Response determines if label is presented above field or as placeholder.
+//
+// @param obj
+// @param SSR
+// @returns {boolean} False when not present or empty string.
+//                    True when any number or string with length.
+
+
+function isFilled(obj) {
+  var SSR = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  return obj && (hasValue(obj.value) && obj.value !== '' || SSR && hasValue(obj.defaultValue) && obj.defaultValue !== '');
+} // Determine if an Input is adorned on start.
+// It's corresponding to the left with LTR.
+//
+// @param obj
+// @returns {boolean} False when no adornments.
+//                    True when adorned at the start.
+
+
+function isAdornedStart(obj) {
+  return obj.startAdornment;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/List/List.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@material-ui/core/List/List.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _ListContext = _interopRequireDefault(__webpack_require__(/*! ./ListContext */ "./node_modules/@material-ui/core/List/ListContext.js"));
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+    position: 'relative'
+  },
+
+  /* Styles applied to the root element if `disablePadding={false}`. */
+  padding: {
+    paddingTop: 8,
+    paddingBottom: 8
+  },
+
+  /* Styles applied to the root element if `dense={true}` & `disablePadding={false}`. */
+  dense: {
+    paddingTop: 4,
+    paddingBottom: 4
+  },
+
+  /* Styles applied to the root element if a `subheader` is provided. */
+  subheader: {
+    paddingTop: 0
+  }
+};
+exports.styles = styles;
+
+function List(props) {
+  var _classNames;
+
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      Component = props.component,
+      dense = props.dense,
+      disablePadding = props.disablePadding,
+      subheader = props.subheader,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "component", "dense", "disablePadding", "subheader"]);
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.dense, dense && !disablePadding), (0, _defineProperty2.default)(_classNames, classes.padding, !disablePadding), (0, _defineProperty2.default)(_classNames, classes.subheader, subheader), _classNames), className)
+  }, other), _react.default.createElement(_ListContext.default.Provider, {
+    value: {
+      dense: dense
+    }
+  }, subheader, children));
+}
+
+ false ? undefined : void 0;
+List.defaultProps = {
+  component: 'ul',
+  dense: false,
+  disablePadding: false
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiList'
+})(List);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/List/ListContext.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material-ui/core/List/ListContext.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+/**
+ * @ignore - internal component.
+ */
+var ListContext = _react.default.createContext({});
+
+var _default = ListContext;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/List/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@material-ui/core/List/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _List.default;
+  }
+});
+
+var _List = _interopRequireDefault(__webpack_require__(/*! ./List */ "./node_modules/@material-ui/core/List/List.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/ListItem/ListItem.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/ListItem/ListItem.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _ButtonBase = _interopRequireDefault(__webpack_require__(/*! ../ButtonBase */ "./node_modules/@material-ui/core/ButtonBase/index.js"));
+
+var _reactHelpers = __webpack_require__(/*! ../utils/reactHelpers */ "./node_modules/@material-ui/core/utils/reactHelpers.js");
+
+var _MergeListContext = _interopRequireDefault(__webpack_require__(/*! ./MergeListContext */ "./node_modules/@material-ui/core/ListItem/MergeListContext.js"));
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the (normally root) `component` element. May be wrapped by a `container`. */
+    root: {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      position: 'relative',
+      textDecoration: 'none',
+      width: '100%',
+      boxSizing: 'border-box',
+      textAlign: 'left',
+      paddingTop: 11,
+      // To use 10px in v4
+      paddingBottom: 11,
+      // To use 10px in v4
+      '&$selected, &$selected:hover, &$selected:focus': {
+        backgroundColor: theme.palette.action.selected
+      }
+    },
+
+    /* Styles applied to the `container` element if `children` includes `ListItemSecondaryAction`. */
+    container: {
+      position: 'relative'
+    },
+    // To remove in v4
+
+    /* Styles applied to the `component`'s `focusVisibleClassName` property if `button={true}`. */
+    focusVisible: {},
+
+    /* Legacy styles applied to the root element. Use `root` instead. */
+    default: {},
+
+    /* Styles applied to the `component` element if `dense={true}` or `children` includes `Avatar`. */
+    dense: {
+      paddingTop: 8,
+      paddingBottom: 8
+    },
+
+    /* Styles applied to the `component` element if `alignItems="flex-start"`. */
+    alignItemsFlexStart: {
+      alignItems: 'flex-start'
+    },
+
+    /* Styles applied to the inner `component` element if `disabled={true}`. */
+    disabled: {
+      opacity: 0.5
+    },
+
+    /* Styles applied to the inner `component` element if `divider={true}`. */
+    divider: {
+      borderBottom: "1px solid ".concat(theme.palette.divider),
+      backgroundClip: 'padding-box'
+    },
+
+    /* Styles applied to the inner `component` element if `disableGutters={false}`. */
+    gutters: {
+      paddingLeft: 16,
+      paddingRight: 16
+    },
+
+    /* Styles applied to the inner `component` element if `button={true}`. */
+    button: {
+      transition: theme.transitions.create('background-color', {
+        duration: theme.transitions.duration.shortest
+      }),
+      '&:hover': {
+        textDecoration: 'none',
+        backgroundColor: theme.palette.action.hover,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '&:focus': {
+        backgroundColor: theme.palette.action.hover
+      }
+    },
+
+    /* Styles applied to the `component` element if `children` includes `ListItemSecondaryAction`. */
+    secondaryAction: {
+      // Add some space to avoid collision as `ListItemSecondaryAction`
+      // is absolutely positioned.
+      paddingRight: 32
+    },
+
+    /* Styles applied to the root element if `selected={true}`. */
+    selected: {}
+  };
+};
+/**
+ * Uses an additional container component if `ListItemSecondaryAction` is the last child.
+ */
+
+
+exports.styles = styles;
+
+function ListItem(props) {
+  var alignItems = props.alignItems,
+      button = props.button,
+      childrenProp = props.children,
+      classes = props.classes,
+      classNameProp = props.className,
+      componentProp = props.component,
+      ContainerComponent = props.ContainerComponent,
+      _props$ContainerProps = props.ContainerProps;
+  _props$ContainerProps = _props$ContainerProps === void 0 ? {} : _props$ContainerProps;
+  var ContainerClassName = _props$ContainerProps.className,
+      ContainerProps = (0, _objectWithoutProperties2.default)(_props$ContainerProps, ["className"]),
+      denseProp = props.dense,
+      disabled = props.disabled,
+      disableGutters = props.disableGutters,
+      divider = props.divider,
+      focusVisibleClassName = props.focusVisibleClassName,
+      selected = props.selected,
+      other = (0, _objectWithoutProperties2.default)(props, ["alignItems", "button", "children", "classes", "className", "component", "ContainerComponent", "ContainerProps", "dense", "disabled", "disableGutters", "divider", "focusVisibleClassName", "selected"]);
+  return _react.default.createElement(_MergeListContext.default, {
+    dense: denseProp,
+    alignItems: alignItems
+  }, function (_ref) {
+    var _classNames;
+
+    var dense = _ref.dense;
+
+    var children = _react.default.Children.toArray(childrenProp);
+
+    var hasAvatar = children.some(function (value) {
+      return (0, _reactHelpers.isMuiElement)(value, ['ListItemAvatar']);
+    });
+    var hasSecondaryAction = children.length && (0, _reactHelpers.isMuiElement)(children[children.length - 1], ['ListItemSecondaryAction']);
+    var className = (0, _classnames.default)(classes.root, classes.default, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.dense, dense || hasAvatar), (0, _defineProperty2.default)(_classNames, classes.gutters, !disableGutters), (0, _defineProperty2.default)(_classNames, classes.divider, divider), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames, classes.button, button), (0, _defineProperty2.default)(_classNames, classes.alignItemsFlexStart, alignItems === 'flex-start'), (0, _defineProperty2.default)(_classNames, classes.secondaryAction, hasSecondaryAction), (0, _defineProperty2.default)(_classNames, classes.selected, selected), _classNames), classNameProp);
+    var componentProps = (0, _extends2.default)({
+      className: className,
+      disabled: disabled
+    }, other);
+    var Component = componentProp || 'li';
+
+    if (button) {
+      componentProps.component = componentProp || 'div';
+      componentProps.focusVisibleClassName = (0, _classnames.default)(classes.focusVisible, focusVisibleClassName);
+      Component = _ButtonBase.default;
+    }
+
+    if (hasSecondaryAction) {
+      // Use div by default.
+      Component = !componentProps.component && !componentProp ? 'div' : Component; // Avoid nesting of li > li.
+
+      if (ContainerComponent === 'li') {
+        if (Component === 'li') {
+          Component = 'div';
+        } else if (componentProps.component === 'li') {
+          componentProps.component = 'div';
+        }
+      }
+
+      return _react.default.createElement(ContainerComponent, (0, _extends2.default)({
+        className: (0, _classnames.default)(classes.container, ContainerClassName)
+      }, ContainerProps), _react.default.createElement(Component, componentProps, children), children.pop());
+    }
+
+    return _react.default.createElement(Component, componentProps, children);
+  });
+}
+
+ false ? undefined : void 0;
+ListItem.defaultProps = {
+  alignItems: 'center',
+  button: false,
+  ContainerComponent: 'li',
+  dense: false,
+  disabled: false,
+  disableGutters: false,
+  divider: false,
+  selected: false
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiListItem'
+})(ListItem);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/ListItem/MergeListContext.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@material-ui/core/ListItem/MergeListContext.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _ListContext = _interopRequireDefault(__webpack_require__(/*! ../List/ListContext */ "./node_modules/@material-ui/core/List/ListContext.js"));
+
+/**
+ * @ignore - internal component.
+ *
+ * Consumes a context and passes that context merged with its props.
+ */
+function MergeListContext(props) {
+  var alignItems = props.alignItems,
+      children = props.children,
+      dense = props.dense;
+  return _react.default.createElement(_ListContext.default.Consumer, null, function (context) {
+    var childContext = {
+      dense: dense || context.dense || false,
+      alignItems: alignItems
+    };
+    return _react.default.createElement(_ListContext.default.Provider, {
+      value: childContext
+    }, children(childContext));
+  });
+}
+
+ false ? undefined : void 0;
+var _default = MergeListContext;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/ListItem/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@material-ui/core/ListItem/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _ListItem.default;
+  }
+});
+
+var _ListItem = _interopRequireDefault(__webpack_require__(/*! ./ListItem */ "./node_modules/@material-ui/core/ListItem/ListItem.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Menu/Menu.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@material-ui/core/Menu/Menu.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf3 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _scrollbarSize = _interopRequireDefault(__webpack_require__(/*! dom-helpers/util/scrollbarSize */ "./node_modules/dom-helpers/util/scrollbarSize.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _Popover = _interopRequireDefault(__webpack_require__(/*! ../Popover */ "./node_modules/@material-ui/core/Popover/index.js"));
+
+var _MenuList = _interopRequireDefault(__webpack_require__(/*! ../MenuList */ "./node_modules/@material-ui/core/MenuList/index.js"));
+
+// @inheritedComponent Popover
+var RTL_ORIGIN = {
+  vertical: 'top',
+  horizontal: 'right'
+};
+var LTR_ORIGIN = {
+  vertical: 'top',
+  horizontal: 'left'
+};
+var styles = {
+  /* Styles applied to the `Paper` component. */
+  paper: {
+    // specZ: The maximum height of a simple menu should be one or more rows less than the view
+    // height. This ensures a tapable area outside of the simple menu with which to dismiss
+    // the menu.
+    maxHeight: 'calc(100% - 96px)',
+    // Add iOS momentum scrolling.
+    WebkitOverflowScrolling: 'touch'
+  }
+};
+exports.styles = styles;
+
+var Menu =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Menu, _React$Component);
+
+  function Menu() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Menu);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(Menu)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _this.getContentAnchorEl = function () {
+      if (_this.menuListRef.selectedItemRef) {
+        return _reactDom.default.findDOMNode(_this.menuListRef.selectedItemRef);
+      }
+
+      return _reactDom.default.findDOMNode(_this.menuListRef).firstChild;
+    };
+
+    _this.focus = function () {
+      if (_this.menuListRef && _this.menuListRef.selectedItemRef) {
+        _reactDom.default.findDOMNode(_this.menuListRef.selectedItemRef).focus();
+
+        return;
+      }
+
+      var menuList = _reactDom.default.findDOMNode(_this.menuListRef);
+
+      if (menuList && menuList.firstChild) {
+        menuList.firstChild.focus();
+      }
+    };
+
+    _this.handleMenuListRef = function (ref) {
+      _this.menuListRef = ref;
+    };
+
+    _this.handleEntering = function (element) {
+      var _this$props = _this.props,
+          disableAutoFocusItem = _this$props.disableAutoFocusItem,
+          theme = _this$props.theme;
+
+      var menuList = _reactDom.default.findDOMNode(_this.menuListRef); // Focus so the scroll computation of the Popover works as expected.
+
+
+      if (disableAutoFocusItem !== true) {
+        _this.focus();
+      } // Let's ignore that piece of logic if users are already overriding the width
+      // of the menu.
+
+
+      if (menuList && element.clientHeight < menuList.clientHeight && !menuList.style.width) {
+        var size = "".concat((0, _scrollbarSize.default)(), "px");
+        menuList.style[theme.direction === 'rtl' ? 'paddingLeft' : 'paddingRight'] = size;
+        menuList.style.width = "calc(100% + ".concat(size, ")");
+      }
+
+      if (_this.props.onEntering) {
+        _this.props.onEntering(element);
+      }
+    };
+
+    _this.handleListKeyDown = function (event) {
+      if (event.key === 'Tab') {
+        event.preventDefault();
+
+        if (_this.props.onClose) {
+          _this.props.onClose(event, 'tabKeyDown');
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Menu, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.open && this.props.disableAutoFocusItem !== true) {
+        this.focus();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          classes = _this$props2.classes,
+          disableAutoFocusItem = _this$props2.disableAutoFocusItem,
+          MenuListProps = _this$props2.MenuListProps,
+          onEntering = _this$props2.onEntering,
+          _this$props2$PaperPro = _this$props2.PaperProps,
+          PaperProps = _this$props2$PaperPro === void 0 ? {} : _this$props2$PaperPro,
+          PopoverClasses = _this$props2.PopoverClasses,
+          theme = _this$props2.theme,
+          other = (0, _objectWithoutProperties2.default)(_this$props2, ["children", "classes", "disableAutoFocusItem", "MenuListProps", "onEntering", "PaperProps", "PopoverClasses", "theme"]);
+      return _react.default.createElement(_Popover.default, (0, _extends2.default)({
+        getContentAnchorEl: this.getContentAnchorEl,
+        classes: PopoverClasses,
+        onEntering: this.handleEntering,
+        anchorOrigin: theme.direction === 'rtl' ? RTL_ORIGIN : LTR_ORIGIN,
+        transformOrigin: theme.direction === 'rtl' ? RTL_ORIGIN : LTR_ORIGIN,
+        PaperProps: (0, _extends2.default)({}, PaperProps, {
+          classes: (0, _extends2.default)({}, PaperProps.classes, {
+            root: classes.paper
+          })
+        })
+      }, other), _react.default.createElement(_MenuList.default, (0, _extends2.default)({
+        onKeyDown: this.handleListKeyDown
+      }, MenuListProps, {
+        ref: this.handleMenuListRef
+      }), children));
+    }
+  }]);
+  return Menu;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Menu.defaultProps = {
+  disableAutoFocusItem: false,
+  transitionDuration: 'auto'
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiMenu',
+  withTheme: true
+})(Menu);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/MenuItem/MenuItem.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/MenuItem/MenuItem.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _ListItem = _interopRequireDefault(__webpack_require__(/*! ../ListItem */ "./node_modules/@material-ui/core/ListItem/index.js"));
+
+// @inheritedComponent ListItem
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: (0, _extends2.default)({}, theme.typography.subheading, {
+      height: 24,
+      boxSizing: 'content-box',
+      width: 'auto',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      '&$selected': {}
+    }),
+
+    /* Styles applied to the root element if `disableGutters={false}`. */
+    gutters: {
+      paddingLeft: 16,
+      paddingRight: 16
+    },
+
+    /* Styles applied to the root element if `selected={true}`. */
+    selected: {}
+  };
+};
+
+exports.styles = styles;
+
+function MenuItem(props) {
+  var _classNames;
+
+  var classes = props.classes,
+      className = props.className,
+      component = props.component,
+      disableGutters = props.disableGutters,
+      role = props.role,
+      selected = props.selected,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "component", "disableGutters", "role", "selected"]);
+  return _react.default.createElement(_ListItem.default, (0, _extends2.default)({
+    button: true,
+    role: role,
+    tabIndex: -1,
+    component: component,
+    selected: selected,
+    disableGutters: disableGutters,
+    className: (0, _classnames.default)(classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.selected, selected), (0, _defineProperty2.default)(_classNames, classes.gutters, !disableGutters), _classNames), className)
+  }, other));
+}
+
+ false ? undefined : void 0;
+MenuItem.defaultProps = {
+  component: 'li',
+  disableGutters: false,
+  role: 'menuitem'
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiMenuItem'
+})(MenuItem);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/MenuItem/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@material-ui/core/MenuItem/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _MenuItem.default;
+  }
+});
+
+var _MenuItem = _interopRequireDefault(__webpack_require__(/*! ./MenuItem */ "./node_modules/@material-ui/core/MenuItem/MenuItem.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/MenuList/MenuList.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/MenuList/MenuList.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf3 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/@material-ui/core/node_modules/warning/warning.js"));
+
+var _ownerDocument = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/utils/ownerDocument.js"));
+
+var _List = _interopRequireDefault(__webpack_require__(/*! ../List */ "./node_modules/@material-ui/core/List/index.js"));
+
+// @inheritedComponent List
+var MenuList =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(MenuList, _React$Component);
+
+  function MenuList() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    (0, _classCallCheck2.default)(this, MenuList);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(MenuList)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      currentTabIndex: null
+    };
+
+    _this.handleBlur = function (event) {
+      _this.blurTimer = setTimeout(function () {
+        if (_this.listRef) {
+          var list = _this.listRef;
+          var currentFocus = (0, _ownerDocument.default)(list).activeElement;
+
+          if (!list.contains(currentFocus)) {
+            _this.resetTabIndex();
+          }
+        }
+      }, 30);
+
+      if (_this.props.onBlur) {
+        _this.props.onBlur(event);
+      }
+    };
+
+    _this.handleKeyDown = function (event) {
+      var list = _this.listRef;
+      var key = event.key;
+      var currentFocus = (0, _ownerDocument.default)(list).activeElement;
+
+      if ((key === 'ArrowUp' || key === 'ArrowDown') && (!currentFocus || currentFocus && !list.contains(currentFocus))) {
+        if (_this.selectedItemRef) {
+          _this.selectedItemRef.focus();
+        } else {
+          list.firstChild.focus();
+        }
+      } else if (key === 'ArrowDown') {
+        event.preventDefault();
+
+        if (currentFocus.nextElementSibling) {
+          currentFocus.nextElementSibling.focus();
+        } else if (!_this.props.disableListWrap) {
+          list.firstChild.focus();
+        }
+      } else if (key === 'ArrowUp') {
+        event.preventDefault();
+
+        if (currentFocus.previousElementSibling) {
+          currentFocus.previousElementSibling.focus();
+        } else if (!_this.props.disableListWrap) {
+          list.lastChild.focus();
+        }
+      } else if (key === 'Home') {
+        event.preventDefault();
+        list.firstChild.focus();
+      } else if (key === 'End') {
+        event.preventDefault();
+        list.lastChild.focus();
+      }
+
+      if (_this.props.onKeyDown) {
+        _this.props.onKeyDown(event);
+      }
+    };
+
+    _this.handleItemFocus = function (event) {
+      var list = _this.listRef;
+
+      if (list) {
+        for (var i = 0; i < list.children.length; i += 1) {
+          if (list.children[i] === event.currentTarget) {
+            _this.setTabIndex(i);
+
+            break;
+          }
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(MenuList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.resetTabIndex();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearTimeout(this.blurTimer);
+    }
+  }, {
+    key: "setTabIndex",
+    value: function setTabIndex(index) {
+      this.setState({
+        currentTabIndex: index
+      });
+    }
+  }, {
+    key: "focus",
+    value: function focus() {
+      var currentTabIndex = this.state.currentTabIndex;
+      var list = this.listRef;
+
+      if (!list || !list.children || !list.firstChild) {
+        return;
+      }
+
+      if (currentTabIndex && currentTabIndex >= 0) {
+        list.children[currentTabIndex].focus();
+      } else {
+        list.firstChild.focus();
+      }
+    }
+  }, {
+    key: "resetTabIndex",
+    value: function resetTabIndex() {
+      var list = this.listRef;
+      var currentFocus = (0, _ownerDocument.default)(list).activeElement;
+      var items = [];
+
+      for (var i = 0; i < list.children.length; i += 1) {
+        items.push(list.children[i]);
+      }
+
+      var currentFocusIndex = items.indexOf(currentFocus);
+
+      if (currentFocusIndex !== -1) {
+        return this.setTabIndex(currentFocusIndex);
+      }
+
+      if (this.selectedItemRef) {
+        return this.setTabIndex(items.indexOf(this.selectedItemRef));
+      }
+
+      return this.setTabIndex(0);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          children = _this$props.children,
+          className = _this$props.className,
+          onBlur = _this$props.onBlur,
+          onKeyDown = _this$props.onKeyDown,
+          disableListWrap = _this$props.disableListWrap,
+          other = (0, _objectWithoutProperties2.default)(_this$props, ["children", "className", "onBlur", "onKeyDown", "disableListWrap"]);
+      return _react.default.createElement(_List.default, (0, _extends2.default)({
+        role: "menu",
+        ref: function ref(_ref) {
+          _this2.listRef = _reactDom.default.findDOMNode(_ref);
+        },
+        className: className,
+        onKeyDown: this.handleKeyDown,
+        onBlur: this.handleBlur
+      }, other), _react.default.Children.map(children, function (child, index) {
+        if (!_react.default.isValidElement(child)) {
+          return null;
+        }
+
+         false ? undefined : void 0;
+        return _react.default.cloneElement(child, {
+          tabIndex: index === _this2.state.currentTabIndex ? 0 : -1,
+          ref: child.props.selected ? function (ref) {
+            _this2.selectedItemRef = _reactDom.default.findDOMNode(ref);
+          } : undefined,
+          onFocus: _this2.handleItemFocus
+        });
+      }));
+    }
+  }]);
+  return MenuList;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+MenuList.defaultProps = {
+  disableListWrap: false
+};
+var _default = MenuList;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/MenuList/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@material-ui/core/MenuList/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _MenuList.default;
+  }
+});
+
+var _MenuList = _interopRequireDefault(__webpack_require__(/*! ./MenuList */ "./node_modules/@material-ui/core/MenuList/MenuList.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Modal/Modal.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Modal/Modal.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/@material-ui/core/node_modules/warning/warning.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _ownerDocument = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/utils/ownerDocument.js"));
+
+var _RootRef = _interopRequireDefault(__webpack_require__(/*! ../RootRef */ "./node_modules/@material-ui/core/RootRef/index.js"));
+
+var _Portal = _interopRequireDefault(__webpack_require__(/*! ../Portal */ "./node_modules/@material-ui/core/Portal/index.js"));
+
+var _helpers = __webpack_require__(/*! ../utils/helpers */ "./node_modules/@material-ui/core/utils/helpers.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _ModalManager = _interopRequireDefault(__webpack_require__(/*! ./ModalManager */ "./node_modules/@material-ui/core/Modal/ModalManager.js"));
+
+var _Backdrop = _interopRequireDefault(__webpack_require__(/*! ../Backdrop */ "./node_modules/@material-ui/core/Backdrop/index.js"));
+
+var _manageAriaHidden = __webpack_require__(/*! ./manageAriaHidden */ "./node_modules/@material-ui/core/Modal/manageAriaHidden.js");
+
+function getContainer(container, defaultContainer) {
+  container = typeof container === 'function' ? container() : container;
+  return _reactDom.default.findDOMNode(container) || defaultContainer;
+}
+
+function getHasTransition(props) {
+  return props.children ? props.children.props.hasOwnProperty('in') : false;
+}
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      position: 'fixed',
+      zIndex: theme.zIndex.modal,
+      right: 0,
+      bottom: 0,
+      top: 0,
+      left: 0
+    },
+
+    /* Styles applied to the root element if the `Modal` has exited. */
+    hidden: {
+      visibility: 'hidden'
+    }
+  };
+};
+/* istanbul ignore if */
+
+
+exports.styles = styles;
+
+if (false) {}
+/**
+ * Modal is a lower-level construct that is leveraged by the following components:
+ *
+ * - [Dialog](/api/dialog/)
+ * - [Drawer](/api/drawer/)
+ * - [Menu](/api/menu/)
+ * - [Popover](/api/popover/)
+ *
+ * If you are creating a modal dialog, you probably want to use the [Dialog](/api/dialog/) component
+ * rather than directly using Modal.
+ *
+ * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ */
+
+
+var Modal =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Modal, _React$Component);
+
+  function Modal(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Modal);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Modal).call(this));
+    _this.mounted = false;
+
+    _this.handleOpen = function () {
+      var doc = (0, _ownerDocument.default)(_this.mountNode);
+      var container = getContainer(_this.props.container, doc.body);
+
+      _this.props.manager.add((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)), container);
+
+      doc.addEventListener('focus', _this.enforceFocus, true);
+
+      if (_this.dialogRef) {
+        _this.handleOpened();
+      }
+    };
+
+    _this.handleRendered = function () {
+      if (_this.props.onRendered) {
+        _this.props.onRendered();
+      }
+
+      if (_this.props.open) {
+        _this.handleOpened();
+      } else {
+        (0, _manageAriaHidden.ariaHidden)(_this.modalRef, true);
+      }
+    };
+
+    _this.handleOpened = function () {
+      _this.autoFocus();
+
+      _this.props.manager.mount((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this))); // Fix a bug on Chrome where the scroll isn't initially 0.
+
+
+      _this.modalRef.scrollTop = 0;
+    };
+
+    _this.handleClose = function (reason) {
+      var hasTransition = getHasTransition(_this.props);
+      /* If the component does not have a transition or is unmounting remove the Modal
+      otherwise let the transition handle removing the style, this prevents elements
+      moving around when the Modal is closed. */
+
+      if (!(hasTransition && _this.props.closeAfterTransition) || reason === 'unmount') {
+        _this.props.manager.remove((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
+      }
+
+      var doc = (0, _ownerDocument.default)(_this.mountNode);
+      doc.removeEventListener('focus', _this.enforceFocus, true);
+
+      _this.restoreLastFocus();
+    };
+
+    _this.handleExited = function () {
+      if (_this.props.closeAfterTransition) {
+        _this.props.manager.remove((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
+      }
+
+      _this.setState({
+        exited: true
+      });
+    };
+
+    _this.handleBackdropClick = function (event) {
+      if (event.target !== event.currentTarget) {
+        return;
+      }
+
+      if (_this.props.onBackdropClick) {
+        _this.props.onBackdropClick(event);
+      }
+
+      if (!_this.props.disableBackdropClick && _this.props.onClose) {
+        _this.props.onClose(event, 'backdropClick');
+      }
+    };
+
+    _this.handleKeyDown = function (event) {
+      // event.defaultPrevented:
+      //
+      // Ignore events that have been `event.preventDefault()` marked.
+      // preventDefault() is meant to stop default behaviours like
+      // clicking a checkbox to check it, hitting a button to submit a form,
+      // and hitting left arrow to move the cursor in a text input etc.
+      // Only special HTML elements have these default bahaviours.
+      //
+      // To remove in v4.
+      if (event.key !== 'Escape' || !_this.isTopModal() || event.defaultPrevented) {
+        return;
+      } // Swallow the event, in case someone is listening for the escape key on the body.
+
+
+      event.stopPropagation();
+
+      if (_this.props.onEscapeKeyDown) {
+        _this.props.onEscapeKeyDown(event);
+      }
+
+      if (!_this.props.disableEscapeKeyDown && _this.props.onClose) {
+        _this.props.onClose(event, 'escapeKeyDown');
+      }
+    };
+
+    _this.enforceFocus = function () {
+      // The Modal might not already be mounted.
+      if (!_this.isTopModal() || _this.props.disableEnforceFocus || !_this.mounted || !_this.dialogRef) {
+        return;
+      }
+
+      var currentActiveElement = (0, _ownerDocument.default)(_this.mountNode).activeElement;
+
+      if (!_this.dialogRef.contains(currentActiveElement)) {
+        _this.dialogRef.focus();
+      }
+    };
+
+    _this.handlePortalRef = function (ref) {
+      _this.mountNode = ref ? ref.getMountNode() : ref;
+    };
+
+    _this.handleModalRef = function (ref) {
+      _this.modalRef = ref;
+    };
+
+    _this.onRootRef = function (ref) {
+      _this.dialogRef = ref;
+    };
+
+    _this.state = {
+      exited: !props.open
+    };
+    return _this;
+  }
+
+  (0, _createClass2.default)(Modal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.mounted = true;
+
+      if (this.props.open) {
+        this.handleOpen();
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.open && !this.props.open) {
+        this.handleClose();
+      } else if (!prevProps.open && this.props.open) {
+        this.lastFocus = (0, _ownerDocument.default)(this.mountNode).activeElement;
+        this.handleOpen();
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.mounted = false;
+
+      if (this.props.open || getHasTransition(this.props) && !this.state.exited) {
+        this.handleClose('unmount');
+      }
+    }
+  }, {
+    key: "autoFocus",
+    value: function autoFocus() {
+      // We might render an empty child.
+      if (this.props.disableAutoFocus || !this.dialogRef) {
+        return;
+      }
+
+      var currentActiveElement = (0, _ownerDocument.default)(this.mountNode).activeElement;
+
+      if (!this.dialogRef.contains(currentActiveElement)) {
+        if (!this.dialogRef.hasAttribute('tabIndex')) {
+           false ? undefined : void 0;
+          this.dialogRef.setAttribute('tabIndex', -1);
+        }
+
+        this.lastFocus = currentActiveElement;
+        this.dialogRef.focus();
+      }
+    }
+  }, {
+    key: "restoreLastFocus",
+    value: function restoreLastFocus() {
+      if (this.props.disableRestoreFocus || !this.lastFocus) {
+        return;
+      } // Not all elements in IE 11 have a focus method.
+      // Because IE 11 market share is low, we accept the restore focus being broken
+      // and we silent the issue.
+
+
+      if (this.lastFocus.focus) {
+        this.lastFocus.focus();
+      }
+
+      this.lastFocus = null;
+    }
+  }, {
+    key: "isTopModal",
+    value: function isTopModal() {
+      return this.props.manager.isTopModal(this);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          BackdropComponent = _this$props.BackdropComponent,
+          BackdropProps = _this$props.BackdropProps,
+          children = _this$props.children,
+          classes = _this$props.classes,
+          className = _this$props.className,
+          closeAfterTransition = _this$props.closeAfterTransition,
+          container = _this$props.container,
+          disableAutoFocus = _this$props.disableAutoFocus,
+          disableBackdropClick = _this$props.disableBackdropClick,
+          disableEnforceFocus = _this$props.disableEnforceFocus,
+          disableEscapeKeyDown = _this$props.disableEscapeKeyDown,
+          disablePortal = _this$props.disablePortal,
+          disableRestoreFocus = _this$props.disableRestoreFocus,
+          hideBackdrop = _this$props.hideBackdrop,
+          keepMounted = _this$props.keepMounted,
+          manager = _this$props.manager,
+          onBackdropClick = _this$props.onBackdropClick,
+          onClose = _this$props.onClose,
+          onEscapeKeyDown = _this$props.onEscapeKeyDown,
+          onRendered = _this$props.onRendered,
+          open = _this$props.open,
+          other = (0, _objectWithoutProperties2.default)(_this$props, ["BackdropComponent", "BackdropProps", "children", "classes", "className", "closeAfterTransition", "container", "disableAutoFocus", "disableBackdropClick", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onEscapeKeyDown", "onRendered", "open"]);
+      var exited = this.state.exited;
+      var hasTransition = getHasTransition(this.props);
+
+      if (!keepMounted && !open && (!hasTransition || exited)) {
+        return null;
+      }
+
+      var childProps = {}; // It's a Transition like component
+
+      if (hasTransition) {
+        childProps.onExited = (0, _helpers.createChainedFunction)(this.handleExited, children.props.onExited);
+      }
+
+      if (children.props.role === undefined) {
+        childProps.role = children.props.role || 'document';
+      }
+
+      if (children.props.tabIndex === undefined) {
+        childProps.tabIndex = children.props.tabIndex || '-1';
+      }
+
+      return _react.default.createElement(_Portal.default, {
+        ref: this.handlePortalRef,
+        container: container,
+        disablePortal: disablePortal,
+        onRendered: this.handleRendered
+      }, _react.default.createElement("div", (0, _extends2.default)({
+        ref: this.handleModalRef,
+        onKeyDown: this.handleKeyDown,
+        role: "presentation",
+        className: (0, _classnames.default)(classes.root, className, (0, _defineProperty2.default)({}, classes.hidden, exited))
+      }, other), hideBackdrop ? null : _react.default.createElement(BackdropComponent, (0, _extends2.default)({
+        open: open,
+        onClick: this.handleBackdropClick
+      }, BackdropProps)), _react.default.createElement(_RootRef.default, {
+        rootRef: this.onRootRef
+      }, _react.default.cloneElement(children, childProps))));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps) {
+      if (nextProps.open) {
+        return {
+          exited: false
+        };
+      }
+
+      if (!getHasTransition(nextProps)) {
+        // Otherwise let handleExited take care of marking exited.
+        return {
+          exited: true
+        };
+      }
+
+      return null;
+    }
+  }]);
+  return Modal;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Modal.defaultProps = {
+  BackdropComponent: _Backdrop.default,
+  closeAfterTransition: false,
+  disableAutoFocus: false,
+  disableBackdropClick: false,
+  disableEnforceFocus: false,
+  disableEscapeKeyDown: false,
+  disablePortal: false,
+  disableRestoreFocus: false,
+  hideBackdrop: false,
+  keepMounted: false,
+  // Modals don't open on the server so this won't conflict with concurrent requests.
+  manager: new _ModalManager.default()
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  flip: false,
+  name: 'MuiModal'
+})(Modal);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Modal/ModalManager.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@material-ui/core/Modal/ModalManager.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _style = _interopRequireDefault(__webpack_require__(/*! dom-helpers/style */ "./node_modules/dom-helpers/style/index.js"));
+
+var _scrollbarSize = _interopRequireDefault(__webpack_require__(/*! dom-helpers/util/scrollbarSize */ "./node_modules/dom-helpers/util/scrollbarSize.js"));
+
+var _ownerDocument = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/utils/ownerDocument.js"));
+
+var _isOverflowing = _interopRequireDefault(__webpack_require__(/*! ./isOverflowing */ "./node_modules/@material-ui/core/Modal/isOverflowing.js"));
+
+var _manageAriaHidden = __webpack_require__(/*! ./manageAriaHidden */ "./node_modules/@material-ui/core/Modal/manageAriaHidden.js");
+
+function findIndexOf(data, callback) {
+  var idx = -1;
+  data.some(function (item, index) {
+    if (callback(item)) {
+      idx = index;
+      return true;
+    }
+
+    return false;
+  });
+  return idx;
+}
+
+function getPaddingRight(node) {
+  return parseInt((0, _style.default)(node, 'paddingRight') || 0, 10);
+}
+
+function setContainerStyle(data) {
+  // We are only interested in the actual `style` here because we will override it.
+  data.style = {
+    overflow: data.container.style.overflow,
+    paddingRight: data.container.style.paddingRight
+  };
+  var style = {
+    overflow: 'hidden'
+  };
+
+  if (data.overflowing) {
+    var scrollbarSize = (0, _scrollbarSize.default)(); // Use computed style, here to get the real padding to add our scrollbar width.
+
+    style.paddingRight = "".concat(getPaddingRight(data.container) + scrollbarSize, "px"); // .mui-fixed is a global helper.
+
+    var fixedNodes = (0, _ownerDocument.default)(data.container).querySelectorAll('.mui-fixed');
+
+    for (var i = 0; i < fixedNodes.length; i += 1) {
+      var paddingRight = getPaddingRight(fixedNodes[i]);
+      data.prevPaddings.push(paddingRight);
+      fixedNodes[i].style.paddingRight = "".concat(paddingRight + scrollbarSize, "px");
+    }
+  }
+
+  Object.keys(style).forEach(function (key) {
+    data.container.style[key] = style[key];
+  });
+}
+
+function removeContainerStyle(data) {
+  // The modal might be closed before it had the chance to be mounted in the DOM.
+  if (data.style) {
+    Object.keys(data.style).forEach(function (key) {
+      data.container.style[key] = data.style[key];
+    });
+  }
+
+  var fixedNodes = (0, _ownerDocument.default)(data.container).querySelectorAll('.mui-fixed');
+
+  for (var i = 0; i < fixedNodes.length; i += 1) {
+    fixedNodes[i].style.paddingRight = "".concat(data.prevPaddings[i], "px");
+  }
+}
+/**
+ * @ignore - do not document.
+ *
+ * Proper state management for containers and the modals in those containers.
+ * Simplified, but inspired by react-overlay's ModalManager class.
+ * Used by the Modal to ensure proper styling of containers.
+ */
+
+
+var ModalManager =
+/*#__PURE__*/
+function () {
+  function ModalManager() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    (0, _classCallCheck2.default)(this, ModalManager);
+    var _options$hideSiblingN = options.hideSiblingNodes,
+        hideSiblingNodes = _options$hideSiblingN === void 0 ? true : _options$hideSiblingN,
+        _options$handleContai = options.handleContainerOverflow,
+        handleContainerOverflow = _options$handleContai === void 0 ? true : _options$handleContai;
+    this.hideSiblingNodes = hideSiblingNodes;
+    this.handleContainerOverflow = handleContainerOverflow; // this.modals[modalIdx] = modal
+
+    this.modals = []; // this.data[containerIdx] = {
+    //   modals: [],
+    //   container,
+    //   overflowing,
+    //   prevPaddings,
+    // }
+
+    this.data = [];
+  }
+
+  (0, _createClass2.default)(ModalManager, [{
+    key: "add",
+    value: function add(modal, container) {
+      var modalIdx = this.modals.indexOf(modal);
+
+      if (modalIdx !== -1) {
+        return modalIdx;
+      }
+
+      modalIdx = this.modals.length;
+      this.modals.push(modal); // If the modal we are adding is already in the DOM.
+
+      if (modal.modalRef) {
+        (0, _manageAriaHidden.ariaHidden)(modal.modalRef, false);
+      }
+
+      if (this.hideSiblingNodes) {
+        (0, _manageAriaHidden.ariaHiddenSiblings)(container, modal.mountNode, modal.modalRef, true);
+      }
+
+      var containerIdx = findIndexOf(this.data, function (item) {
+        return item.container === container;
+      });
+
+      if (containerIdx !== -1) {
+        this.data[containerIdx].modals.push(modal);
+        return modalIdx;
+      }
+
+      var data = {
+        modals: [modal],
+        container: container,
+        overflowing: (0, _isOverflowing.default)(container),
+        prevPaddings: []
+      };
+      this.data.push(data);
+      return modalIdx;
+    }
+  }, {
+    key: "mount",
+    value: function mount(modal) {
+      var containerIdx = findIndexOf(this.data, function (item) {
+        return item.modals.indexOf(modal) !== -1;
+      });
+      var data = this.data[containerIdx];
+
+      if (!data.style && this.handleContainerOverflow) {
+        setContainerStyle(data);
+      }
+    }
+  }, {
+    key: "remove",
+    value: function remove(modal) {
+      var modalIdx = this.modals.indexOf(modal);
+
+      if (modalIdx === -1) {
+        return modalIdx;
+      }
+
+      var containerIdx = findIndexOf(this.data, function (item) {
+        return item.modals.indexOf(modal) !== -1;
+      });
+      var data = this.data[containerIdx];
+      data.modals.splice(data.modals.indexOf(modal), 1);
+      this.modals.splice(modalIdx, 1); // If that was the last modal in a container, clean up the container.
+
+      if (data.modals.length === 0) {
+        if (this.handleContainerOverflow) {
+          removeContainerStyle(data);
+        } // In case the modal wasn't in the DOM yet.
+
+
+        if (modal.modalRef) {
+          (0, _manageAriaHidden.ariaHidden)(modal.modalRef, true);
+        }
+
+        if (this.hideSiblingNodes) {
+          (0, _manageAriaHidden.ariaHiddenSiblings)(data.container, modal.mountNode, modal.modalRef, false);
+        }
+
+        this.data.splice(containerIdx, 1);
+      } else if (this.hideSiblingNodes) {
+        // Otherwise make sure the next top modal is visible to a screen reader.
+        var nextTop = data.modals[data.modals.length - 1]; // as soon as a modal is adding its modalRef is undefined. it can't set
+        // aria-hidden because the dom element doesn't exist either
+        // when modal was unmounted before modalRef gets null
+
+        if (nextTop.modalRef) {
+          (0, _manageAriaHidden.ariaHidden)(nextTop.modalRef, false);
+        }
+      }
+
+      return modalIdx;
+    }
+  }, {
+    key: "isTopModal",
+    value: function isTopModal(modal) {
+      return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
+    }
+  }]);
+  return ModalManager;
+}();
+
+var _default = ModalManager;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Modal/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Modal/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Modal.default;
+  }
+});
+Object.defineProperty(exports, "ModalManager", {
+  enumerable: true,
+  get: function get() {
+    return _ModalManager.default;
+  }
+});
+
+var _Modal = _interopRequireDefault(__webpack_require__(/*! ./Modal */ "./node_modules/@material-ui/core/Modal/Modal.js"));
+
+var _ModalManager = _interopRequireDefault(__webpack_require__(/*! ./ModalManager */ "./node_modules/@material-ui/core/Modal/ModalManager.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Modal/isOverflowing.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@material-ui/core/Modal/isOverflowing.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isBody = isBody;
+exports.default = isOverflowing;
+
+var _isWindow = _interopRequireDefault(__webpack_require__(/*! dom-helpers/query/isWindow */ "./node_modules/dom-helpers/query/isWindow.js"));
+
+var _ownerDocument = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/utils/ownerDocument.js"));
+
+var _ownerWindow = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerWindow */ "./node_modules/@material-ui/core/utils/ownerWindow.js"));
+
+function isBody(node) {
+  return node && node.tagName.toLowerCase() === 'body';
+} // Do we have a vertical scroll bar?
+
+
+function isOverflowing(container) {
+  var doc = (0, _ownerDocument.default)(container);
+  var win = (0, _ownerWindow.default)(doc);
+  /* istanbul ignore next */
+
+  if (!(0, _isWindow.default)(doc) && !isBody(container)) {
+    return container.scrollHeight > container.clientHeight;
+  } // Takes in account potential non zero margin on the body.
+
+
+  var style = win.getComputedStyle(doc.body);
+  var marginLeft = parseInt(style.getPropertyValue('margin-left'), 10);
+  var marginRight = parseInt(style.getPropertyValue('margin-right'), 10);
+  return marginLeft + doc.body.clientWidth + marginRight < win.innerWidth;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Modal/manageAriaHidden.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@material-ui/core/Modal/manageAriaHidden.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ariaHidden = ariaHidden;
+exports.ariaHiddenSiblings = ariaHiddenSiblings;
+var BLACKLIST = ['template', 'script', 'style'];
+
+function isHideable(node) {
+  return node.nodeType === 1 && BLACKLIST.indexOf(node.tagName.toLowerCase()) === -1;
+}
+
+function siblings(container, mount, currentNode, callback) {
+  var blacklist = [mount, currentNode];
+  [].forEach.call(container.children, function (node) {
+    if (blacklist.indexOf(node) === -1 && isHideable(node)) {
+      callback(node);
+    }
+  });
+}
+
+function ariaHidden(node, show) {
+  if (show) {
+    node.setAttribute('aria-hidden', 'true');
+  } else {
+    node.removeAttribute('aria-hidden');
+  }
+}
+
+function ariaHiddenSiblings(container, mountNode, currentNode, show) {
+  siblings(container, mountNode, currentNode, function (node) {
+    return ariaHidden(node, show);
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/NativeSelect/NativeSelect.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@material-ui/core/NativeSelect/NativeSelect.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _NativeSelectInput = _interopRequireDefault(__webpack_require__(/*! ./NativeSelectInput */ "./node_modules/@material-ui/core/NativeSelect/NativeSelectInput.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _formControlState = _interopRequireDefault(__webpack_require__(/*! ../FormControl/formControlState */ "./node_modules/@material-ui/core/FormControl/formControlState.js"));
+
+var _withFormControlContext = _interopRequireDefault(__webpack_require__(/*! ../FormControl/withFormControlContext */ "./node_modules/@material-ui/core/FormControl/withFormControlContext.js"));
+
+var _ArrowDropDown = _interopRequireDefault(__webpack_require__(/*! ../internal/svg-icons/ArrowDropDown */ "./node_modules/@material-ui/core/internal/svg-icons/ArrowDropDown.js"));
+
+var _Input = _interopRequireDefault(__webpack_require__(/*! ../Input */ "./node_modules/@material-ui/core/Input/index.js"));
+
+// @inheritedComponent Input
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the `Input` component `root` class. */
+    root: {
+      position: 'relative',
+      width: '100%'
+    },
+
+    /* Styles applied to the `Input` component `select` class. */
+    select: {
+      '-moz-appearance': 'none',
+      // Reset
+      '-webkit-appearance': 'none',
+      // Reset
+      // When interacting quickly, the text can end up selected.
+      // Native select can't be selected either.
+      userSelect: 'none',
+      paddingRight: 32,
+      borderRadius: 0,
+      // Reset
+      height: '1.1875em',
+      // Reset (19px), match the native input line-height
+      width: 'calc(100% - 32px)',
+      minWidth: 16,
+      // So it doesn't collapse.
+      cursor: 'pointer',
+      '&:focus': {
+        // Show that it's not an text input
+        backgroundColor: theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+        borderRadius: 0 // Reset Chrome style
+
+      },
+      // Remove IE 11 arrow
+      '&::-ms-expand': {
+        display: 'none'
+      },
+      '&$disabled': {
+        cursor: 'default'
+      },
+      '&[multiple]': {
+        height: 'auto'
+      },
+      '&:not([multiple]) option, &:not([multiple]) optgroup': {
+        backgroundColor: theme.palette.background.paper
+      }
+    },
+
+    /* Styles applied to the `Input` component if `variant="filled"`. */
+    filled: {
+      width: 'calc(100% - 44px)'
+    },
+
+    /* Styles applied to the `Input` component if `variant="outlined"`. */
+    outlined: {
+      width: 'calc(100% - 46px)',
+      borderRadius: theme.shape.borderRadius
+    },
+
+    /* Styles applied to the `Input` component `selectMenu` class. */
+    selectMenu: {
+      width: 'auto',
+      // Fix Safari textOverflow
+      height: 'auto',
+      // Reset
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      minHeight: '1.1875em' // Reset (19px), match the native input line-height
+
+    },
+
+    /* Styles applied to the `Input` component `disabled` class. */
+    disabled: {},
+
+    /* Styles applied to the `Input` component `icon` class. */
+    icon: {
+      // We use a position absolute over a flexbox in order to forward the pointer events
+      // to the input.
+      position: 'absolute',
+      right: 0,
+      top: 'calc(50% - 12px)',
+      // Center vertically
+      color: theme.palette.action.active,
+      'pointer-events': 'none' // Don't block pointer events on the select under the icon.
+
+    }
+  };
+};
+/**
+ * An alternative to `<Select native />` with a much smaller bundle size footprint.
+ */
+
+
+exports.styles = styles;
+
+function NativeSelect(props) {
+  var children = props.children,
+      classes = props.classes,
+      IconComponent = props.IconComponent,
+      input = props.input,
+      inputProps = props.inputProps,
+      muiFormControl = props.muiFormControl,
+      variant = props.variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "IconComponent", "input", "inputProps", "muiFormControl", "variant"]);
+  var fcs = (0, _formControlState.default)({
+    props: props,
+    muiFormControl: muiFormControl,
+    states: ['variant']
+  });
+  return _react.default.cloneElement(input, (0, _extends2.default)({
+    // Most of the logic is implemented in `NativeSelectInput`.
+    // The `Select` component is a simple API wrapper to expose something better to play with.
+    inputComponent: _NativeSelectInput.default,
+    inputProps: (0, _extends2.default)({
+      children: children,
+      classes: classes,
+      IconComponent: IconComponent,
+      variant: fcs.variant,
+      type: undefined
+    }, inputProps, input ? input.props.inputProps : {})
+  }, other));
+}
+
+ false ? undefined : void 0;
+NativeSelect.defaultProps = {
+  IconComponent: _ArrowDropDown.default,
+  input: _react.default.createElement(_Input.default, null)
+};
+NativeSelect.muiName = 'Select';
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiNativeSelect'
+})((0, _withFormControlContext.default)(NativeSelect));
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/NativeSelect/NativeSelectInput.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/NativeSelect/NativeSelectInput.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+/**
+ * @ignore - internal component.
+ */
+function NativeSelectInput(props) {
+  var _classNames;
+
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      disabled = props.disabled,
+      IconComponent = props.IconComponent,
+      inputRef = props.inputRef,
+      name = props.name,
+      onChange = props.onChange,
+      value = props.value,
+      variant = props.variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "disabled", "IconComponent", "inputRef", "name", "onChange", "value", "variant"]);
+  return _react.default.createElement("div", {
+    className: classes.root
+  }, _react.default.createElement("select", (0, _extends2.default)({
+    className: (0, _classnames.default)(classes.select, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.filled, variant === 'filled'), (0, _defineProperty2.default)(_classNames, classes.outlined, variant === 'outlined'), (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), _classNames), className),
+    name: name,
+    disabled: disabled,
+    onChange: onChange,
+    value: value,
+    ref: inputRef
+  }, other), children), _react.default.createElement(IconComponent, {
+    className: classes.icon
+  }));
+}
+
+ false ? undefined : void 0;
+var _default = NativeSelectInput;
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/NoSsr/NoSsr.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@material-ui/core/NoSsr/NoSsr.js ***!
@@ -3078,6 +7257,1447 @@ Object.defineProperty(exports, "default", {
 });
 
 var _NoSsr = _interopRequireDefault(__webpack_require__(/*! ./NoSsr */ "./node_modules/@material-ui/core/NoSsr/NoSsr.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Paper/Paper.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Paper/Paper.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/@material-ui/core/node_modules/warning/warning.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var styles = function styles(theme) {
+  var elevations = {};
+  theme.shadows.forEach(function (shadow, index) {
+    elevations["elevation".concat(index)] = {
+      boxShadow: shadow
+    };
+  });
+  return (0, _extends2.default)({
+    /* Styles applied to the root element. */
+    root: {
+      backgroundColor: theme.palette.background.paper
+    },
+
+    /* Styles applied to the root element if `square={false}`. */
+    rounded: {
+      borderRadius: theme.shape.borderRadius
+    }
+  }, elevations);
+};
+
+exports.styles = styles;
+
+function Paper(props) {
+  var classes = props.classes,
+      classNameProp = props.className,
+      Component = props.component,
+      square = props.square,
+      elevation = props.elevation,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "component", "square", "elevation"]);
+   false ? undefined : void 0;
+  var className = (0, _classnames.default)(classes.root, classes["elevation".concat(elevation)], (0, _defineProperty2.default)({}, classes.rounded, !square), classNameProp);
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: className
+  }, other));
+}
+
+ false ? undefined : void 0;
+Paper.defaultProps = {
+  component: 'div',
+  elevation: 2,
+  square: false
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiPaper'
+})(Paper);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Paper/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Paper/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Paper.default;
+  }
+});
+
+var _Paper = _interopRequireDefault(__webpack_require__(/*! ./Paper */ "./node_modules/@material-ui/core/Paper/Paper.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Popover/Popover.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Popover/Popover.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/@material-ui/core/node_modules/warning/warning.js"));
+
+var _debounce = _interopRequireDefault(__webpack_require__(/*! debounce */ "./node_modules/debounce/index.js"));
+
+var _reactEventListener = _interopRequireDefault(__webpack_require__(/*! react-event-listener */ "./node_modules/react-event-listener/dist/react-event-listener.cjs.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _ownerDocument = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/utils/ownerDocument.js"));
+
+var _ownerWindow = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerWindow */ "./node_modules/@material-ui/core/utils/ownerWindow.js"));
+
+var _helpers = __webpack_require__(/*! ../utils/helpers */ "./node_modules/@material-ui/core/utils/helpers.js");
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _Modal = _interopRequireDefault(__webpack_require__(/*! ../Modal */ "./node_modules/@material-ui/core/Modal/index.js"));
+
+var _Grow = _interopRequireDefault(__webpack_require__(/*! ../Grow */ "./node_modules/@material-ui/core/Grow/index.js"));
+
+var _Paper = _interopRequireDefault(__webpack_require__(/*! ../Paper */ "./node_modules/@material-ui/core/Paper/index.js"));
+
+// @inheritedComponent Modal
+// < 1kb payload overhead when lodash/debounce is > 3kb.
+function getOffsetTop(rect, vertical) {
+  var offset = 0;
+
+  if (typeof vertical === 'number') {
+    offset = vertical;
+  } else if (vertical === 'center') {
+    offset = rect.height / 2;
+  } else if (vertical === 'bottom') {
+    offset = rect.height;
+  }
+
+  return offset;
+}
+
+function getOffsetLeft(rect, horizontal) {
+  var offset = 0;
+
+  if (typeof horizontal === 'number') {
+    offset = horizontal;
+  } else if (horizontal === 'center') {
+    offset = rect.width / 2;
+  } else if (horizontal === 'right') {
+    offset = rect.width;
+  }
+
+  return offset;
+}
+
+function getTransformOriginValue(transformOrigin) {
+  return [transformOrigin.horizontal, transformOrigin.vertical].map(function (n) {
+    return typeof n === 'number' ? "".concat(n, "px") : n;
+  }).join(' ');
+} // Sum the scrollTop between two elements.
+
+
+function getScrollParent(parent, child) {
+  var element = child;
+  var scrollTop = 0;
+
+  while (element && element !== parent) {
+    element = element.parentNode;
+    scrollTop += element.scrollTop;
+  }
+
+  return scrollTop;
+}
+
+function getAnchorEl(anchorEl) {
+  return typeof anchorEl === 'function' ? anchorEl() : anchorEl;
+}
+
+var styles = {
+  /* Styles applied to the `Paper` component. */
+  paper: {
+    position: 'absolute',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    // So we see the popover when it's empty.
+    // It's most likely on issue on userland.
+    minWidth: 16,
+    minHeight: 16,
+    maxWidth: 'calc(100% - 32px)',
+    maxHeight: 'calc(100% - 32px)',
+    // We disable the focus ring for mouse, touch and keyboard users.
+    outline: 'none'
+  }
+};
+exports.styles = styles;
+
+var Popover =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Popover, _React$Component);
+
+  function Popover() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Popover);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Popover).call(this));
+    _this.handleGetOffsetTop = getOffsetTop;
+    _this.handleGetOffsetLeft = getOffsetLeft;
+
+    _this.componentWillUnmount = function () {
+      _this.handleResize.clear();
+    };
+
+    _this.setPositioningStyles = function (element) {
+      var positioning = _this.getPositioningStyle(element);
+
+      if (positioning.top !== null) {
+        element.style.top = positioning.top;
+      }
+
+      if (positioning.left !== null) {
+        element.style.left = positioning.left;
+      }
+
+      element.style.transformOrigin = positioning.transformOrigin;
+    };
+
+    _this.getPositioningStyle = function (element) {
+      var _this$props = _this.props,
+          anchorEl = _this$props.anchorEl,
+          anchorReference = _this$props.anchorReference,
+          marginThreshold = _this$props.marginThreshold; // Check if the parent has requested anchoring on an inner content node
+
+      var contentAnchorOffset = _this.getContentAnchorOffset(element);
+
+      var elemRect = {
+        width: element.offsetWidth,
+        height: element.offsetHeight
+      }; // Get the transform origin point on the element itself
+
+      var transformOrigin = _this.getTransformOrigin(elemRect, contentAnchorOffset);
+
+      if (anchorReference === 'none') {
+        return {
+          top: null,
+          left: null,
+          transformOrigin: getTransformOriginValue(transformOrigin)
+        };
+      } // Get the offset of of the anchoring element
+
+
+      var anchorOffset = _this.getAnchorOffset(contentAnchorOffset); // Calculate element positioning
+
+
+      var top = anchorOffset.top - transformOrigin.vertical;
+      var left = anchorOffset.left - transformOrigin.horizontal;
+      var bottom = top + elemRect.height;
+      var right = left + elemRect.width; // Use the parent window of the anchorEl if provided
+
+      var containerWindow = (0, _ownerWindow.default)(getAnchorEl(anchorEl)); // Window thresholds taking required margin into account
+
+      var heightThreshold = containerWindow.innerHeight - marginThreshold;
+      var widthThreshold = containerWindow.innerWidth - marginThreshold; // Check if the vertical axis needs shifting
+
+      if (top < marginThreshold) {
+        var diff = top - marginThreshold;
+        top -= diff;
+        transformOrigin.vertical += diff;
+      } else if (bottom > heightThreshold) {
+        var _diff = bottom - heightThreshold;
+
+        top -= _diff;
+        transformOrigin.vertical += _diff;
+      }
+
+       false ? undefined : void 0; // Check if the horizontal axis needs shifting
+
+      if (left < marginThreshold) {
+        var _diff2 = left - marginThreshold;
+
+        left -= _diff2;
+        transformOrigin.horizontal += _diff2;
+      } else if (right > widthThreshold) {
+        var _diff3 = right - widthThreshold;
+
+        left -= _diff3;
+        transformOrigin.horizontal += _diff3;
+      }
+
+      return {
+        top: "".concat(top, "px"),
+        left: "".concat(left, "px"),
+        transformOrigin: getTransformOriginValue(transformOrigin)
+      };
+    };
+
+    _this.handleEntering = function (element) {
+      if (_this.props.onEntering) {
+        _this.props.onEntering(element);
+      }
+
+      _this.setPositioningStyles(element);
+    };
+
+    if (typeof window !== 'undefined') {
+      _this.handleResize = (0, _debounce.default)(function () {
+        // Because we debounce the event, the open property might no longer be true
+        // when the callback resolves.
+        if (!_this.props.open) {
+          return;
+        }
+
+        _this.setPositioningStyles(_this.paperRef);
+      }, 166); // Corresponds to 10 frames at 60 Hz.
+    }
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Popover, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.action) {
+        this.props.action({
+          updatePosition: this.handleResize
+        });
+      }
+    }
+  }, {
+    key: "getAnchorOffset",
+    // Returns the top/left offset of the position
+    // to attach to on the anchor element (or body if none is provided)
+    value: function getAnchorOffset(contentAnchorOffset) {
+      var _this$props2 = this.props,
+          anchorEl = _this$props2.anchorEl,
+          anchorOrigin = _this$props2.anchorOrigin,
+          anchorReference = _this$props2.anchorReference,
+          anchorPosition = _this$props2.anchorPosition;
+
+      if (anchorReference === 'anchorPosition') {
+         false ? undefined : void 0;
+        return anchorPosition;
+      } // If an anchor element wasn't provided, just use the parent body element of this Popover
+
+
+      var anchorElement = getAnchorEl(anchorEl) || (0, _ownerDocument.default)(this.paperRef).body;
+      var anchorRect = anchorElement.getBoundingClientRect();
+      var anchorVertical = contentAnchorOffset === 0 ? anchorOrigin.vertical : 'center';
+      return {
+        top: anchorRect.top + this.handleGetOffsetTop(anchorRect, anchorVertical),
+        left: anchorRect.left + this.handleGetOffsetLeft(anchorRect, anchorOrigin.horizontal)
+      };
+    } // Returns the vertical offset of inner content to anchor the transform on if provided
+
+  }, {
+    key: "getContentAnchorOffset",
+    value: function getContentAnchorOffset(element) {
+      var _this$props3 = this.props,
+          getContentAnchorEl = _this$props3.getContentAnchorEl,
+          anchorReference = _this$props3.anchorReference;
+      var contentAnchorOffset = 0;
+
+      if (getContentAnchorEl && anchorReference === 'anchorEl') {
+        var contentAnchorEl = getContentAnchorEl(element);
+
+        if (contentAnchorEl && element.contains(contentAnchorEl)) {
+          var scrollTop = getScrollParent(element, contentAnchorEl);
+          contentAnchorOffset = contentAnchorEl.offsetTop + contentAnchorEl.clientHeight / 2 - scrollTop || 0;
+        } // != the default value
+
+
+         false ? undefined : void 0;
+      }
+
+      return contentAnchorOffset;
+    } // Return the base transform origin using the element
+    // and taking the content anchor offset into account if in use
+
+  }, {
+    key: "getTransformOrigin",
+    value: function getTransformOrigin(elemRect) {
+      var contentAnchorOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var transformOrigin = this.props.transformOrigin;
+      return {
+        vertical: this.handleGetOffsetTop(elemRect, transformOrigin.vertical) + contentAnchorOffset,
+        horizontal: this.handleGetOffsetLeft(elemRect, transformOrigin.horizontal)
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props4 = this.props,
+          action = _this$props4.action,
+          anchorEl = _this$props4.anchorEl,
+          anchorOrigin = _this$props4.anchorOrigin,
+          anchorPosition = _this$props4.anchorPosition,
+          anchorReference = _this$props4.anchorReference,
+          children = _this$props4.children,
+          classes = _this$props4.classes,
+          containerProp = _this$props4.container,
+          elevation = _this$props4.elevation,
+          getContentAnchorEl = _this$props4.getContentAnchorEl,
+          marginThreshold = _this$props4.marginThreshold,
+          ModalClasses = _this$props4.ModalClasses,
+          onEnter = _this$props4.onEnter,
+          onEntered = _this$props4.onEntered,
+          onEntering = _this$props4.onEntering,
+          onExit = _this$props4.onExit,
+          onExited = _this$props4.onExited,
+          onExiting = _this$props4.onExiting,
+          open = _this$props4.open,
+          PaperProps = _this$props4.PaperProps,
+          role = _this$props4.role,
+          transformOrigin = _this$props4.transformOrigin,
+          TransitionComponent = _this$props4.TransitionComponent,
+          transitionDurationProp = _this$props4.transitionDuration,
+          _this$props4$Transiti = _this$props4.TransitionProps,
+          TransitionProps = _this$props4$Transiti === void 0 ? {} : _this$props4$Transiti,
+          other = (0, _objectWithoutProperties2.default)(_this$props4, ["action", "anchorEl", "anchorOrigin", "anchorPosition", "anchorReference", "children", "classes", "container", "elevation", "getContentAnchorEl", "marginThreshold", "ModalClasses", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "open", "PaperProps", "role", "transformOrigin", "TransitionComponent", "transitionDuration", "TransitionProps"]);
+      var transitionDuration = transitionDurationProp;
+
+      if (transitionDurationProp === 'auto' && !TransitionComponent.muiSupportAuto) {
+        transitionDuration = undefined;
+      } // If the container prop is provided, use that
+      // If the anchorEl prop is provided, use its parent body element as the container
+      // If neither are provided let the Modal take care of choosing the container
+
+
+      var container = containerProp || (anchorEl ? (0, _ownerDocument.default)(getAnchorEl(anchorEl)).body : undefined);
+      return _react.default.createElement(_Modal.default, (0, _extends2.default)({
+        classes: ModalClasses,
+        container: container,
+        open: open,
+        BackdropProps: {
+          invisible: true
+        }
+      }, other), _react.default.createElement(TransitionComponent, (0, _extends2.default)({
+        appear: true,
+        in: open,
+        onEnter: onEnter,
+        onEntered: onEntered,
+        onExit: onExit,
+        onExited: onExited,
+        onExiting: onExiting,
+        role: role,
+        timeout: transitionDuration
+      }, TransitionProps, {
+        onEntering: (0, _helpers.createChainedFunction)(this.handleEntering, TransitionProps.onEntering)
+      }), _react.default.createElement(_Paper.default, (0, _extends2.default)({
+        className: classes.paper,
+        elevation: elevation,
+        ref: function ref(_ref) {
+          _this2.paperRef = _reactDom.default.findDOMNode(_ref);
+        }
+      }, PaperProps), _react.default.createElement(_reactEventListener.default, {
+        target: "window",
+        onResize: this.handleResize
+      }), children)));
+    }
+  }]);
+  return Popover;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Popover.defaultProps = {
+  anchorReference: 'anchorEl',
+  anchorOrigin: {
+    vertical: 'top',
+    horizontal: 'left'
+  },
+  elevation: 8,
+  marginThreshold: 16,
+  transformOrigin: {
+    vertical: 'top',
+    horizontal: 'left'
+  },
+  TransitionComponent: _Grow.default,
+  transitionDuration: 'auto'
+};
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiPopover'
+})(Popover);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Popover/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Popover/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Popover.default;
+  }
+});
+
+var _Popover = _interopRequireDefault(__webpack_require__(/*! ./Popover */ "./node_modules/@material-ui/core/Popover/Popover.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Portal/Portal.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Portal/Portal.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf3 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _ownerDocument = _interopRequireDefault(__webpack_require__(/*! ../utils/ownerDocument */ "./node_modules/@material-ui/core/utils/ownerDocument.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+function getContainer(container, defaultContainer) {
+  container = typeof container === 'function' ? container() : container;
+  return _reactDom.default.findDOMNode(container) || defaultContainer;
+}
+
+function getOwnerDocument(element) {
+  return (0, _ownerDocument.default)(_reactDom.default.findDOMNode(element));
+}
+/**
+ * Portals provide a first-class way to render children into a DOM node
+ * that exists outside the DOM hierarchy of the parent component.
+ */
+
+
+var Portal =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Portal, _React$Component);
+
+  function Portal() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Portal);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(Portal)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _this.getMountNode = function () {
+      return _this.mountNode;
+    };
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Portal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setMountNode(this.props.container); // Only rerender if needed
+
+      if (!this.props.disablePortal) {
+        this.forceUpdate(this.props.onRendered);
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this2 = this;
+
+      if (prevProps.container !== this.props.container || prevProps.disablePortal !== this.props.disablePortal) {
+        this.setMountNode(this.props.container); // Only rerender if needed
+
+        if (!this.props.disablePortal) {
+          this.forceUpdate(function () {
+            if (_this2.props.onRendered) {
+              // This might be triggered earlier than the componentDidUpdate of a parent element.
+              // We need to account for it.
+              clearTimeout(_this2.renderedTimer);
+              _this2.renderedTimer = setTimeout(_this2.props.onRendered);
+            }
+          });
+        }
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.mountNode = null;
+      clearTimeout(this.renderedTimer);
+    }
+  }, {
+    key: "setMountNode",
+    value: function setMountNode(container) {
+      if (this.props.disablePortal) {
+        this.mountNode = _reactDom.default.findDOMNode(this).parentElement;
+        return;
+      }
+
+      this.mountNode = getContainer(container, getOwnerDocument(this).body);
+    }
+    /**
+     * @public
+     */
+
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          disablePortal = _this$props.disablePortal;
+
+      if (disablePortal) {
+        return children;
+      }
+
+      return this.mountNode ? _reactDom.default.createPortal(children, this.mountNode) : null;
+    }
+  }]);
+  return Portal;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+Portal.defaultProps = {
+  disablePortal: false
+};
+
+if (false) {}
+
+var _default = Portal;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Portal/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Portal/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Portal.default;
+  }
+});
+
+var _Portal = _interopRequireDefault(__webpack_require__(/*! ./Portal */ "./node_modules/@material-ui/core/Portal/Portal.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/RootRef/RootRef.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/RootRef/RootRef.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _reactHelpers = __webpack_require__(/*! ../utils/reactHelpers */ "./node_modules/@material-ui/core/utils/reactHelpers.js");
+
+/**
+ * Helper component to allow attaching a ref to a
+ * wrapped element to access the underlying DOM element.
+ *
+ * It's highly inspired by https://github.com/facebook/react/issues/11401#issuecomment-340543801.
+ * For example:
+ * ```jsx
+ * import React from 'react';
+ * import RootRef from '@material-ui/core/RootRef';
+ *
+ * class MyComponent extends React.Component {
+ *   constructor() {
+ *     super();
+ *     this.domRef = React.createRef();
+ *   }
+ *
+ *   componentDidMount() {
+ *     console.log(this.domRef.current); // DOM node
+ *   }
+ *
+ *   render() {
+ *     return (
+ *       <RootRef rootRef={this.domRef}>
+ *         <SomeChildComponent />
+ *       </RootRef>
+ *     );
+ *   }
+ * }
+ * ```
+ */
+var RootRef =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(RootRef, _React$Component);
+
+  function RootRef() {
+    (0, _classCallCheck2.default)(this, RootRef);
+    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(RootRef).apply(this, arguments));
+  }
+
+  (0, _createClass2.default)(RootRef, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.ref = _reactDom.default.findDOMNode(this);
+      (0, _reactHelpers.setRef)(this.props.rootRef, this.ref);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var ref = _reactDom.default.findDOMNode(this);
+
+      if (prevProps.rootRef !== this.props.rootRef || this.ref !== ref) {
+        if (prevProps.rootRef !== this.props.rootRef) {
+          (0, _reactHelpers.setRef)(prevProps.rootRef, null);
+        }
+
+        this.ref = ref;
+        (0, _reactHelpers.setRef)(this.props.rootRef, this.ref);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.ref = null;
+      (0, _reactHelpers.setRef)(this.props.rootRef, null);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.props.children;
+    }
+  }]);
+  return RootRef;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+
+if (false) {}
+
+var _default = RootRef;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/RootRef/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@material-ui/core/RootRef/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _RootRef.default;
+  }
+});
+
+var _RootRef = _interopRequireDefault(__webpack_require__(/*! ./RootRef */ "./node_modules/@material-ui/core/RootRef/RootRef.js"));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Select/Select.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Select/Select.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _SelectInput = _interopRequireDefault(__webpack_require__(/*! ./SelectInput */ "./node_modules/@material-ui/core/Select/SelectInput.js"));
+
+var _formControlState = _interopRequireDefault(__webpack_require__(/*! ../FormControl/formControlState */ "./node_modules/@material-ui/core/FormControl/formControlState.js"));
+
+var _withFormControlContext = _interopRequireDefault(__webpack_require__(/*! ../FormControl/withFormControlContext */ "./node_modules/@material-ui/core/FormControl/withFormControlContext.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _mergeClasses = _interopRequireDefault(__webpack_require__(/*! ../styles/mergeClasses */ "./node_modules/@material-ui/core/styles/mergeClasses.js"));
+
+var _ArrowDropDown = _interopRequireDefault(__webpack_require__(/*! ../internal/svg-icons/ArrowDropDown */ "./node_modules/@material-ui/core/internal/svg-icons/ArrowDropDown.js"));
+
+var _Input = _interopRequireDefault(__webpack_require__(/*! ../Input */ "./node_modules/@material-ui/core/Input/index.js"));
+
+var _NativeSelect = __webpack_require__(/*! ../NativeSelect/NativeSelect */ "./node_modules/@material-ui/core/NativeSelect/NativeSelect.js");
+
+var _NativeSelectInput = _interopRequireDefault(__webpack_require__(/*! ../NativeSelect/NativeSelectInput */ "./node_modules/@material-ui/core/NativeSelect/NativeSelectInput.js"));
+
+// @inheritedComponent Input
+// To replace with InputBase in v4
+var styles = _NativeSelect.styles;
+exports.styles = styles;
+
+function Select(props) {
+  var autoWidth = props.autoWidth,
+      children = props.children,
+      classes = props.classes,
+      displayEmpty = props.displayEmpty,
+      IconComponent = props.IconComponent,
+      input = props.input,
+      inputProps = props.inputProps,
+      MenuProps = props.MenuProps,
+      muiFormControl = props.muiFormControl,
+      multiple = props.multiple,
+      native = props.native,
+      onClose = props.onClose,
+      onOpen = props.onOpen,
+      open = props.open,
+      renderValue = props.renderValue,
+      SelectDisplayProps = props.SelectDisplayProps,
+      variant = props.variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["autoWidth", "children", "classes", "displayEmpty", "IconComponent", "input", "inputProps", "MenuProps", "muiFormControl", "multiple", "native", "onClose", "onOpen", "open", "renderValue", "SelectDisplayProps", "variant"]);
+  var inputComponent = native ? _NativeSelectInput.default : _SelectInput.default;
+  var fcs = (0, _formControlState.default)({
+    props: props,
+    muiFormControl: muiFormControl,
+    states: ['variant']
+  });
+  return _react.default.cloneElement(input, (0, _extends2.default)({
+    // Most of the logic is implemented in `SelectInput`.
+    // The `Select` component is a simple API wrapper to expose something better to play with.
+    inputComponent: inputComponent,
+    inputProps: (0, _extends2.default)({
+      children: children,
+      IconComponent: IconComponent,
+      variant: fcs.variant,
+      type: undefined,
+      // We render a select. We can ignore the type provided by the `Input`.
+      multiple: multiple
+    }, native ? {} : {
+      autoWidth: autoWidth,
+      displayEmpty: displayEmpty,
+      MenuProps: MenuProps,
+      onClose: onClose,
+      onOpen: onOpen,
+      open: open,
+      renderValue: renderValue,
+      SelectDisplayProps: SelectDisplayProps
+    }, inputProps, {
+      classes: inputProps ? (0, _mergeClasses.default)({
+        baseClasses: classes,
+        newClasses: inputProps.classes,
+        Component: Select
+      }) : classes
+    }, input ? input.props.inputProps : {})
+  }, other));
+}
+
+ false ? undefined : void 0;
+Select.defaultProps = {
+  autoWidth: false,
+  displayEmpty: false,
+  IconComponent: _ArrowDropDown.default,
+  input: _react.default.createElement(_Input.default, null),
+  multiple: false,
+  native: false
+};
+Select.muiName = 'Select';
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiSelect'
+})((0, _withFormControlContext.default)(Select));
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Select/SelectInput.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@material-ui/core/Select/SelectInput.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/@material-ui/core/node_modules/warning/warning.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _Menu = _interopRequireDefault(__webpack_require__(/*! ../Menu/Menu */ "./node_modules/@material-ui/core/Menu/Menu.js"));
+
+var _utils2 = __webpack_require__(/*! ../InputBase/utils */ "./node_modules/@material-ui/core/InputBase/utils.js");
+
+var _reactHelpers = __webpack_require__(/*! ../utils/reactHelpers */ "./node_modules/@material-ui/core/utils/reactHelpers.js");
+
+function areEqualValues(a, b) {
+  if ((0, _typeof2.default)(b) === 'object' && b !== null) {
+    return a === b;
+  }
+
+  return String(a) === String(b);
+}
+/**
+ * @ignore - internal component.
+ */
+
+
+var SelectInput =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(SelectInput, _React$Component);
+
+  function SelectInput(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, SelectInput);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(SelectInput).call(this));
+    _this.ignoreNextBlur = false;
+
+    _this.update = function (_ref) {
+      var event = _ref.event,
+          open = _ref.open;
+
+      if (_this.isOpenControlled) {
+        if (open) {
+          _this.props.onOpen(event);
+        } else {
+          _this.props.onClose(event);
+        }
+
+        return;
+      }
+
+      _this.setState({
+        // Perform the layout computation outside of the render method.
+        menuMinWidth: _this.props.autoWidth ? null : _this.displayRef.clientWidth,
+        open: open
+      });
+    };
+
+    _this.handleClick = function (event) {
+      // Opening the menu is going to blur the. It will be focused back when closed.
+      _this.ignoreNextBlur = true;
+
+      _this.update({
+        open: true,
+        event: event
+      });
+    };
+
+    _this.handleClose = function (event) {
+      _this.update({
+        open: false,
+        event: event
+      });
+    };
+
+    _this.handleItemClick = function (child) {
+      return function (event) {
+        if (!_this.props.multiple) {
+          _this.update({
+            open: false,
+            event: event
+          });
+        }
+
+        var _this$props = _this.props,
+            onChange = _this$props.onChange,
+            name = _this$props.name;
+
+        if (onChange) {
+          var value;
+
+          if (_this.props.multiple) {
+            value = Array.isArray(_this.props.value) ? (0, _toConsumableArray2.default)(_this.props.value) : [];
+            var itemIndex = value.indexOf(child.props.value);
+
+            if (itemIndex === -1) {
+              value.push(child.props.value);
+            } else {
+              value.splice(itemIndex, 1);
+            }
+          } else {
+            value = child.props.value;
+          }
+
+          event.persist();
+          event.target = {
+            value: value,
+            name: name
+          };
+          onChange(event, child);
+        }
+      };
+    };
+
+    _this.handleBlur = function (event) {
+      if (_this.ignoreNextBlur === true) {
+        // The parent components are relying on the bubbling of the event.
+        event.stopPropagation();
+        _this.ignoreNextBlur = false;
+        return;
+      }
+
+      if (_this.props.onBlur) {
+        var _this$props2 = _this.props,
+            value = _this$props2.value,
+            name = _this$props2.name;
+        event.persist();
+        event.target = {
+          value: value,
+          name: name
+        };
+
+        _this.props.onBlur(event);
+      }
+    };
+
+    _this.handleKeyDown = function (event) {
+      if (_this.props.readOnly) {
+        return;
+      }
+
+      if ([' ', 'ArrowUp', 'ArrowDown', // The native select doesn't respond to enter on MacOS, but it's recommended by
+      // https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html
+      'Enter'].indexOf(event.key) !== -1) {
+        event.preventDefault(); // Opening the menu is going to blur the. It will be focused back when closed.
+
+        _this.ignoreNextBlur = true;
+
+        _this.update({
+          open: true,
+          event: event
+        });
+      }
+    };
+
+    _this.handleDisplayRef = function (ref) {
+      _this.displayRef = ref;
+    };
+
+    _this.handleInputRef = function (ref) {
+      var inputRef = _this.props.inputRef;
+
+      if (!inputRef) {
+        return;
+      }
+
+      var nodeProxy = {
+        node: ref,
+        // By pass the native input as we expose a rich object (array).
+        value: _this.props.value,
+        focus: function focus() {
+          _this.displayRef.focus();
+        }
+      };
+      (0, _reactHelpers.setRef)(inputRef, nodeProxy);
+    };
+
+    _this.isOpenControlled = props.open !== undefined;
+    _this.state = {
+      menuMinWidth: null,
+      open: false
+    };
+    return _this;
+  }
+
+  (0, _createClass2.default)(SelectInput, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.isOpenControlled && this.props.open) {
+        // Focus the display node so the focus is restored on this element once
+        // the menu is closed.
+        this.displayRef.focus(); // Rerender with the resolve `displayRef` reference.
+
+        this.forceUpdate();
+      }
+
+      if (this.props.autoFocus) {
+        this.displayRef.focus();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this,
+          _classNames;
+
+      var _this$props3 = this.props,
+          autoWidth = _this$props3.autoWidth,
+          children = _this$props3.children,
+          classes = _this$props3.classes,
+          className = _this$props3.className,
+          disabled = _this$props3.disabled,
+          displayEmpty = _this$props3.displayEmpty,
+          IconComponent = _this$props3.IconComponent,
+          inputRef = _this$props3.inputRef,
+          _this$props3$MenuProp = _this$props3.MenuProps,
+          MenuProps = _this$props3$MenuProp === void 0 ? {} : _this$props3$MenuProp,
+          multiple = _this$props3.multiple,
+          name = _this$props3.name,
+          onBlur = _this$props3.onBlur,
+          onChange = _this$props3.onChange,
+          onClose = _this$props3.onClose,
+          onFocus = _this$props3.onFocus,
+          onOpen = _this$props3.onOpen,
+          openProp = _this$props3.open,
+          readOnly = _this$props3.readOnly,
+          renderValue = _this$props3.renderValue,
+          required = _this$props3.required,
+          SelectDisplayProps = _this$props3.SelectDisplayProps,
+          tabIndexProp = _this$props3.tabIndex,
+          _this$props3$type = _this$props3.type,
+          type = _this$props3$type === void 0 ? 'hidden' : _this$props3$type,
+          value = _this$props3.value,
+          variant = _this$props3.variant,
+          other = (0, _objectWithoutProperties2.default)(_this$props3, ["autoWidth", "children", "classes", "className", "disabled", "displayEmpty", "IconComponent", "inputRef", "MenuProps", "multiple", "name", "onBlur", "onChange", "onClose", "onFocus", "onOpen", "open", "readOnly", "renderValue", "required", "SelectDisplayProps", "tabIndex", "type", "value", "variant"]);
+      var open = this.isOpenControlled && this.displayRef ? openProp : this.state.open;
+      delete other['aria-invalid'];
+      var display;
+      var displaySingle = '';
+      var displayMultiple = [];
+      var computeDisplay = false; // No need to display any value if the field is empty.
+
+      if ((0, _utils2.isFilled)(this.props) || displayEmpty) {
+        if (renderValue) {
+          display = renderValue(value);
+        } else {
+          computeDisplay = true;
+        }
+      }
+
+      var items = _react.default.Children.map(children, function (child) {
+        if (!_react.default.isValidElement(child)) {
+          return null;
+        }
+
+         false ? undefined : void 0;
+        var selected;
+
+        if (multiple) {
+          if (!Array.isArray(value)) {
+            throw new Error('Material-UI: the `value` property must be an array ' + 'when using the `Select` component with `multiple`.');
+          }
+
+          selected = value.some(function (v) {
+            return areEqualValues(v, child.props.value);
+          });
+
+          if (selected && computeDisplay) {
+            displayMultiple.push(child.props.children);
+          }
+        } else {
+          selected = areEqualValues(value, child.props.value);
+
+          if (selected && computeDisplay) {
+            displaySingle = child.props.children;
+          }
+        }
+
+        return _react.default.cloneElement(child, {
+          onClick: _this2.handleItemClick(child),
+          role: 'option',
+          selected: selected,
+          value: undefined,
+          // The value is most likely not a valid HTML attribute.
+          'data-value': child.props.value // Instead, we provide it as a data attribute.
+
+        });
+      });
+
+      if (computeDisplay) {
+        display = multiple ? displayMultiple.join(', ') : displaySingle;
+      } // Avoid performing a layout computation in the render method.
+
+
+      var menuMinWidth = this.state.menuMinWidth;
+
+      if (!autoWidth && this.isOpenControlled && this.displayRef) {
+        menuMinWidth = this.displayRef.clientWidth;
+      }
+
+      var tabIndex;
+
+      if (typeof tabIndexProp !== 'undefined') {
+        tabIndex = tabIndexProp;
+      } else {
+        tabIndex = disabled ? null : 0;
+      }
+
+      return _react.default.createElement("div", {
+        className: classes.root
+      }, _react.default.createElement("div", (0, _extends2.default)({
+        className: (0, _classnames.default)(classes.select, classes.selectMenu, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes.disabled, disabled), (0, _defineProperty2.default)(_classNames, classes.filled, variant === 'filled'), (0, _defineProperty2.default)(_classNames, classes.outlined, variant === 'outlined'), _classNames), className),
+        ref: this.handleDisplayRef,
+        "aria-pressed": open ? 'true' : 'false',
+        tabIndex: tabIndex,
+        role: "button",
+        "aria-owns": open ? "menu-".concat(name || '') : undefined,
+        "aria-haspopup": "true",
+        onKeyDown: this.handleKeyDown,
+        onBlur: this.handleBlur,
+        onClick: disabled || readOnly ? null : this.handleClick,
+        onFocus: onFocus // The id can help with end-to-end testing automation.
+        ,
+        id: name ? "select-".concat(name) : undefined
+      }, SelectDisplayProps), display || _react.default.createElement("span", {
+        dangerouslySetInnerHTML: {
+          __html: '&#8203;'
+        }
+      })), _react.default.createElement("input", (0, _extends2.default)({
+        value: Array.isArray(value) ? value.join(',') : value,
+        name: name,
+        ref: this.handleInputRef,
+        type: type
+      }, other)), _react.default.createElement(IconComponent, {
+        className: classes.icon
+      }), _react.default.createElement(_Menu.default, (0, _extends2.default)({
+        id: "menu-".concat(name || ''),
+        anchorEl: this.displayRef,
+        open: open,
+        onClose: this.handleClose
+      }, MenuProps, {
+        MenuListProps: (0, _extends2.default)({
+          role: 'listbox',
+          disableListWrap: true
+        }, MenuProps.MenuListProps),
+        PaperProps: (0, _extends2.default)({}, MenuProps.PaperProps, {
+          style: (0, _extends2.default)({
+            minWidth: menuMinWidth
+          }, MenuProps.PaperProps != null ? MenuProps.PaperProps.style : null)
+        })
+      }), items));
+    }
+  }]);
+  return SelectInput;
+}(_react.default.Component);
+
+ false ? undefined : void 0;
+var _default = SelectInput;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Select/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@material-ui/core/Select/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Select.default;
+  }
+});
+
+var _Select = _interopRequireDefault(__webpack_require__(/*! ./Select */ "./node_modules/@material-ui/core/Select/Select.js"));
 
 /***/ }),
 
@@ -3401,6 +9021,47 @@ var red = {
   A700: '#d50000'
 };
 var _default = red;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/internal/svg-icons/ArrowDropDown.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/internal/svg-icons/ArrowDropDown.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _pure = _interopRequireDefault(__webpack_require__(/*! recompose/pure */ "./node_modules/recompose/pure.js"));
+
+var _SvgIcon = _interopRequireDefault(__webpack_require__(/*! ../../SvgIcon */ "./node_modules/@material-ui/core/SvgIcon/index.js"));
+
+var _ref = _react.default.createElement("path", {
+  d: "M7 10l5 5 5-5z"
+});
+
+/**
+ * @ignore - internal component.
+ */
+var ArrowDropDown = function ArrowDropDown(props) {
+  return _react.default.createElement(_SvgIcon.default, props, _ref);
+};
+
+ArrowDropDown = (0, _pure.default)(ArrowDropDown);
+ArrowDropDown.muiName = 'SvgIcon';
+var _default = ArrowDropDown;
 exports.default = _default;
 
 /***/ }),
@@ -5497,6 +11158,146 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/styles/withTheme.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@material-ui/core/styles/withTheme.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _hoistNonReactStatics = _interopRequireDefault(__webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js"));
+
+var _utils = __webpack_require__(/*! @material-ui/utils */ "./node_modules/@material-ui/utils/index.es.js");
+
+var _createMuiTheme = _interopRequireDefault(__webpack_require__(/*! ./createMuiTheme */ "./node_modules/@material-ui/core/styles/createMuiTheme.js"));
+
+var _themeListener = _interopRequireDefault(__webpack_require__(/*! ./themeListener */ "./node_modules/@material-ui/core/styles/themeListener.js"));
+
+/* eslint-disable no-underscore-dangle */
+var defaultTheme;
+
+function getDefaultTheme() {
+  if (defaultTheme) {
+    return defaultTheme;
+  }
+
+  defaultTheme = (0, _createMuiTheme.default)({
+    typography: {
+      suppressWarning: true
+    }
+  });
+  return defaultTheme;
+} // Provide the theme object as a property to the input component.
+
+
+var withThemeOld = function withThemeOld() {
+  return function (Component) {
+    var WithTheme =
+    /*#__PURE__*/
+    function (_React$Component) {
+      (0, _inherits2.default)(WithTheme, _React$Component);
+
+      function WithTheme(props, context) {
+        var _this;
+
+        (0, _classCallCheck2.default)(this, WithTheme);
+        _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(WithTheme).call(this));
+        _this.state = {
+          // We use || as the function call is lazy evaluated.
+          theme: _themeListener.default.initial(context) || getDefaultTheme()
+        };
+        return _this;
+      }
+
+      (0, _createClass2.default)(WithTheme, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+          var _this2 = this;
+
+          this.unsubscribeId = _themeListener.default.subscribe(this.context, function (theme) {
+            _this2.setState({
+              theme: theme
+            });
+          });
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          if (this.unsubscribeId !== null) {
+            _themeListener.default.unsubscribe(this.context, this.unsubscribeId);
+          }
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var _this$props = this.props,
+              innerRef = _this$props.innerRef,
+              other = (0, _objectWithoutProperties2.default)(_this$props, ["innerRef"]);
+          return _react.default.createElement(Component, (0, _extends2.default)({
+            theme: this.state.theme,
+            ref: innerRef
+          }, other));
+        }
+      }]);
+      return WithTheme;
+    }(_react.default.Component);
+
+     false ? undefined : void 0;
+    WithTheme.contextTypes = _themeListener.default.contextTypes;
+
+    if (false) {}
+
+    (0, _hoistNonReactStatics.default)(WithTheme, Component);
+
+    if (false) {}
+
+    return WithTheme;
+  };
+};
+/* istanbul ignore if */
+
+
+if (!_utils.ponyfillGlobal.__MUI_STYLES__) {
+  _utils.ponyfillGlobal.__MUI_STYLES__ = {};
+}
+
+if (!_utils.ponyfillGlobal.__MUI_STYLES__.withTheme) {
+  _utils.ponyfillGlobal.__MUI_STYLES__.withTheme = withThemeOld;
+}
+
+var _default = _utils.ponyfillGlobal.__MUI_STYLES__.withTheme;
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/styles/zIndex.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@material-ui/core/styles/zIndex.js ***!
@@ -5523,6 +11324,40 @@ var zIndex = {
 };
 var _default = zIndex;
 exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/transitions/utils.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@material-ui/core/transitions/utils.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getTransitionProps = getTransitionProps;
+exports.reflow = void 0;
+
+var reflow = function reflow(node) {
+  return node.scrollTop;
+};
+
+exports.reflow = reflow;
+
+function getTransitionProps(props, options) {
+  var timeout = props.timeout,
+      _props$style = props.style,
+      style = _props$style === void 0 ? {} : _props$style;
+  return {
+    duration: style.transitionDuration || typeof timeout === 'number' ? timeout : timeout[options.mode],
+    delay: style.transitionDelay
+  };
+}
 
 /***/ }),
 
@@ -5677,6 +11512,56 @@ function ownerWindow(node) {
 
 var _default = ownerWindow;
 exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/utils/reactHelpers.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@material-ui/core/utils/reactHelpers.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.cloneElementWithClassName = cloneElementWithClassName;
+exports.cloneChildrenWithClassName = cloneChildrenWithClassName;
+exports.isMuiElement = isMuiElement;
+exports.setRef = setRef;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+function cloneElementWithClassName(child, className) {
+  return _react.default.cloneElement(child, {
+    className: (0, _classnames.default)(child.props.className, className)
+  });
+}
+
+function cloneChildrenWithClassName(children, className) {
+  return _react.default.Children.map(children, function (child) {
+    return _react.default.isValidElement(child) && cloneElementWithClassName(child, className);
+  });
+}
+
+function isMuiElement(element, muiNames) {
+  return _react.default.isValidElement(element) && muiNames.indexOf(element.type.muiName) !== -1;
+}
+
+function setRef(ref, value) {
+  if (typeof ref === 'function') {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+}
 
 /***/ }),
 
@@ -8304,6 +14189,543 @@ function supportedValue(property, value) {
 
   return cache[cacheKey];
 }
+
+/***/ }),
+
+/***/ "./node_modules/debounce/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/debounce/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Returns a function, that, as long as it continues to be invoked, will not
+ * be triggered. The function will be called after it stops being called for
+ * N milliseconds. If `immediate` is passed, trigger the function on the
+ * leading edge, instead of the trailing. The function also has a property 'clear' 
+ * that is a function which will clear the timer to prevent previously scheduled executions. 
+ *
+ * @source underscore.js
+ * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
+ * @param {Function} function to wrap
+ * @param {Number} timeout in ms (`100`)
+ * @param {Boolean} whether to execute at the beginning (`false`)
+ * @api public
+ */
+function debounce(func, wait, immediate){
+  var timeout, args, context, timestamp, result;
+  if (null == wait) wait = 100;
+
+  function later() {
+    var last = Date.now() - timestamp;
+
+    if (last < wait && last >= 0) {
+      timeout = setTimeout(later, wait - last);
+    } else {
+      timeout = null;
+      if (!immediate) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+    }
+  };
+
+  var debounced = function(){
+    context = this;
+    args = arguments;
+    timestamp = Date.now();
+    var callNow = immediate && !timeout;
+    if (!timeout) timeout = setTimeout(later, wait);
+    if (callNow) {
+      result = func.apply(context, args);
+      context = args = null;
+    }
+
+    return result;
+  };
+
+  debounced.clear = function() {
+    if (timeout) {
+      clearTimeout(timeout);
+      timeout = null;
+    }
+  };
+  
+  debounced.flush = function() {
+    if (timeout) {
+      result = func.apply(context, args);
+      context = args = null;
+      
+      clearTimeout(timeout);
+      timeout = null;
+    }
+  };
+
+  return debounced;
+};
+
+// Adds compatibility for ES modules
+debounce.debounce = debounce;
+
+module.exports = debounce;
+
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/query/isWindow.js":
+/*!****************************************************!*\
+  !*** ./node_modules/dom-helpers/query/isWindow.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = getWindow;
+
+function getWindow(node) {
+  return node === node.window ? node : node.nodeType === 9 ? node.defaultView || node.parentWindow : false;
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/style/getComputedStyle.js":
+/*!************************************************************!*\
+  !*** ./node_modules/dom-helpers/style/getComputedStyle.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = _getComputedStyle;
+
+var _camelizeStyle = _interopRequireDefault(__webpack_require__(/*! ../util/camelizeStyle */ "./node_modules/dom-helpers/util/camelizeStyle.js"));
+
+var rposition = /^(top|right|bottom|left)$/;
+var rnumnonpx = /^([+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|))(?!px)[a-z%]+$/i;
+
+function _getComputedStyle(node) {
+  if (!node) throw new TypeError('No Element passed to `getComputedStyle()`');
+  var doc = node.ownerDocument;
+  return 'defaultView' in doc ? doc.defaultView.opener ? node.ownerDocument.defaultView.getComputedStyle(node, null) : window.getComputedStyle(node, null) : {
+    //ie 8 "magic" from: https://github.com/jquery/jquery/blob/1.11-stable/src/css/curCSS.js#L72
+    getPropertyValue: function getPropertyValue(prop) {
+      var style = node.style;
+      prop = (0, _camelizeStyle.default)(prop);
+      if (prop == 'float') prop = 'styleFloat';
+      var current = node.currentStyle[prop] || null;
+      if (current == null && style && style[prop]) current = style[prop];
+
+      if (rnumnonpx.test(current) && !rposition.test(prop)) {
+        // Remember the original values
+        var left = style.left;
+        var runStyle = node.runtimeStyle;
+        var rsLeft = runStyle && runStyle.left; // Put in the new values to get a computed value out
+
+        if (rsLeft) runStyle.left = node.currentStyle.left;
+        style.left = prop === 'fontSize' ? '1em' : current;
+        current = style.pixelLeft + 'px'; // Revert the changed values
+
+        style.left = left;
+        if (rsLeft) runStyle.left = rsLeft;
+      }
+
+      return current;
+    }
+  };
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/style/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/dom-helpers/style/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = style;
+
+var _camelizeStyle = _interopRequireDefault(__webpack_require__(/*! ../util/camelizeStyle */ "./node_modules/dom-helpers/util/camelizeStyle.js"));
+
+var _hyphenateStyle = _interopRequireDefault(__webpack_require__(/*! ../util/hyphenateStyle */ "./node_modules/dom-helpers/util/hyphenateStyle.js"));
+
+var _getComputedStyle2 = _interopRequireDefault(__webpack_require__(/*! ./getComputedStyle */ "./node_modules/dom-helpers/style/getComputedStyle.js"));
+
+var _removeStyle = _interopRequireDefault(__webpack_require__(/*! ./removeStyle */ "./node_modules/dom-helpers/style/removeStyle.js"));
+
+var _properties = __webpack_require__(/*! ../transition/properties */ "./node_modules/dom-helpers/transition/properties.js");
+
+var _isTransform = _interopRequireDefault(__webpack_require__(/*! ../transition/isTransform */ "./node_modules/dom-helpers/transition/isTransform.js"));
+
+function style(node, property, value) {
+  var css = '';
+  var transforms = '';
+  var props = property;
+
+  if (typeof property === 'string') {
+    if (value === undefined) {
+      return node.style[(0, _camelizeStyle.default)(property)] || (0, _getComputedStyle2.default)(node).getPropertyValue((0, _hyphenateStyle.default)(property));
+    } else {
+      (props = {})[property] = value;
+    }
+  }
+
+  Object.keys(props).forEach(function (key) {
+    var value = props[key];
+
+    if (!value && value !== 0) {
+      (0, _removeStyle.default)(node, (0, _hyphenateStyle.default)(key));
+    } else if ((0, _isTransform.default)(key)) {
+      transforms += key + "(" + value + ") ";
+    } else {
+      css += (0, _hyphenateStyle.default)(key) + ": " + value + ";";
+    }
+  });
+
+  if (transforms) {
+    css += _properties.transform + ": " + transforms + ";";
+  }
+
+  node.style.cssText += ';' + css;
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/style/removeStyle.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/dom-helpers/style/removeStyle.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = removeStyle;
+
+function removeStyle(node, key) {
+  return 'removeProperty' in node.style ? node.style.removeProperty(key) : node.style.removeAttribute(key);
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/transition/isTransform.js":
+/*!************************************************************!*\
+  !*** ./node_modules/dom-helpers/transition/isTransform.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = isTransform;
+var supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
+
+function isTransform(property) {
+  return !!(property && supportedTransforms.test(property));
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/transition/properties.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/dom-helpers/transition/properties.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = void 0;
+
+var _inDOM = _interopRequireDefault(__webpack_require__(/*! ../util/inDOM */ "./node_modules/dom-helpers/util/inDOM.js"));
+
+var transform = 'transform';
+exports.transform = transform;
+var prefix, transitionEnd, animationEnd;
+exports.animationEnd = animationEnd;
+exports.transitionEnd = transitionEnd;
+var transitionProperty, transitionDuration, transitionTiming, transitionDelay;
+exports.transitionDelay = transitionDelay;
+exports.transitionTiming = transitionTiming;
+exports.transitionDuration = transitionDuration;
+exports.transitionProperty = transitionProperty;
+var animationName, animationDuration, animationTiming, animationDelay;
+exports.animationDelay = animationDelay;
+exports.animationTiming = animationTiming;
+exports.animationDuration = animationDuration;
+exports.animationName = animationName;
+
+if (_inDOM.default) {
+  var _getTransitionPropert = getTransitionProperties();
+
+  prefix = _getTransitionPropert.prefix;
+  exports.transitionEnd = transitionEnd = _getTransitionPropert.transitionEnd;
+  exports.animationEnd = animationEnd = _getTransitionPropert.animationEnd;
+  exports.transform = transform = prefix + "-" + transform;
+  exports.transitionProperty = transitionProperty = prefix + "-transition-property";
+  exports.transitionDuration = transitionDuration = prefix + "-transition-duration";
+  exports.transitionDelay = transitionDelay = prefix + "-transition-delay";
+  exports.transitionTiming = transitionTiming = prefix + "-transition-timing-function";
+  exports.animationName = animationName = prefix + "-animation-name";
+  exports.animationDuration = animationDuration = prefix + "-animation-duration";
+  exports.animationTiming = animationTiming = prefix + "-animation-delay";
+  exports.animationDelay = animationDelay = prefix + "-animation-timing-function";
+}
+
+var _default = {
+  transform: transform,
+  end: transitionEnd,
+  property: transitionProperty,
+  timing: transitionTiming,
+  delay: transitionDelay,
+  duration: transitionDuration
+};
+exports.default = _default;
+
+function getTransitionProperties() {
+  var style = document.createElement('div').style;
+  var vendorMap = {
+    O: function O(e) {
+      return "o" + e.toLowerCase();
+    },
+    Moz: function Moz(e) {
+      return e.toLowerCase();
+    },
+    Webkit: function Webkit(e) {
+      return "webkit" + e;
+    },
+    ms: function ms(e) {
+      return "MS" + e;
+    }
+  };
+  var vendors = Object.keys(vendorMap);
+  var transitionEnd, animationEnd;
+  var prefix = '';
+
+  for (var i = 0; i < vendors.length; i++) {
+    var vendor = vendors[i];
+
+    if (vendor + "TransitionProperty" in style) {
+      prefix = "-" + vendor.toLowerCase();
+      transitionEnd = vendorMap[vendor]('TransitionEnd');
+      animationEnd = vendorMap[vendor]('AnimationEnd');
+      break;
+    }
+  }
+
+  if (!transitionEnd && 'transitionProperty' in style) transitionEnd = 'transitionend';
+  if (!animationEnd && 'animationName' in style) animationEnd = 'animationend';
+  style = null;
+  return {
+    animationEnd: animationEnd,
+    transitionEnd: transitionEnd,
+    prefix: prefix
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/util/camelize.js":
+/*!***************************************************!*\
+  !*** ./node_modules/dom-helpers/util/camelize.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = camelize;
+var rHyphen = /-(.)/g;
+
+function camelize(string) {
+  return string.replace(rHyphen, function (_, chr) {
+    return chr.toUpperCase();
+  });
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/util/camelizeStyle.js":
+/*!********************************************************!*\
+  !*** ./node_modules/dom-helpers/util/camelizeStyle.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = camelizeStyleName;
+
+var _camelize = _interopRequireDefault(__webpack_require__(/*! ./camelize */ "./node_modules/dom-helpers/util/camelize.js"));
+
+/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/camelizeStyleName.js
+ */
+var msPattern = /^-ms-/;
+
+function camelizeStyleName(string) {
+  return (0, _camelize.default)(string.replace(msPattern, 'ms-'));
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/util/hyphenate.js":
+/*!****************************************************!*\
+  !*** ./node_modules/dom-helpers/util/hyphenate.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = hyphenate;
+var rUpper = /([A-Z])/g;
+
+function hyphenate(string) {
+  return string.replace(rUpper, '-$1').toLowerCase();
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/util/hyphenateStyle.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/dom-helpers/util/hyphenateStyle.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = hyphenateStyleName;
+
+var _hyphenate = _interopRequireDefault(__webpack_require__(/*! ./hyphenate */ "./node_modules/dom-helpers/util/hyphenate.js"));
+
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/hyphenateStyleName.js
+ */
+var msPattern = /^ms-/;
+
+function hyphenateStyleName(string) {
+  return (0, _hyphenate.default)(string).replace(msPattern, '-ms-');
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/util/inDOM.js":
+/*!************************************************!*\
+  !*** ./node_modules/dom-helpers/util/inDOM.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _default = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+exports.default = _default;
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/dom-helpers/util/scrollbarSize.js":
+/*!********************************************************!*\
+  !*** ./node_modules/dom-helpers/util/scrollbarSize.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.default = scrollbarSize;
+
+var _inDOM = _interopRequireDefault(__webpack_require__(/*! ./inDOM */ "./node_modules/dom-helpers/util/inDOM.js"));
+
+var size;
+
+function scrollbarSize(recalc) {
+  if (!size && size !== 0 || recalc) {
+    if (_inDOM.default) {
+      var scrollDiv = document.createElement('div');
+      scrollDiv.style.position = 'absolute';
+      scrollDiv.style.top = '-9999px';
+      scrollDiv.style.width = '50px';
+      scrollDiv.style.height = '50px';
+      scrollDiv.style.overflow = 'scroll';
+      document.body.appendChild(scrollDiv);
+      size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+      document.body.removeChild(scrollDiv);
+    }
+  }
+
+  return size;
+}
+
+module.exports = exports["default"];
 
 /***/ }),
 
@@ -13682,6 +20104,264 @@ if (true) {
 
 /***/ }),
 
+/***/ "./node_modules/react-event-listener/dist/react-event-listener.cjs.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/react-event-listener/dist/react-event-listener.cjs.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var _classCallCheck = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js"));
+var _possibleConstructorReturn = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+var _getPrototypeOf = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _inherits = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js"));
+var _typeof = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js"));
+var _objectWithoutProperties = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js"));
+var _extends = _interopDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+var React = _interopDefault(__webpack_require__(/*! react */ "react"));
+var PropTypes = _interopDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+var warning = _interopDefault(__webpack_require__(/*! warning */ "./node_modules/react-event-listener/node_modules/warning/warning.js"));
+
+function defineProperty(object, property, attr) {
+  return Object.defineProperty(object, property, attr);
+} // Passive options
+// Inspired by https://github.com/Modernizr/Modernizr/blob/master/feature-detects/dom/passiveeventlisteners.js
+
+
+var passiveOption = function () {
+  var cache = null;
+  return function () {
+    if (cache !== null) {
+      return cache;
+    }
+
+    var supportsPassiveOption = false;
+
+    try {
+      window.addEventListener('test', null, defineProperty({}, 'passive', {
+        get: function get() {
+          supportsPassiveOption = true;
+        }
+      }));
+    } catch (err) {//
+    }
+
+    cache = supportsPassiveOption;
+    return supportsPassiveOption;
+  }();
+}();
+
+var defaultEventOptions = {
+  capture: false,
+  passive: false
+};
+
+function mergeDefaultEventOptions(options) {
+  return _extends({}, defaultEventOptions, options);
+}
+
+function getEventListenerArgs(eventName, callback, options) {
+  var args = [eventName, callback];
+  args.push(passiveOption ? options : options.capture);
+  return args;
+}
+
+function on(target, eventName, callback, options) {
+  // eslint-disable-next-line prefer-spread
+  target.addEventListener.apply(target, getEventListenerArgs(eventName, callback, options));
+}
+
+function off(target, eventName, callback, options) {
+  // eslint-disable-next-line prefer-spread
+  target.removeEventListener.apply(target, getEventListenerArgs(eventName, callback, options));
+}
+
+function forEachListener(props, iteratee) {
+  var children = props.children,
+      target = props.target,
+      eventProps = _objectWithoutProperties(props, ["children", "target"]);
+
+  Object.keys(eventProps).forEach(function (name) {
+    if (name.substring(0, 2) !== 'on') {
+      return;
+    }
+
+    var prop = eventProps[name];
+
+    var type = _typeof(prop);
+
+    var isObject = type === 'object';
+    var isFunction = type === 'function';
+
+    if (!isObject && !isFunction) {
+      return;
+    }
+
+    var capture = name.substr(-7).toLowerCase() === 'capture';
+    var eventName = name.substring(2).toLowerCase();
+    eventName = capture ? eventName.substring(0, eventName.length - 7) : eventName;
+
+    if (isObject) {
+      iteratee(eventName, prop.handler, prop.options);
+    } else {
+      iteratee(eventName, prop, mergeDefaultEventOptions({
+        capture: capture
+      }));
+    }
+  });
+}
+
+function withOptions(handler, options) {
+   false ? undefined : void 0;
+  return {
+    handler: handler,
+    options: mergeDefaultEventOptions(options)
+  };
+}
+
+var EventListener =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(EventListener, _React$PureComponent);
+
+  function EventListener() {
+    _classCallCheck(this, EventListener);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EventListener).apply(this, arguments));
+  }
+
+  _createClass(EventListener, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.applyListeners(on);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      this.applyListeners(off, prevProps);
+      this.applyListeners(on);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.applyListeners(off);
+    }
+  }, {
+    key: "applyListeners",
+    value: function applyListeners(onOrOff) {
+      var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.props;
+      var target = props.target;
+
+      if (target) {
+        var element = target;
+
+        if (typeof target === 'string') {
+          element = window[target];
+        }
+
+        forEachListener(props, onOrOff.bind(null, element));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.props.children || null;
+    }
+  }]);
+
+  return EventListener;
+}(React.PureComponent);
+
+EventListener.propTypes =  false ? undefined : {};
+
+exports.withOptions = withOptions;
+exports.default = EventListener;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-event-listener/node_modules/warning/warning.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-event-listener/node_modules/warning/warning.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = "production" !== 'production';
+
+var warning = function() {};
+
+if (__DEV__) {
+  var printWarning = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+    var argIndex = 0;
+    var message = 'Warning: ' +
+      format.replace(/%s/g, function() {
+        return args[argIndex++];
+      });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  }
+
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+          '`warning(condition, format, ...args)` requires a warning ' +
+          'message argument'
+      );
+    }
+    if (!condition) {
+      printWarning.apply(null, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
+
+
+/***/ }),
+
 /***/ "./node_modules/react-hot-loader/root.js":
 /*!***********************************************!*\
   !*** ./node_modules/react-hot-loader/root.js ***!
@@ -16954,6 +23634,17 @@ var SWITCH_PAGES = 'SWITCH_PAGES';
 
 /***/ }),
 
+/***/ "./src/dummyData.json":
+/*!****************************!*\
+  !*** ./src/dummyData.json ***!
+  \****************************/
+/*! exports provided: Allerton, Arden Heights, Arrochar, Arverne, Astoria, Bath Beach, Battery Park City, Bay Ridge, Bay Terrace, Bay Terrace, Staten Island, Baychester, Bayside, Bayswater, Bedford-Stuyvesant, Belle Harbor, Bellerose, Belmont, Bensonhurst, Bergen Beach, Boerum Hill, Borough Park, Breezy Point, Briarwood, Brighton Beach, Bronxdale, Brooklyn Heights, Brownsville, Bulls Head, Bushwick, Cambria Heights, Canarsie, Carroll Gardens, Castle Hill, Castleton Corners, Chelsea, Chinatown, City Island, Civic Center, Claremont Village, Clason Point, Clifton, Clinton Hill, Co-op City, Cobble Hill, College Point, Columbia St, Concord, Concourse, Concourse Village, Coney Island, Corona, Crown Heights, Cypress Hills, DUMBO, Ditmars Steinway, Dongan Hills, Douglaston, Downtown Brooklyn, Dyker Heights, East Elmhurst, East Flatbush, East Harlem, East Morrisania, East New York, East Village, Eastchester, Edenwald, Edgemere, Elmhurst, Eltingville, Emerson Hill, Far Rockaway, Fieldston, Financial District, Flatbush, Flatiron District, Flatlands, Flushing, Fordham, Forest Hills, Fort Greene, Fort Hamilton, Fort Wadsworth, Fresh Meadows, Gerritsen Beach, Glen Oaks, Glendale, Gowanus, Gramercy, Graniteville, Grant City, Gravesend, Great Kills, Greenpoint, Greenwich Village, Grymes Hill, Harlem, Hell's Kitchen, Highbridge, Hollis, Hollis Hills, Holliswood, Howard Beach, Howland Hook, Huguenot, Hunts Point, Inwood, Jackson Heights, Jamaica, Jamaica Estates, Jamaica Hills, Kensington, Kew Gardens, Kew Gardens Hills, Kingsbridge, Kips Bay, Laurelton, Lighthouse Hill, Little Italy, Little Neck, Long Island City, Longwood, Lower East Side, Manhattan Beach, Marble Hill, Mariners Harbor, Maspeth, Melrose, Middle Village, Midland Beach, Midtown, Midwood, Mill Basin, Morningside Heights, Morris Heights, Morris Park, Morrisania, Mott Haven, Mount Eden, Mount Hope, Murray Hill, Navy Yard, Neponsit, New Brighton, New Dorp, New Dorp Beach, New Springville, NoHo, Nolita, North Riverdale, Norwood, Oakwood, Olinville, Ozone Park, Park Slope, Parkchester, Pelham Bay, Pelham Gardens, Pleasant Plains, Port Ivory, Port Morris, Port Richmond, Prince's Bay, Prospect Heights, Prospect-Lefferts Gardens, Queens Village, Randall Manor, Red Hook, Rego Park, Richmond Hill, Richmondtown, Ridgewood, Riverdale, Rockaway Beach, Roosevelt Island, Rosebank, Rosedale, Rossville, Schuylerville, Sea Gate, Sheepshead Bay, Shore Acres, Silver Lake, SoHo, Soundview, South Beach, South Ozone Park, South Slope, Springfield Gardens, Spuyten Duyvil, St. Albans, St. George, Stapleton, Stuyvesant Town, Sunnyside, Sunset Park, Theater District, Throgs Neck, Todt Hill, Tompkinsville, Tottenville, Tremont, Tribeca, Two Bridges, Unionport, University Heights, Upper East Side, Upper West Side, Van Nest, Vinegar Hill, Wakefield, Washington Heights, West Brighton, West Farms, West Village, Westchester Square, Westerleigh, Whitestone, Williamsbridge, Williamsburg, Willowbrook, Windsor Terrace, Woodhaven, Woodlawn, Woodrow, Woodside, default */
+/***/ (function(module) {
+
+module.exports = {"Allerton":{"accommodates":24.0072792314604,"beds":6.948543002677163,"bedrooms":-15.609002960082606,"bathrooms":3.157373644030746,"bed_type":1.9124920439305733,"property_type":4.062662195019886,"intercepts":71.57799566667437},"Arden Heights":{"accommodates":18.552455754331397,"beds":-2.202335228154886,"bedrooms":17.355021736252073,"bathrooms":-2.6716408956450683,"bed_type":0,"property_type":15.884267564659606,"intercepts":45.373394852012524},"Arrochar":{"accommodates":63.32656404476099,"beds":-39.35209128340445,"bedrooms":21.72859215581424,"bathrooms":43.25864213057241,"bed_type":0,"property_type":-1.473297759522031,"intercepts":101.41117476575633},"Arverne":{"accommodates":45.12538474293888,"beds":0.2216978970922171,"bedrooms":17.990793889910666,"bathrooms":2.2024466731401167,"bed_type":5.12941039709271,"property_type":9.288209499223461,"intercepts":84.77969209646898},"Astoria":{"accommodates":11.806795613199895,"beds":9.688542058230112,"bedrooms":32.40891208337638,"bathrooms":3.070078456134567,"bed_type":0.08831746829193952,"property_type":-2.0016505467276753,"intercepts":116.05436777022204},"Bath Beach":{"accommodates":40.433721530122405,"beds":-7.742653521990053,"bedrooms":5.835907010174852,"bathrooms":11.472919109310329,"bed_type":-5.883027816940779e-32,"property_type":-1.9214605765038735,"intercepts":97.97520761003263},"Battery Park City":{"accommodates":82.59225279668803,"beds":-1.9763386157895464,"bedrooms":-30.554592575081696,"bathrooms":74.91957305908348,"bed_type":-6.835440568367492,"property_type":8.903810273455964,"intercepts":223.4937744601566},"Bay Ridge":{"accommodates":27.716399869531166,"beds":0.653567372378308,"bedrooms":15.832924431805129,"bathrooms":-8.815693885403523,"bed_type":3.086792345428,"property_type":-2.138783389697555,"intercepts":86.08890817577544},"Bay Terrace":{"accommodates":17.42977610826008,"beds":-42.80507163412875,"bedrooms":34.24214620729847,"bathrooms":8.050367922041815,"bed_type":0,"property_type":-0.20398872145198862,"intercepts":95.70158280122162},"Bay Terrace, Staten Island":{"accommodates":3.786606154194114,"beds":5.2955004317797565,"bedrooms":5.842940107824972,"bathrooms":5.100367086655194,"bed_type":0,"property_type":1.3219146294466508,"intercepts":90.96462129099656},"Baychester":{"accommodates":27.109421254616816,"beds":-10.488470691409699,"bedrooms":0.7113163370136351,"bathrooms":3.4869748796178275,"bed_type":3.5114944240222835e-32,"property_type":-11.91037724569201,"intercepts":77.00950526442776},"Bayside":{"accommodates":-17.188455193722646,"beds":-10.182206941598515,"bedrooms":83.74240638674229,"bathrooms":88.09042498414486,"bed_type":-8.80297484057131,"property_type":17.90410710560795,"intercepts":27.001969073667468},"Bayswater":{"accommodates":1.1878522943397678,"beds":4.169535352920064,"bedrooms":16.45155628052537,"bathrooms":-7.776791136409813,"bed_type":2.9240834513805116,"property_type":4.239650669429986,"intercepts":73.21776196724261},"Bedford-Stuyvesant":{"accommodates":40.12902388808839,"beds":-0.4601757068229876,"bedrooms":12.708114813712776,"bathrooms":2.8611873601301823,"bed_type":-0.18806901570548964,"property_type":4.5001822252493895,"intercepts":97.462173105267},"Belle Harbor":{"accommodates":-0.14225324060786673,"beds":-15.433776884139553,"bedrooms":33.78847517546357,"bathrooms":39.11808418008043,"bed_type":2.960810037729855e-31,"property_type":1.315199089948195,"intercepts":149.76161076798473},"Bellerose":{"accommodates":-55.53213529176921,"beds":43.33134566601097,"bedrooms":-7.831497330131611,"bathrooms":-37.05923354646547,"bed_type":-2.624315078616057e-31,"property_type":-10.400800937715218,"intercepts":131.89323910457654},"Belmont":{"accommodates":11.655871556142552,"beds":24.66912065286299,"bedrooms":14.409379301637731,"bathrooms":-1.8755592786475401,"bed_type":-0.9281911305217397,"property_type":0.9836877009436069,"intercepts":79.76360788419302},"Bensonhurst":{"accommodates":9.994470358200239,"beds":1.5286064585399737,"bedrooms":5.71760787591157,"bathrooms":-0.21526997028458553,"bed_type":-6.906128220938555,"property_type":-4.598278727608185,"intercepts":80.33782054190945},"Bergen Beach":{"accommodates":14.509486021139978,"beds":11.058708790570948,"bedrooms":12.605838717778639,"bathrooms":-5.498374203954022,"bed_type":-5.831086715600356,"property_type":2.024556288107629,"intercepts":94.29131739828604},"Boerum Hill":{"accommodates":18.915335028181175,"beds":-19.952270264374526,"bedrooms":52.73030026417413,"bathrooms":35.692319769290734,"bed_type":-10.823893065185015,"property_type":-14.64644399604786,"intercepts":158.6538331086711},"Borough Park":{"accommodates":11.742137940553748,"beds":11.785172370228738,"bedrooms":-25.10124041139214,"bathrooms":65.28229504946184,"bed_type":124.28951190410586,"property_type":46.95615310912972,"intercepts":60.58922019172574},"Breezy Point":{"accommodates":0,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":0,"intercepts":100},"Briarwood":{"accommodates":10.917043850548993,"beds":-26.94485116827806,"bedrooms":81.51151846452237,"bathrooms":54.96450993471763,"bed_type":7.289568257305834,"property_type":-23.5800468459619,"intercepts":133.24245404449357},"Brighton Beach":{"accommodates":-29.772996111364133,"beds":18.272965496644424,"bedrooms":-61.248814908431854,"bathrooms":126.72596189375697,"bed_type":-18.364784191438332,"property_type":15.289464060715318,"intercepts":162.70468888667634},"Bronxdale":{"accommodates":60.71512221455478,"beds":-47.78472093107409,"bedrooms":61.88248996973161,"bathrooms":0.5516733657745464,"bed_type":0,"property_type":-3.1229086180095327,"intercepts":69.76187173612176},"Brooklyn Heights":{"accommodates":10.757251961180163,"beds":3.093070357572056,"bedrooms":14.42869424509551,"bathrooms":44.50029086420633,"bed_type":-2.8379946248143817,"property_type":10.549581219804937,"intercepts":188.5465557081058},"Brownsville":{"accommodates":-10.184891847898005,"beds":34.014087923203576,"bedrooms":36.887840926641786,"bathrooms":15.681646209102759,"bed_type":-0.21402552130390884,"property_type":-8.219295181828643,"intercepts":87.420729430216},"Bulls Head":{"accommodates":12.851843398780089,"beds":-9.560710017462084,"bedrooms":4.147273735927175,"bathrooms":-23.138481308408913,"bed_type":0,"property_type":-17.991115007070537,"intercepts":78.03548768389963},"Bushwick":{"accommodates":38.16190460603647,"beds":-4.837301106391505,"bedrooms":20.584182847155766,"bathrooms":-0.2141519964744081,"bed_type":-0.04400947074532591,"property_type":6.343666114169307,"intercepts":89.5106430667601},"Cambria Heights":{"accommodates":26.44072889537057,"beds":-17.555299358281438,"bedrooms":13.444861072772888,"bathrooms":28.569055083899944,"bed_type":-13.395467920197593,"property_type":-20.217792104919834,"intercepts":92.57884382986929},"Canarsie":{"accommodates":16.90883909081739,"beds":1.1950266267487277,"bedrooms":15.027403153023213,"bathrooms":7.438147905719467,"bed_type":0,"property_type":5.656237870172133,"intercepts":98.47443340487533},"Carroll Gardens":{"accommodates":49.89424975442544,"beds":-12.465949804624175,"bedrooms":28.65157911224126,"bathrooms":33.577378340238596,"bed_type":-6.185651008983731,"property_type":1.9483273065448024,"intercepts":145.82742431686},"Castle Hill":{"accommodates":15.525671353104455,"beds":-43.36110122871652,"bedrooms":-29.218904123894582,"bathrooms":48.795353904554446,"bed_type":0,"property_type":-0.07513046425008751,"intercepts":38.90260899239482},"Castleton Corners":{"accommodates":-84.32382964709736,"beds":197.22549330500897,"bedrooms":-4.759332841588263,"bathrooms":539.7731439992059,"bed_type":-4.3386732450610286e-14,"property_type":-57.074109341980794,"intercepts":277.0628839945573},"Chelsea":{"accommodates":130.0253885323686,"beds":-40.57410677555556,"bedrooms":-5.080067358539624,"bathrooms":59.52660303893317,"bed_type":-6.97099035703599,"property_type":20.074285893473135,"intercepts":227.00777951351205},"Chinatown":{"accommodates":59.889359943103024,"beds":20.583833574745636,"bedrooms":6.1077106900553755,"bathrooms":19.09529401895012,"bed_type":-2.8190784317528848,"property_type":17.8707384058141,"intercepts":170.16190313695407},"City Island":{"accommodates":40.7306284176073,"beds":-9.183072444275323,"bedrooms":-28.152346451255138,"bathrooms":43.07001666536255,"bed_type":0,"property_type":-19.67442832594282,"intercepts":107.34071926645757},"Civic Center":{"accommodates":48.32007227405813,"beds":-5.339587217199579,"bedrooms":-6.360993386091401,"bathrooms":46.591406470564266,"bed_type":-37.61821010770613,"property_type":-7.3589177493158875,"intercepts":180.20054571822166},"Claremont Village":{"accommodates":-3.541930288631991,"beds":17.784788239844886,"bedrooms":0.20372493959756535,"bathrooms":-7.596474892644838,"bed_type":0,"property_type":-1.4962390763535347,"intercepts":60.540895135717584},"Clason Point":{"accommodates":28.853805232682703,"beds":-20.42503321934242,"bedrooms":53.458447494374404,"bathrooms":10.224343392698623,"bed_type":-3.0199498050258113,"property_type":33.15896389230033,"intercepts":63.962485607850546},"Clifton":{"accommodates":15.765792764020976,"beds":7.206722358022179,"bedrooms":0.9351236589246854,"bathrooms":-2.4309073359630435,"bed_type":31.09630880349207,"property_type":-0.425040869639876,"intercepts":80.9291283942394},"Clinton Hill":{"accommodates":116.96590095657791,"beds":-35.99722475387288,"bedrooms":3.8301016337419878,"bathrooms":124.8250794981699,"bed_type":4.273955717653915,"property_type":-22.73497760068906,"intercepts":134.96908102418587},"Co-op City":{"accommodates":-20.733411254461732,"beds":24.3187052311415,"bedrooms":-1.4210854715202004e-14,"bathrooms":47.35704428053333,"bed_type":-22.612627720137166,"property_type":0,"intercepts":106.11452214285995},"Cobble Hill":{"accommodates":20.101573652713057,"beds":64.50805800313081,"bedrooms":1.0395874470088649,"bathrooms":26.746582029160066,"bed_type":-9.884639267474878,"property_type":4.354595299647711,"intercepts":173.35603685398976},"College Point":{"accommodates":189.2734026922907,"beds":446.7364318428821,"bedrooms":-492.6551717002696,"bathrooms":40.53273839869568,"bed_type":0,"property_type":41.78382219186261,"intercepts":262.70684011592783},"Columbia St":{"accommodates":-59.81234477423754,"beds":41.85919072818892,"bedrooms":-0.6949531112537365,"bathrooms":51.91141119765541,"bed_type":-3.019730317117811e-30,"property_type":128.03450777830076,"intercepts":200.56851755823612},"Concord":{"accommodates":44.45343013726101,"beds":17.283579430013404,"bedrooms":-27.487615121120115,"bathrooms":4.327889834303045,"bed_type":-0.8339769560377189,"property_type":-0.6467969386161229,"intercepts":77.38654674639722},"Concourse":{"accommodates":47.199036863164096,"beds":-17.55019577774285,"bedrooms":-2.84433162334124,"bathrooms":21.83483495289279,"bed_type":-1.6875801986019965,"property_type":3.063348504014382,"intercepts":85.43020976950766},"Concourse Village":{"accommodates":9.484007493274131,"beds":-8.67750579051749,"bedrooms":-1.3149657826803558,"bathrooms":-2.058568530185102,"bed_type":-2.1324611385834142,"property_type":-2.839901940535067,"intercepts":79.22520437061247},"Coney Island":{"accommodates":32.92547438274182,"beds":19.68151593785181,"bedrooms":-18.870993845874676,"bathrooms":-16.579720155699906,"bed_type":-3.1480574105684336,"property_type":-5.337508308300866,"intercepts":88.78949751655361},"Corona":{"accommodates":27.057670627791413,"beds":-3.09885952841962,"bedrooms":24.842403939617952,"bathrooms":-0.7480686007484006,"bed_type":-1.2546163820063885,"property_type":-2.5020410353311413,"intercepts":75.19069147029265},"Crown Heights":{"accommodates":34.60673180461847,"beds":-2.3535774375913343,"bedrooms":18.592405437394827,"bathrooms":2.185228079214475,"bed_type":-0.8907148826236176,"property_type":2.3959996012756197,"intercepts":99.10601648779252},"Cypress Hills":{"accommodates":11.565891272376605,"beds":24.30377787613184,"bedrooms":13.340961598521051,"bathrooms":4.176515707103594,"bed_type":1.1746513969174384,"property_type":-1.2225502527701297,"intercepts":69.27593897466073},"DUMBO":{"accommodates":14.780386135400194,"beds":26.174158277442594,"bedrooms":-12.314343889425322,"bathrooms":15.451797592866567,"bed_type":21.402847761619178,"property_type":-1.2169457367949998,"intercepts":184.31787232235854},"Ditmars Steinway":{"accommodates":23.85365893487791,"beds":0.4254412136011587,"bedrooms":3.6045634216605036,"bathrooms":5.185829821691234,"bed_type":-1.6820037767817533,"property_type":4.834499070252805,"intercepts":96.78934330280183},"Dongan Hills":{"accommodates":16.01682687117303,"beds":-0.9118199758992084,"bedrooms":19.787444508221494,"bathrooms":0,"bed_type":0,"property_type":4.665540012456278,"intercepts":71.2439760263605},"Douglaston":{"accommodates":27.540355231767382,"beds":49.08089136509615,"bedrooms":-0.3433492257996878,"bathrooms":-56.49234194858351,"bed_type":7.990641439829901e-30,"property_type":25.226897428537104,"intercepts":87.98555234980604},"Downtown Brooklyn":{"accommodates":50.114057309804565,"beds":-14.367748869215772,"bedrooms":10.777818174640245,"bathrooms":16.471228978527062,"bed_type":1.4638370706526522,"property_type":2.0772360374107373,"intercepts":142.89723846367048},"Dyker Heights":{"accommodates":10.14524126931319,"beds":14.538333094040418,"bedrooms":9.46230931454613,"bathrooms":33.30608932385416,"bed_type":1.8236484015122585,"property_type":-8.578387483147093,"intercepts":96.91801497805791},"East Elmhurst":{"accommodates":17.829123034057677,"beds":-4.153314823046326,"bedrooms":29.788171771975573,"bathrooms":-2.631461149235401,"bed_type":45.26209393830851,"property_type":6.597913968580567,"intercepts":73.96665067377936},"East Flatbush":{"accommodates":38.96990207352298,"beds":-16.81858845314326,"bedrooms":19.245360520064615,"bathrooms":-2.5506592844781624,"bed_type":-0.0018717031629348498,"property_type":8.255709181735718,"intercepts":82.58456719933955},"East Harlem":{"accommodates":52.035874592300246,"beds":-19.772530879841902,"bedrooms":41.81115000847675,"bathrooms":3.243881362943077,"bed_type":-3.0629738368726533,"property_type":-2.7303833446950487,"intercepts":131.13868747787922},"East Morrisania":{"accommodates":5.4121254835327655,"beds":-31.046746009177767,"bedrooms":109.35392933972597,"bathrooms":-10.9231526041429,"bed_type":3.659639088314729e-30,"property_type":-19.15449134153543,"intercepts":58.65982778492384},"East New York":{"accommodates":13.308514921553256,"beds":-19.688305068114325,"bedrooms":18.30457655184716,"bathrooms":1.144357259102841,"bed_type":-8.559315181094624,"property_type":-7.068349229232251,"intercepts":114.57397828505725},"East Village":{"accommodates":51.10943437018776,"beds":17.360724276250018,"bedrooms":25.972441411252564,"bathrooms":39.58341284946408,"bed_type":4.4966558250510005,"property_type":10.43396681157365,"intercepts":191.1081225765196},"Eastchester":{"accommodates":51.08046400810811,"beds":-14.645068570188643,"bedrooms":-1.521673778045529,"bathrooms":21.823712710942914,"bed_type":2.5461448120505207e-30,"property_type":-1.902765766717343,"intercepts":94.59333114971146},"Edenwald":{"accommodates":2.150932260614146,"beds":2.841755701530067,"bedrooms":14.883693184461162,"bathrooms":-13.833649832261173,"bed_type":1.5046220942881501e-30,"property_type":1.3098454722709034,"intercepts":62.850110356277526},"Edgemere":{"accommodates":-3.971341208014698,"beds":26.322175591513542,"bedrooms":-23.94937242056465,"bathrooms":-5.6082987801258515,"bed_type":7.469631993407262e-32,"property_type":21.370442143204226,"intercepts":78.51732038031334},"Elmhurst":{"accommodates":33.706689960673444,"beds":-8.418959908328212,"bedrooms":16.012835589569438,"bathrooms":1.0308511585083755,"bed_type":2.9003518166371487,"property_type":0.20951855691496343,"intercepts":80.7204010159325},"Eltingville":{"accommodates":-13.151125018456131,"beds":-7.071502428628568,"bedrooms":0,"bathrooms":9.081233827302357,"bed_type":0,"property_type":2.044302287431771,"intercepts":57.1911090293905},"Emerson Hill":{"accommodates":-34.033391484698114,"beds":4.017326264635377,"bedrooms":19.036148027078287,"bathrooms":0,"bed_type":1.5938807703842926e-30,"property_type":-1.9741679902705758,"intercepts":86.85903489005679},"Far Rockaway":{"accommodates":11.438521220089006,"beds":23.790827507213734,"bedrooms":-8.86241783896388,"bathrooms":-2.6778919234756318,"bed_type":-6.392993929258558,"property_type":2.6568747332010867,"intercepts":77.3585430155713},"Fieldston":{"accommodates":-152.30976743145618,"beds":29.220556344339023,"bedrooms":-27.35384015120133,"bathrooms":174.59218727756834,"bed_type":6.496061331662563e-30,"property_type":-68.41538174872944,"intercepts":133.93557706503697},"Financial District":{"accommodates":68.67807382272275,"beds":0.7550107429129325,"bedrooms":-5.808837315456495,"bathrooms":48.12780568764023,"bed_type":0.45013881904522424,"property_type":16.612585548295275,"intercepts":198.0622140437119},"Flatbush":{"accommodates":32.39302463620759,"beds":-8.72312254733156,"bedrooms":24.407736996172154,"bathrooms":8.889467355125861,"bed_type":-2.2929400604640393,"property_type":0.760274199580647,"intercepts":94.73087769259061},"Flatiron District":{"accommodates":47.76415230657354,"beds":-45.404219371304116,"bedrooms":30.166305574834507,"bathrooms":158.56980671271552,"bed_type":-6.967938763533129,"property_type":35.8242573016136,"intercepts":280.31424832465245},"Flatlands":{"accommodates":107.36642683307544,"beds":-57.85386281804671,"bedrooms":-14.875020084345664,"bathrooms":28.786906599903066,"bed_type":-38.66293621920274,"property_type":19.12581231758339,"intercepts":87.62040154104069},"Flushing":{"accommodates":19.060998221377034,"beds":-2.5304746594230867,"bedrooms":33.85481683292607,"bathrooms":21.62566487861718,"bed_type":-0.12929640918201676,"property_type":0.7523275569113455,"intercepts":90.97824764792892},"Fordham":{"accommodates":18.91267068673794,"beds":18.34360336770906,"bedrooms":5.239919980221957,"bathrooms":-3.79591658409701,"bed_type":-2.2104769535767312,"property_type":0.9657151911464077,"intercepts":78.41750360073813},"Forest Hills":{"accommodates":16.468060089838872,"beds":-2.0323879871435904,"bedrooms":37.4183137033847,"bathrooms":8.975101831758886,"bed_type":-4.267684938607096,"property_type":3.688881597617816,"intercepts":117.18160218276567},"Fort Greene":{"accommodates":52.12586037712112,"beds":1.3185253017493632,"bedrooms":19.932871690568152,"bathrooms":17.68217812711236,"bed_type":-2.5753512192450434,"property_type":-3.7566598921956085,"intercepts":155.91102444555227},"Fort Hamilton":{"accommodates":30.762515335289827,"beds":-2.8232836499245995,"bedrooms":-3.7649706665294578,"bathrooms":-8.217077317374697,"bed_type":-1.4965834751601093,"property_type":-0.37824451055313585,"intercepts":93.76766054611086},"Fort Wadsworth":{"accommodates":1.279999969219574,"beds":60.221447656808046,"bedrooms":101.84562307073016,"bathrooms":204.4595242421234,"bed_type":0,"property_type":0,"intercepts":-687.0537952505597},"Fresh Meadows":{"accommodates":38.4522285666752,"beds":-12.984838389518966,"bedrooms":25.75087540343841,"bathrooms":17.989933096856443,"bed_type":0,"property_type":-9.337860953166794,"intercepts":108.63195806830588},"Gerritsen Beach":{"accommodates":4.5762791798373454,"beds":0.05015013448548726,"bedrooms":1.511473702836334,"bathrooms":39.5313067030218,"bed_type":0,"property_type":41.67232797756374,"intercepts":77.40162423370728},"Glen Oaks":{"accommodates":16.02995651691659,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":2.8634322274923747,"intercepts":73.63599843625542},"Glendale":{"accommodates":29.64936758185037,"beds":7.788889073859283,"bedrooms":2.3773080498971306,"bathrooms":-5.960917446776957,"bed_type":-6.506589510001177,"property_type":-2.0592751139575234,"intercepts":80.14682769990728},"Gowanus":{"accommodates":53.371923670017246,"beds":-19.795491147434745,"bedrooms":29.498404418088608,"bathrooms":25.03792756633191,"bed_type":-1.271677326440087,"property_type":7.963359512759107,"intercepts":138.88594954685036},"Gramercy":{"accommodates":64.35050071028427,"beds":-2.259173159788945,"bedrooms":30.310923719510857,"bathrooms":83.47646756433296,"bed_type":22.086941940214636,"property_type":1.1995701484422734,"intercepts":218.3817073422085},"Graniteville":{"accommodates":44.47177607810189,"beds":-107.94046904359581,"bedrooms":113.42853344151506,"bathrooms":19.963598979917624,"bed_type":0,"property_type":15.772101180241485,"intercepts":21.168087659325025},"Grant City":{"accommodates":-0.4262038694060207,"beds":-6.179708611031978,"bedrooms":-6.899222104744564,"bathrooms":0,"bed_type":0,"property_type":4.682667867765566,"intercepts":68.61129415519844},"Gravesend":{"accommodates":21.02244348500859,"beds":-13.964345321993944,"bedrooms":-13.32059742164828,"bathrooms":54.757236662367376,"bed_type":-2.816821659471355,"property_type":-12.759026914649603,"intercepts":87.27210383852518},"Great Kills":{"accommodates":18.463516778283985,"beds":1.8724537483866392,"bedrooms":4.504610412127601,"bathrooms":12.225793187120892,"bed_type":2.34467558509683e-31,"property_type":4.310032326714461,"intercepts":58.56369173945837},"Greenpoint":{"accommodates":50.626017895372186,"beds":22.830950282637144,"bedrooms":0.8965372491002384,"bathrooms":1.9657616668385278,"bed_type":-2.886651396620428,"property_type":0.13916899037010022,"intercepts":141.2237553660547},"Greenwich Village":{"accommodates":-7.929392452185069,"beds":109.02526730389958,"bedrooms":52.05319703298043,"bathrooms":139.9518969210374,"bed_type":15.781032622603728,"property_type":30.717604219869443,"intercepts":290.8895665173758},"Grymes Hill":{"accommodates":119.11932463645425,"beds":-71.09850101382885,"bedrooms":-59.22599029854856,"bathrooms":0,"bed_type":0,"property_type":-15.902988716338793,"intercepts":129.07660405146794},"Harlem":{"accommodates":63.42968680907808,"beds":-13.046282758279702,"bedrooms":12.785246754962,"bathrooms":44.94955641002227,"bed_type":-1.0074776389025488,"property_type":7.95876441437953,"intercepts":120.76093533518495},"Hell's Kitchen":{"accommodates":84.79191622410949,"beds":-12.308766341642768,"bedrooms":12.20966317286497,"bathrooms":44.90190716261857,"bed_type":-1.3640511852732646,"property_type":8.307676636050898,"intercepts":199.8824908224829},"Highbridge":{"accommodates":4.341366300596763,"beds":2.7922825202567463,"bedrooms":11.11233127964354,"bathrooms":-1.8324096529824987,"bed_type":-3.392728721951998,"property_type":-0.8657245466817279,"intercepts":64.17032870018704},"Hollis":{"accommodates":14.197783786628586,"beds":-16.212182147810488,"bedrooms":74.96674609418336,"bathrooms":12.695255806794309,"bed_type":-1.9980304352176999,"property_type":-29.236489302866048,"intercepts":89.95920494765649},"Hollis Hills":{"accommodates":201.43726329276407,"beds":-0.7698211445112472,"bedrooms":-58.56757114909524,"bathrooms":-51.12428105058547,"bed_type":0,"property_type":0,"intercepts":143.08683105623044},"Holliswood":{"accommodates":-0.5648355146189308,"beds":-21.10286278198727,"bedrooms":109.74592757527715,"bathrooms":-4.249850054748707,"bed_type":0,"property_type":0,"intercepts":45.59480782456579},"Howard Beach":{"accommodates":18.147951011391942,"beds":-6.5647023340631545,"bedrooms":8.724015656337391,"bathrooms":-6.820164634282498,"bed_type":0,"property_type":2.139538425817504,"intercepts":85.47267217013933},"Howland Hook":{"accommodates":9.243816134012743,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":16.13520826021456,"intercepts":69.37033048428472},"Huguenot":{"accommodates":10.978337030852655,"beds":0.7713506300251723,"bedrooms":12.98202266708135,"bathrooms":11.332151264176,"bed_type":0,"property_type":-3.851041824655179,"intercepts":107.51617372602449},"Hunts Point":{"accommodates":8.794160926383862,"beds":9.402932325663802,"bedrooms":-11.0268628693277,"bathrooms":7.948701747118039,"bed_type":1.0700315893363038e-30,"property_type":-24.835942143543967,"intercepts":57.740317911548814},"Inwood":{"accommodates":23.63993193755108,"beds":1.2604470664998606,"bedrooms":25.03437139618101,"bathrooms":30.210172610281262,"bed_type":-2.1003435694658132,"property_type":0.8151297993543012,"intercepts":101.12898900073328},"Jackson Heights":{"accommodates":25.549558022950187,"beds":10.643436062458449,"bedrooms":18.464806618487813,"bathrooms":-7.098952739620863,"bed_type":-2.026289388298509,"property_type":-0.7257028853772044,"intercepts":86.55681957875647},"Jamaica":{"accommodates":16.55796129884232,"beds":0.9008340423128,"bedrooms":9.177562415030474,"bathrooms":17.46985883489712,"bed_type":-2.1838212139540554,"property_type":-0.026038154452502432,"intercepts":85.32452365563552},"Jamaica Estates":{"accommodates":-23.95997647772307,"beds":-9.552453923646407,"bedrooms":9.851919726492731,"bathrooms":40.880918264738696,"bed_type":-4.189171573918784e-30,"property_type":-12.24539064377562,"intercepts":130.10077392365102},"Jamaica Hills":{"accommodates":2.0562949438047298,"beds":-4.15906479605536,"bedrooms":17.285896880649098,"bathrooms":5.675796392961375,"bed_type":0,"property_type":10.069485688558002,"intercepts":68.76280362026432},"Kensington":{"accommodates":58.2728680229994,"beds":0.8392168848936044,"bedrooms":18.117115512459993,"bathrooms":8.554224287872545,"bed_type":2.7871081411954726,"property_type":1.6570506030893615,"intercepts":93.27545539294451},"Kew Gardens":{"accommodates":28.448072629344324,"beds":-0.37225691661862553,"bedrooms":-19.179424610307965,"bathrooms":24.695642716185734,"bed_type":-2.677178763674962,"property_type":2.572668357840897,"intercepts":99.1319703225113},"Kew Gardens Hills":{"accommodates":-2.985027072259958,"beds":38.4539055517494,"bedrooms":2.2398214995640897,"bathrooms":-4.036063297414553,"bed_type":0,"property_type":33.24915321630772,"intercepts":95.62153204529383},"Kingsbridge":{"accommodates":23.804414353159988,"beds":-7.692650344737141,"bedrooms":13.36797308953088,"bathrooms":3.3034724742389163,"bed_type":0.3918048372793799,"property_type":0.6478265085891526,"intercepts":86.13482087296246},"Kips Bay":{"accommodates":28.931694733706482,"beds":24.115347913838225,"bedrooms":47.502653007449894,"bathrooms":32.75601017651149,"bed_type":-4.798868471482403,"property_type":11.381308273880036,"intercepts":207.92638785749216},"Laurelton":{"accommodates":-21.6691329364055,"beds":9.835692288807765,"bedrooms":37.680385165619306,"bathrooms":-10.69680239822291,"bed_type":-1.0872649534791975e-31,"property_type":4.4755232793224105,"intercepts":77.85890490042055},"Lighthouse Hill":{"accommodates":8.074216127109478,"beds":14.114557088288963,"bedrooms":0,"bathrooms":18.12593498782387,"bed_type":0,"property_type":0,"intercepts":131.73722962609745},"Little Italy":{"accommodates":-86.7479083569099,"beds":217.53169215985665,"bedrooms":20.266773084180553,"bathrooms":60.25166397304173,"bed_type":-10.77216135078241,"property_type":8.949374847117936,"intercepts":179.97367906908536},"Little Neck":{"accommodates":5022.528646052905,"beds":26.25672219732347,"bedrooms":-15.705798377241365,"bathrooms":-3157.9245348867194,"bed_type":-231.24161491308251,"property_type":-7.713394329672731,"intercepts":1260.1054938122936},"Long Island City":{"accommodates":32.84643682795028,"beds":1.5459762132718775,"bedrooms":9.396878958201478,"bathrooms":9.845787958948705,"bed_type":1.5915391791768392,"property_type":-2.5576313726500284,"intercepts":117.70976875824532},"Longwood":{"accommodates":13.073797649889825,"beds":-7.641837092651829,"bedrooms":26.650324833938267,"bathrooms":-9.77418889681718,"bed_type":-5.419570830070477,"property_type":-3.892634286250101,"intercepts":98.62932302721995},"Lower East Side":{"accommodates":72.20705022362988,"beds":-15.63193099042643,"bedrooms":10.486252447459332,"bathrooms":32.9672281382768,"bed_type":-3.3762372377955274,"property_type":9.836763539895625,"intercepts":183.09914450027236},"Manhattan Beach":{"accommodates":58.370235362611716,"beds":78.73529045512586,"bedrooms":-6.088892857106516,"bathrooms":9.35077603568034,"bed_type":-6.788442521176458e-31,"property_type":-117.09730796664726,"intercepts":160.76367741664674},"Marble Hill":{"accommodates":19.722885132656646,"beds":8.213258653724901,"bedrooms":-8.163362530080617,"bathrooms":80.68693316219156,"bed_type":-4.531238479447931,"property_type":-8.700823582768754,"intercepts":108.26220458030068},"Mariners Harbor":{"accommodates":7.222209705790507,"beds":18.853303030198543,"bedrooms":-17.203538286571145,"bathrooms":25.776295153274468,"bed_type":1.260674479767047e-32,"property_type":-1.2783053192946896,"intercepts":101.70270247376511},"Maspeth":{"accommodates":52.70466752522548,"beds":-10.543546016522356,"bedrooms":-2.384370408534671,"bathrooms":7.34263754668921,"bed_type":0.6711387579024244,"property_type":8.283798087788245,"intercepts":79.19244290730902},"Melrose":{"accommodates":50.472584985629226,"beds":-6.142356868539021,"bedrooms":10.628243477029477,"bathrooms":0,"bed_type":-5.448402197665896e-31,"property_type":0,"intercepts":78.96134620338603},"Middle Village":{"accommodates":17.634451597871205,"beds":6.705582267146804,"bedrooms":5.237658767821821,"bathrooms":8.909259710994897,"bed_type":0,"property_type":14.602819626914629,"intercepts":85.79374596582039},"Midland Beach":{"accommodates":-2.924628385200213,"beds":7.807718702194524,"bedrooms":5.1421281010266835,"bathrooms":-4.381931245989121,"bed_type":-3.119935340136028,"property_type":-3.8724786143593004,"intercepts":90.94307745230532},"Midtown":{"accommodates":58.99354363833613,"beds":-16.04843586592321,"bedrooms":17.42818198944309,"bathrooms":56.28566914217952,"bed_type":-5.140841151267461,"property_type":28.72855700882633,"intercepts":231.87188499089675},"Midwood":{"accommodates":22.706805539701207,"beds":8.795324726168648,"bedrooms":5.8013649945396395,"bathrooms":-7.4986264327349135,"bed_type":-2.3709685850438538,"property_type":-4.344703887160401,"intercepts":86.20554445230786},"Mill Basin":{"accommodates":-2.5434184585141587e-14,"beds":15.470176862204568,"bedrooms":7.1389992623826375,"bathrooms":27.910567036745714,"bed_type":0,"property_type":4.797181670022286,"intercepts":87.13412439422038},"Morningside Heights":{"accommodates":55.76594115232584,"beds":-4.7782098642278825,"bedrooms":9.13193346746763,"bathrooms":16.331186169400368,"bed_type":-0.46586765614907,"property_type":3.0036463121086716,"intercepts":124.86380323709434},"Morris Heights":{"accommodates":5.727084962093598,"beds":21.458967409699003,"bedrooms":-25.7271639705691,"bathrooms":14.95485424890517,"bed_type":-32.61099626518114,"property_type":23.41884552484175,"intercepts":71.57934592593827},"Morris Park":{"accommodates":10.184610727468343,"beds":19.739895632166277,"bedrooms":-4.267566742536829,"bathrooms":-5.828645787614995,"bed_type":0,"property_type":2.258640895751103,"intercepts":61.271169327997924},"Morrisania":{"accommodates":45.615092956776124,"beds":-7.266065121755122,"bedrooms":4.992630433220087,"bathrooms":-33.842082319086266,"bed_type":-11.257738469356639,"property_type":-7.549113363660064,"intercepts":83.1262652219727},"Mott Haven":{"accommodates":13.280391798177158,"beds":-7.948677428068608,"bedrooms":5.58821800206121,"bathrooms":-14.801554268503686,"bed_type":-3.4450701787893667,"property_type":-7.765833383660988,"intercepts":81.49397285450647},"Mount Eden":{"accommodates":3.4655786151903554,"beds":16.275649491870084,"bedrooms":1.4210854715202004e-14,"bathrooms":-6.991906916601485,"bed_type":-3.961184908500064,"property_type":2.060369263034985e-29,"intercepts":58.118390141648746},"Mount Hope":{"accommodates":15.20599405155048,"beds":21.106708672557275,"bedrooms":8.795442398568921,"bathrooms":0,"bed_type":0,"property_type":16.626043892515522,"intercepts":86.41345582065526},"Murray Hill":{"accommodates":80.90806588404693,"beds":-17.843660554326792,"bedrooms":7.029992357445822,"bathrooms":58.40207566309444,"bed_type":-7.506497566805901,"property_type":0.3223606762130966,"intercepts":200.12572943314098},"Navy Yard":{"accommodates":45.3798110528538,"beds":-6.578626736780385,"bedrooms":-8.313729788788223,"bathrooms":-12.463024565374266,"bed_type":0,"property_type":2.387108123476583,"intercepts":121.58839207381548},"Neponsit":{"accommodates":0,"beds":0,"bedrooms":12.67059850338754,"bathrooms":0,"bed_type":0,"property_type":25.79951923987291,"intercepts":193.78671597443966},"New Brighton":{"accommodates":28.824087826029743,"beds":2.036611139990027,"bedrooms":-13.62763151519994,"bathrooms":9.33899958895981,"bed_type":-1.5283713930993187e-30,"property_type":1.8682898286371823,"intercepts":58.387391907186796},"New Dorp":{"accommodates":-0.26770120873732084,"beds":-0.4679691420001103,"bedrooms":-0.6884626433937518,"bathrooms":0,"bed_type":0,"property_type":-0.4672761435176645,"intercepts":55.51780527422533},"New Dorp Beach":{"accommodates":-89.96290379146065,"beds":65.1166710493527,"bedrooms":51.40079468915494,"bathrooms":-53.15947630295217,"bed_type":0,"property_type":-54.69497797406154,"intercepts":120.07474426361324},"New Springville":{"accommodates":-18.616495129577643,"beds":-19.48812482904813,"bedrooms":-13.420995429933235,"bathrooms":0,"bed_type":0,"property_type":-3.426895341921251,"intercepts":56.28727204316718},"NoHo":{"accommodates":106.6081371977683,"beds":-78.49135030484061,"bedrooms":43.492749090610836,"bathrooms":85.91333517695442,"bed_type":-2.678691837430409,"property_type":39.28130267619568,"intercepts":259.61341904843994},"Nolita":{"accommodates":59.38254639653118,"beds":63.731717181963575,"bedrooms":-17.87561547136491,"bathrooms":14.506648203972423,"bed_type":-9.486305082898845,"property_type":-2.56252921610954,"intercepts":225.52441776553775},"North Riverdale":{"accommodates":-10.792972707594675,"beds":20.20823663661346,"bedrooms":-2.6417106935511048,"bathrooms":17.360075426293918,"bed_type":4.789760734162115e-32,"property_type":-38.50712728714881,"intercepts":89.29241324761118},"Norwood":{"accommodates":28.280723186920515,"beds":-9.56389584528072,"bedrooms":-22.859073845522605,"bathrooms":0.8631405241998965,"bed_type":-3.3703397395726182,"property_type":10.10751853791285,"intercepts":76.37790809285241},"Oakwood":{"accommodates":11.015865770383,"beds":-4.305350476229445,"bedrooms":22.629605395657233,"bathrooms":45.03620342303329,"bed_type":0,"property_type":-53.29254264139331,"intercepts":101.59787421025912},"Olinville":{"accommodates":95.4708366766519,"beds":74.21900141109036,"bedrooms":-50.44892812083719,"bathrooms":0,"bed_type":0,"property_type":-26.996880153863703,"intercepts":211.82165582175628},"Ozone Park":{"accommodates":22.815351715474023,"beds":3.59020503540089,"bedrooms":10.674673099669763,"bathrooms":5.911978810635679,"bed_type":21.928883118298952,"property_type":-0.21480115838474284,"intercepts":76.51440347595322},"Park Slope":{"accommodates":55.96563211707203,"beds":0.0018581573031596261,"bedrooms":11.854309797671975,"bathrooms":19.71055925585779,"bed_type":9.259260572596462,"property_type":1.651143871485536,"intercepts":148.72993147638647},"Parkchester":{"accommodates":3.0849665930543893,"beds":2.645129405053943,"bedrooms":14.154990821427967,"bathrooms":-20.00232076658814,"bed_type":-3.8381629219276534,"property_type":2.2860541702014303,"intercepts":65.77269642832469},"Pelham Bay":{"accommodates":34.05986877451968,"beds":-20.05197359352571,"bedrooms":23.703219144346146,"bathrooms":11.770420584755458,"bed_type":-1.2982676912742052e-30,"property_type":-7.340631153022801,"intercepts":84.05922136784602},"Pelham Gardens":{"accommodates":25.78453418526675,"beds":-8.175108227657912,"bedrooms":13.46048763707635,"bathrooms":15.400921724765686,"bed_type":3.7093527325342004,"property_type":-2.814684719863641,"intercepts":84.38068960991173},"Pleasant Plains":{"accommodates":0,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":0,"intercepts":53},"Port Ivory":{"accommodates":0,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":0,"intercepts":99},"Port Morris":{"accommodates":38.835216794654315,"beds":1.3928852853097204,"bedrooms":-13.566905050966007,"bathrooms":10.891683000611003,"bed_type":10.077953794198752,"property_type":0.27329820181145525,"intercepts":82.25444661590254},"Port Richmond":{"accommodates":89.87590485155259,"beds":-0.5251344439463589,"bedrooms":12.388263425899309,"bathrooms":64.61856401782914,"bed_type":0,"property_type":-67.11237414872826,"intercepts":98.98752778135432},"Prince's Bay":{"accommodates":96.78008529982581,"beds":36.192978795665056,"bedrooms":-89.15674365240713,"bathrooms":0,"bed_type":0,"property_type":22.92981768912578,"intercepts":57.10136198404422},"Prospect Heights":{"accommodates":101.63979073513251,"beds":-35.51350901406446,"bedrooms":2.4396515583743525,"bathrooms":12.267022793412476,"bed_type":-3.611015030601577,"property_type":5.362573087564068,"intercepts":127.46197146715619},"Prospect-Lefferts Gardens":{"accommodates":37.07413658042199,"beds":-7.407254207502583,"bedrooms":7.562330659850013,"bathrooms":9.160636026973673,"bed_type":3.7419562457473527,"property_type":1.7832144150767577,"intercepts":94.8335866629058},"Queens Village":{"accommodates":14.704465488877723,"beds":7.8728209820073225,"bedrooms":4.862448162769096,"bathrooms":-5.956648620569527,"bed_type":-2.283501895201982,"property_type":-2.541451137921508,"intercepts":76.11344710541151},"Randall Manor":{"accommodates":327.71924046283226,"beds":-63.06947058008411,"bedrooms":-283.3297713803032,"bathrooms":305.2319931796511,"bed_type":0,"property_type":-36.23743819943205,"intercepts":206.69445760363504},"Red Hook":{"accommodates":43.997352579010695,"beds":-3.5846048440274023,"bedrooms":19.17954864413014,"bathrooms":24.062481856105638,"bed_type":-7.679915423783129,"property_type":5.806239592991115,"intercepts":125.94356713191948},"Rego Park":{"accommodates":17.38645473229064,"beds":10.353547898532344,"bedrooms":13.535776593824625,"bathrooms":-4.62216587126303,"bed_type":5.340428608624179,"property_type":0.35895996749993636,"intercepts":79.64210201088098},"Richmond Hill":{"accommodates":20.375274078439382,"beds":-7.76136313771139,"bedrooms":19.89936242056902,"bathrooms":15.787929488033473,"bed_type":0.18382628512268423,"property_type":-2.2901379528313335,"intercepts":79.36646124439008},"Richmondtown":{"accommodates":108.32268007543209,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":0,"intercepts":129.2935719709942},"Ridgewood":{"accommodates":19.236966776593427,"beds":-0.8312083448719714,"bedrooms":21.429794044541104,"bathrooms":-2.1045354255223168,"bed_type":0.7738626317433598,"property_type":6.8793271560534786,"intercepts":77.56932696517785},"Riverdale":{"accommodates":-361.3926466217825,"beds":629.3204514605652,"bedrooms":-114.87665801717785,"bathrooms":-292.0316889692422,"bed_type":-66.63001311955874,"property_type":5.2111318433142255,"intercepts":200.7606521772487},"Rockaway Beach":{"accommodates":43.88330165823994,"beds":-13.10266080229722,"bedrooms":25.54417358085929,"bathrooms":2.1280620937529044,"bed_type":6.50457006258873,"property_type":-0.7781990391688782,"intercepts":107.06983929554613},"Roosevelt Island":{"accommodates":139.20213451561148,"beds":-95.50919124970868,"bedrooms":-9.14973244672376,"bathrooms":7.1404741036353485,"bed_type":-11.107186644473986,"property_type":-1.3281252611937915,"intercepts":125.35434467076902},"Rosebank":{"accommodates":13.5087207530346,"beds":7.624942930444768,"bedrooms":28.573450020139468,"bathrooms":8.881784197001252e-16,"bed_type":-2.3955370945280254,"property_type":0.8718258101213944,"intercepts":91.33915648449023},"Rosedale":{"accommodates":13.894428600641099,"beds":13.937756369187863,"bedrooms":-0.05292300025023411,"bathrooms":11.062501793066884,"bed_type":0.7725760058232374,"property_type":2.4713231271012437,"intercepts":82.89155627197133},"Rossville":{"accommodates":0,"beds":0,"bedrooms":0,"bathrooms":0,"bed_type":0,"property_type":0,"intercepts":75},"Schuylerville":{"accommodates":7.263015915863839,"beds":23.78219281416363,"bedrooms":-19.02494029253001,"bathrooms":-6.217248937900877e-15,"bed_type":-7.799929146609956,"property_type":4.526352176547994,"intercepts":48.46780429591378},"Sea Gate":{"accommodates":51.2607397533875,"beds":58.58357616744431,"bedrooms":-69.0908147258792,"bathrooms":4.289866636352242,"bed_type":-2.3935403881807668e-30,"property_type":-3.701954318939494,"intercepts":70.29247144886853},"Sheepshead Bay":{"accommodates":10.072773275083446,"beds":-16.276575617045204,"bedrooms":24.378943719543976,"bathrooms":-1.646312573339152,"bed_type":-11.31504391050884,"property_type":5.1496486688921665,"intercepts":130.22628819070854},"Shore Acres":{"accommodates":93.78757304920799,"beds":-1.2320064479782382,"bedrooms":8.724866560449986,"bathrooms":-100.99168802283768,"bed_type":-20.88675988342351,"property_type":25.45275686088186,"intercepts":72.08697590582341},"Silver Lake":{"accommodates":9.524729679697428,"beds":10.534617697401496,"bedrooms":-16.709631593341186,"bathrooms":-18.146048146084645,"bed_type":0,"property_type":0.8222112191881213,"intercepts":54.85609744898552},"SoHo":{"accommodates":65.81676439749006,"beds":25.402550981303275,"bedrooms":16.060595433753914,"bathrooms":104.92860762624052,"bed_type":4.977682519424613,"property_type":19.781518724069866,"intercepts":258.86523528223427},"Soundview":{"accommodates":26.276734360362912,"beds":-32.46108840542708,"bedrooms":3.552713678800501e-15,"bathrooms":-1.0155511453265305,"bed_type":-1.0385301609709494,"property_type":-5.002373503519939,"intercepts":43.566369306273565},"South Beach":{"accommodates":66.74711678435268,"beds":-32.9926531943155,"bedrooms":-10.577460834012683,"bathrooms":17.560288881828917,"bed_type":0,"property_type":-2.1768323354537107,"intercepts":87.37231433949412},"South Ozone Park":{"accommodates":13.180306691548829,"beds":-14.16879021607426,"bedrooms":30.363382878295138,"bathrooms":5.879289045923334,"bed_type":-9.141489242742039e-31,"property_type":-1.0117727399607748,"intercepts":87.21322230651188},"South Slope":{"accommodates":32.704466307706134,"beds":11.819573456788076,"bedrooms":9.190856454980592,"bathrooms":20.076082368496024,"bed_type":-1.4000143783823211,"property_type":-4.428813611353983,"intercepts":126.29515320605732},"Springfield Gardens":{"accommodates":18.430830128682352,"beds":1.8537937810117813,"bedrooms":14.09466659200821,"bathrooms":-2.066043429463092,"bed_type":-1.4479144266574027,"property_type":-2.3724371335193712,"intercepts":83.07805905144671},"Spuyten Duyvil":{"accommodates":-23.22350202905612,"beds":51.84402566710294,"bedrooms":-0.14320288944634052,"bathrooms":16.168083946315335,"bed_type":0,"property_type":-2.6118959117361356,"intercepts":91.79280321238636},"St. Albans":{"accommodates":26.745954372778492,"beds":14.052344124825122,"bedrooms":-16.22999064571712,"bathrooms":48.85196952684322,"bed_type":-7.719667114754912,"property_type":-9.865672693719755,"intercepts":100.21595145637221},"St. George":{"accommodates":16.833078660913078,"beds":8.079936773526704,"bedrooms":17.069428941636314,"bathrooms":6.157627416349458,"bed_type":-6.449283636306046,"property_type":1.6561683583253595,"intercepts":78.78444490243197},"Stapleton":{"accommodates":21.993930066617622,"beds":5.581162314224326,"bedrooms":10.483072243752613,"bathrooms":-4.5851646094650205,"bed_type":7.376446724356454e-32,"property_type":-4.151205235920947,"intercepts":75.3879598138142},"Stuyvesant Town":{"accommodates":-45.97434181196059,"beds":64.35402408969526,"bedrooms":198.90068260374062,"bathrooms":0,"bed_type":-86.9995224930796,"property_type":6.1572165687590275,"intercepts":211.1296404784827},"Sunnyside":{"accommodates":48.191718450840774,"beds":-10.012510401509438,"bedrooms":12.247798909355044,"bathrooms":4.484466369306418,"bed_type":-0.31028867703846197,"property_type":-2.70032472779672,"intercepts":99.78156606399452},"Sunset Park":{"accommodates":55.97330743199679,"beds":-17.0233541107142,"bedrooms":7.90241233123249,"bathrooms":4.539154157985083,"bed_type":7.333312037491126,"property_type":0.8893358144357186,"intercepts":106.30601074153822},"Theater District":{"accommodates":56.56774921698708,"beds":-6.493550681626356,"bedrooms":3.8870774624437465,"bathrooms":94.13453311580646,"bed_type":39.551534899322895,"property_type":27.763992299275454,"intercepts":237.64943562984482},"Throgs Neck":{"accommodates":42.85929303788558,"beds":32.890255504855624,"bedrooms":79.24478691402612,"bathrooms":-86.52816405609605,"bed_type":3.542208769267058e-30,"property_type":65.56088250557637,"intercepts":144.27446353716857},"Todt Hill":{"accommodates":-18.5147555550297,"beds":60.40414667154112,"bedrooms":23.516923792739714,"bathrooms":25.07683831201363,"bed_type":0,"property_type":-60.34339493217409,"intercepts":159.10092793772148},"Tompkinsville":{"accommodates":11.955361515965192,"beds":6.112940737783904,"bedrooms":9.047733341764047,"bathrooms":15.233214108190896,"bed_type":2.0088155929679314,"property_type":0.9473938590091892,"intercepts":74.49417610564794},"Tottenville":{"accommodates":1055.3576413807705,"beds":-4886.297917560941,"bedrooms":4745.896863515504,"bathrooms":-230.0117310178166,"bed_type":0,"property_type":2729.743269784701,"intercepts":-2692.1473262673326},"Tremont":{"accommodates":3.2073965399573283,"beds":7.460018705855005,"bedrooms":2.7149108240320654,"bathrooms":0,"bed_type":0,"property_type":1.5252027215881907,"intercepts":56.19012084231482},"Tribeca":{"accommodates":83.02672854469553,"beds":18.787051444690313,"bedrooms":-27.260340711591716,"bathrooms":112.1434639071728,"bed_type":21.362693161895432,"property_type":44.916088866419486,"intercepts":255.25958324886201},"Two Bridges":{"accommodates":54.88623685356862,"beds":22.81838977363296,"bedrooms":-7.689851893197093,"bathrooms":4.23898294554499,"bed_type":1.1839320189106612,"property_type":-1.8662899965239785,"intercepts":146.309177780527},"Unionport":{"accommodates":34.732571104948015,"beds":-76.15255184601155,"bedrooms":72.8923730955136,"bathrooms":-64.85794376603563,"bed_type":30.690110453567872,"property_type":14.807573525123537,"intercepts":68.54489458014078},"University Heights":{"accommodates":27.602443628277236,"beds":-35.24852575859862,"bedrooms":-86.0583601380431,"bathrooms":1.4774539564568687,"bed_type":16.26712652460675,"property_type":-25.322521934640832,"intercepts":46.387092240001934},"Upper East Side":{"accommodates":52.067383897100555,"beds":13.825173181464166,"bedrooms":11.6849230023112,"bathrooms":58.666367961942,"bed_type":-1.0952855760246965,"property_type":10.215049988380198,"intercepts":186.93275419748718},"Upper West Side":{"accommodates":72.24327327058603,"beds":-6.949835859747619,"bedrooms":11.238151991165708,"bathrooms":61.2843940114794,"bed_type":-3.0992992028176647,"property_type":13.516472189880206,"intercepts":199.08639338575534},"Van Nest":{"accommodates":-42.19025066373846,"beds":30.166579946391554,"bedrooms":7.86781710324214,"bathrooms":-31.66706078449639,"bed_type":-2.7155727245975645,"property_type":-234.67169036056362,"intercepts":191.23797365340502},"Vinegar Hill":{"accommodates":98.67478821966941,"beds":-42.064965790495926,"bedrooms":-10.107307133088147,"bathrooms":43.580471478343,"bed_type":14.33220086405623,"property_type":10.171692645635495,"intercepts":168.12562231303357},"Wakefield":{"accommodates":-6.712130567440653,"beds":55.89522018771479,"bedrooms":22.55506978141026,"bathrooms":47.013574680733754,"bed_type":4.28247189577618,"property_type":8.489902033003643,"intercepts":122.69440949642484},"Washington Heights":{"accommodates":35.37924635737675,"beds":6.063902536084163,"bedrooms":9.195874593595994,"bathrooms":4.1830983054550845,"bed_type":-0.8579652406223568,"property_type":4.187870905692949,"intercepts":101.13076226083362},"West Brighton":{"accommodates":14.98485961137958,"beds":0.7246114175459584,"bedrooms":0.9726598430905684,"bathrooms":34.427769019191004,"bed_type":-9.866742516555515e-31,"property_type":9.385046644631228,"intercepts":79.44240267172319},"West Farms":{"accommodates":-13.97806045232676,"beds":0.10319743379255923,"bedrooms":3.445723083495149,"bathrooms":0,"bed_type":-7.182079552739367,"property_type":-1.2064298920291117e-32,"intercepts":69.72244113532645},"West Village":{"accommodates":113.67364160766945,"beds":-34.62745551445658,"bedrooms":17.98536603026433,"bathrooms":48.341743793648924,"bed_type":-4.271015634467562,"property_type":19.213522194104424,"intercepts":246.3495263067371},"Westchester Square":{"accommodates":71.65240774236484,"beds":-29.543663376719923,"bedrooms":29.318070712221132,"bathrooms":0,"bed_type":0,"property_type":6.219821612499075,"intercepts":84.53448014355841},"Westerleigh":{"accommodates":550.9865493221355,"beds":-441.27876484463815,"bedrooms":33.215133410243446,"bathrooms":122.71875865564043,"bed_type":0,"property_type":9.010310477593054e-29,"intercepts":-15.880756664662613},"Whitestone":{"accommodates":-39.57814460636647,"beds":-29.298087104598192,"bedrooms":15.193769601184107,"bathrooms":214.69481565346453,"bed_type":-2.4245147668400853e-30,"property_type":-18.04691016657088,"intercepts":91.16577505292443},"Williamsbridge":{"accommodates":22.98636656316916,"beds":-7.69138163300317,"bedrooms":5.36336131311074,"bathrooms":6.147496987156712,"bed_type":0,"property_type":-2.7365593443289353,"intercepts":76.0019650560757},"Williamsburg":{"accommodates":94.86765871115816,"beds":-22.387264874316266,"bedrooms":-7.319069292409386,"bathrooms":25.023696058178555,"bed_type":4.820212808773756,"property_type":6.868223383448546,"intercepts":143.875288441306},"Willowbrook":{"accommodates":5.019222476595105,"beds":7.31176263939553,"bedrooms":6.454112012263496,"bathrooms":5.633865806163207,"bed_type":0,"property_type":0,"intercepts":159.25145006529814},"Windsor Terrace":{"accommodates":39.89812832534362,"beds":3.5514587965575557,"bedrooms":9.249486495497003,"bathrooms":13.111892031032955,"bed_type":-2.2339240385503643,"property_type":-3.2482547888490205,"intercepts":112.55055829017824},"Woodhaven":{"accommodates":28.781537734717265,"beds":-18.30037309086287,"bedrooms":32.78371756016859,"bathrooms":18.95336676289924,"bed_type":2.443184718274235,"property_type":-12.17851412905446,"intercepts":80.4794531277562},"Woodlawn":{"accommodates":7.502188428972274,"beds":5.898442893851819,"bedrooms":-17.5635725909278,"bathrooms":0,"bed_type":5.008208214786213e-30,"property_type":1.5605614012474327,"intercepts":64.97591139403012},"Woodrow":{"accommodates":-15.873899564786715,"beds":-130.4550777125683,"bedrooms":195.86580211716554,"bathrooms":-39.07839080832015,"bed_type":0,"property_type":6.775484588170545e-29,"intercepts":324.216075736851},"Woodside":{"accommodates":38.79424568215506,"beds":-4.031964706032588,"bedrooms":7.677787061882796,"bathrooms":-4.317440150315258,"bed_type":-0.828900887323681,"property_type":-0.15790464467464776,"intercepts":85.5537488956337}};
+
+/***/ }),
+
 /***/ "./src/intialState.js":
 /*!****************************!*\
   !*** ./src/intialState.js ***!
@@ -16966,9 +23657,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
 var initialState = {
   placeType: {
-    placeType: "",
-    propertyType: "",
-    guestSpace: 0
+    roomType: "",
+    propertyType: ""
   },
   bedrooms: {
     guests: 0,
@@ -17018,6 +23708,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/icons/ArrowForward */ "./node_modules/@material-ui/icons/ArrowForward.js");
 /* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _utils_Listing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/Listing */ "./src/utils/Listing.js");
+/* harmony import */ var _dummyData_json__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../dummyData.json */ "./src/dummyData.json");
+var _dummyData_json__WEBPACK_IMPORTED_MODULE_10___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../dummyData.json */ "./src/dummyData.json", 1);
+
 
 
 
@@ -17060,23 +23753,134 @@ function (_React$Component) {
     _this.onSubmit = function (evt) {
       var data = parseInt(_this.state.bathrooms);
 
-      _this.props.submitBathrooms(data);
+      _this.props.submitBathrooms(data); // this.props.submitListing()
 
-      _this.props.submitListing();
 
       var listing = {
-        bathrooms: data,
-        bedrooms: _this.props.listing.bedrooms,
-        location: _this.props.listing.bedrooms,
-        placeType: _this.props.listing.placeType
+        accommodates: _this.props.listing.bedrooms.guests,
+        bathrooms: parseInt(_this.state.bathrooms),
+        bed_type: _this.handleBedType(_this.props.listing.placeType.roomType),
+        bedrooms: _this.props.listing.bedrooms.numOfBedrooms,
+        beds: _this.props.listing.bedrooms.numOfBedsAvailable,
+        property_type: _this.handlePropertyType(_this.props.listing.placeType.propertyType)
       };
-      Object(_utils_Listing__WEBPACK_IMPORTED_MODULE_9__["sendListing"])("https://3xgrqs0bn4.execute-api.us-east-1.amazonaws.com/dev" + "/listings", listing).then(function (data) {
-        var price = data.Prediction ? "$ " + data.Prediction.LinearRegression.toFixed(2) : "";
+      var coefficients = _dummyData_json__WEBPACK_IMPORTED_MODULE_10__[_this.props.listing.location.city];
 
-        _this.setState({
-          responseText: price
-        });
-      });
+      var price = _this.calculatePrice(listing, coefficients);
+
+      _this.setState({
+        responseText: price
+      }); // console.log(this.parseLocations())
+      // sendListing(`${process.env.API_URL}/listings`,listing)
+      // .then((data) => {
+      //   const price = data.Prediction ? `$ ${data.Prediction.LinearRegression.toFixed(2)}` : "";
+      //   this.setState({responseText: price})
+      // })
+
+    };
+
+    _this.calculatePrice = function (listing, coefficients) {
+      var m1 = parseFloat(listing.accommodates * coefficients.accommodates);
+      var m2 = parseFloat(listing.beds * coefficients.beds);
+      var m3 = parseFloat(listing.bedrooms * coefficients.bedrooms);
+      var m4 = parseFloat(listing.bathrooms * coefficients.bathrooms);
+      var m5 = parseFloat(listing.bed_type * coefficients.bed_type);
+      var m6 = parseFloat(listing.property_type * coefficients.property_type); // console.log(m1 + m2 + m3 + m4 + m5 + m6 )
+      // return m1
+
+      return (m1 + m2 + m3 + m4 + m5 + m6 + coefficients.intercepts).toFixed(2);
+    };
+
+    _this.handlePropertyType = function (property) {
+      var value = 1;
+
+      switch (property) {
+        case "Apartment":
+          value = 1;
+          break;
+
+        case "House":
+          value = 2;
+          break;
+
+        case "Townhouse":
+          value = 3;
+          break;
+
+        case "Loft":
+          value = 4;
+          break;
+
+        case "Condominium":
+          value = 5;
+          break;
+
+        case "Serviced Apartment":
+          value = 6;
+          break;
+
+        case "Guest Suite":
+          value = 7;
+          break;
+
+        case "Other":
+          value = 8;
+          break;
+
+        case "Bed & Breakfast":
+          value = 9;
+          break;
+
+        case "Boutique Hotel":
+          value = 10;
+          break;
+
+        case "Resort":
+          value = 11;
+          break;
+
+        case "Guest House":
+          value = 12;
+          break;
+
+        case "Hostel":
+          value = 13;
+          break;
+
+        case "Timeshare":
+          value = 15;
+          break;
+
+        default:
+          value = 1;
+          break;
+      }
+
+      return value;
+    };
+
+    _this.handleBedType = function (bed) {
+      var value = 1;
+
+      switch (bed) {
+        case "Entire home/apartment":
+          value = 1;
+          break;
+
+        case "Private room":
+          value = 2;
+          break;
+
+        case "Shared room":
+          value = 3;
+          break;
+
+        default:
+          value = 1;
+          break;
+      }
+
+      return value;
     };
 
     return _this;
@@ -17309,9 +24113,7 @@ function (_React$Component) {
       address: "",
       apartmentNumber: "",
       city: "",
-      state: "",
-      zipCode: "",
-      country: ""
+      zipCode: ""
     };
 
     _this.handleInput = function (evt) {
@@ -17338,18 +24140,25 @@ function (_React$Component) {
   var _proto = Location.prototype;
 
   _proto.render = function render() {
+    var _this$state = this.state,
+        address = _this$state.address,
+        city = _this$state.city,
+        zipCode = _this$state.zipCode;
+    var disableButton = !(address && city && zipCode.length === 5);
     return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_form_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.formTitle
     }, " Location "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: "Address:",
       name: "address",
       value: this.state.address,
-      handleInput: this.handleInput
+      handleInput: this.handleInput,
+      required: true
     }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: "Apartment Number (if any):",
       name: "apartmentNumber",
       value: this.state.apartmentNumber,
-      handleInput: this.handleInput
+      handleInput: this.handleInput,
+      required: true
     }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: "City:",
       name: "city",
@@ -17361,6 +24170,7 @@ function (_React$Component) {
       value: this.state.zipCode,
       handleInput: this.handleInput
     }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      disabled: disableButton,
       onClick: this.onSubmit
     }, "Bedrooms ", react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_9___default.a, null)));
   };
@@ -17410,12 +24220,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/presentational/Input */ "./src/components/presentational/Input.js");
 /* harmony import */ var _styles_form_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/form.module.css */ "./src/styles/form.module.css");
 /* harmony import */ var _styles_form_module_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_form_module_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../actions */ "./src/actions.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/Button/index.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/icons/ArrowForward */ "./node_modules/@material-ui/icons/ArrowForward.js");
-/* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _styles_component_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/component.module.css */ "./src/styles/component.module.css");
+/* harmony import */ var _styles_component_module_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_component_module_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../actions */ "./src/actions.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/Button/index.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/icons/ArrowForward */ "./node_modules/@material-ui/icons/ArrowForward.js");
+/* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/FormLabel */ "./node_modules/@material-ui/core/FormLabel/index.js");
+/* harmony import */ var _material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "./node_modules/@material-ui/core/MenuItem/index.js");
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/FormControl */ "./node_modules/@material-ui/core/FormControl/index.js");
+/* harmony import */ var _material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Select */ "./node_modules/@material-ui/core/Select/index.js");
+/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14__);
+
+
+
+
+
 
 
 
@@ -17441,9 +24266,8 @@ function (_React$Component) {
 
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
     _this.state = {
-      placeType: "",
-      propertyType: "",
-      guestSpace: ""
+      roomType: "",
+      propertyType: ""
     };
 
     _this.handleInput = function (evt) {
@@ -17452,6 +24276,7 @@ function (_React$Component) {
       var _evt$target = evt.target,
           value = _evt$target.value,
           name = _evt$target.name;
+      console.log(value);
 
       _this.setState((_this$setState = {}, _this$setState[name] = value, _this$setState));
     };
@@ -17470,26 +24295,64 @@ function (_React$Component) {
   var _proto = PlaceType.prototype;
 
   _proto.render = function render() {
+    var _this$state = this.state,
+        roomType = _this$state.roomType,
+        propertyType = _this$state.propertyType;
+    var disabled = !(roomType && propertyType);
     return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
       className: _styles_form_module_css__WEBPACK_IMPORTED_MODULE_5___default.a.formTitle
-    }, " Place Type "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: "What kind of place are you listing?",
-      name: "placeType",
-      value: this.state.placeType,
-      handleInput: this.handleInput
-    }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: "What type of property are you listing?",
-      name: "propertyType",
+    }, " Place Type "), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      className: _styles_component_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.inputContainerDropDown
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default.a, null, "What kind of place are you listing?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default.a, {
       value: this.state.propertyType,
-      handleInput: this.handleInput
-    }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_presentational_Input__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: "What will guests have access to?",
-      name: "guestSpace",
-      value: this.state.guestSpace,
-      handleInput: this.handleInput
-    }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      onChange: this.handleInput,
+      name: "propertyType"
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: ""
+    }, "None"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Apartment"
+    }, "Apartment"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "House"
+    }, "House"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Townhouse"
+    }, "Townhouse"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Loft"
+    }, "Loft"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Condominium"
+    }, "Condominium"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Serviced Apartment"
+    }, "Serviced Apartment"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Guest Suite"
+    }, "Guest Suite"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Other"
+    }, "Other"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Bed & Breakfast"
+    }, "Bed & Breakfast"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Boutique Hotel"
+    }, "Boutique Hotel"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Resort"
+    }, "Resort"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Guest House"
+    }, "Guest House"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Hostel"
+    }, "Hostel"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Timeshare"
+    }, "Timeshare"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_13___default.a, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_11___default.a, null, "What type of access are you giving to your guests?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_14___default.a, {
+      value: this.state.roomType,
+      onChange: this.handleInput,
+      name: "roomType"
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: ""
+    }, "None"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Entire home/apartment"
+    }, "Entire home/apartment"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Private room"
+    }, "Private room"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      value: "Shared room"
+    }, "Shared room")))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_9___default.a, {
+      disabled: disabled,
       onClick: this.onSubmit
-    }, "Location ", react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_9___default.a, null)));
+    }, "Location ", react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_10___default.a, null)));
   };
 
   return PlaceType;
@@ -17505,15 +24368,15 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     switchPages: function switchPages(pageNumber) {
-      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_7__["switchPages"])(pageNumber));
+      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_8__["switchPages"])(pageNumber));
     },
     submitPlaceType: function submitPlaceType(data) {
-      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_7__["submitPlaceType"])(data));
+      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_8__["submitPlaceType"])(data));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])(mapStateToProps, mapDispatchToProps)(PlaceType));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(mapStateToProps, mapDispatchToProps)(PlaceType));
 
 /***/ }),
 
@@ -17724,6 +24587,7 @@ function configureStore() {
 
 module.exports = {
 	"inputContainer": "component-module--inputContainer--2JoOn",
+	"inputContainerDropDown": "component-module--inputContainerDropDown--z1J6S",
 	"label": "component-module--label--38k2s"
 };
 
