@@ -35,7 +35,7 @@ class Bedrooms extends React.Component {
           <Input label="How many guests are you accomodating?" name={"guests"} value={this.state.guests} handleInput={this.handleInput}/>
           <Input label="How many bedrooms are there?" name={"numOfBedrooms"} value={this.state.numOfBedrooms} handleInput={this.handleInput}/>
           <Input label="How Many beds are there?" name={"numOfBedsAvailable"} value={this.state.numOfBedsAvailable} handleInput={this.handleInput}/>
-          <Button onClick={this.onSubmit}> Bathrooms <ArrowForward /></Button>
+          <Button onClick={this.onSubmit}> Listing Type <ArrowForward /></Button>
         </div>
     )
   }

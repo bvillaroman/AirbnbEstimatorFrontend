@@ -21,5 +21,12 @@ export const initialState = {
     isFetching: false,
     caughtError: false,
     body: {}
+  },
+  listing: {
+    reviewScoresRating: "",
+    availability: "",
+    minimumNights: "",
+    hostIsSuperhost: "",
+    hostResponseRate: ""
   }
 }

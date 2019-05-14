@@ -3,6 +3,7 @@ import {
   SUBMIT_BEDROOMS,
   SUBMIT_BATHROOMS,
   SUBMIT_LOCATION,
+  SUBMIT_LISTING_DATA,
   SUBMIT_LISTING_SUCCESS,
   SUBMIT_LISTING_ERROR,
   SWITCH_PAGES,
@@ -40,6 +41,13 @@ export const submitBathrooms = data => dispatch => {
 export const submitLocation = data => dispatch => {
   dispatch({ 
     type: SUBMIT_LOCATION,
+    payload: data
+  })
+}
+
+export const submitListingData = data => dispatch => {
+  dispatch({ 
+    type: SUBMIT_LISTING_DATA,
     payload: data
   })
 }

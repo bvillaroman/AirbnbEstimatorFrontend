@@ -3,6 +3,7 @@ import {
   SUBMIT_BEDROOMS,
   SUBMIT_BATHROOMS,
   SUBMIT_LOCATION,
+  SUBMIT_LISTING_DATA,
   SUBMIT_LISTING,
   SUBMIT_LISTING_SUCCESS,
   SUBMIT_LISTING_ERROR,
@@ -18,6 +19,8 @@ export default (state = initialState, action) => {
       return { ...state, bedrooms: action.payload };
     case SUBMIT_BATHROOMS:
       return { ...state, bathrooms: action.payload };
+    case SUBMIT_LISTING_DATA:
+      return { ...state, listing: action.payload };
     case SUBMIT_LOCATION:
       return { ...state, location: action.payload };
     case SUBMIT_LISTING:

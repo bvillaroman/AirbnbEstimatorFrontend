@@ -4,6 +4,7 @@ import Layout from "../components/presentational/layout"
 import ContainerStyles from "../styles/form.module.css"
 import Bathrooms from "./Bathrooms.js"
 import Bedrooms from "./Bedrooms.js"
+import Listing from "./Listing.js"
 import Location from "./Location.js"
 import PlaceType from "./PlaceType.js"
 import {switchPages} from "../actions"
@@ -14,7 +15,8 @@ class App extends React.Component {
     const currentPage = pageNumber === 0 ? <PlaceType />
                       : pageNumber === 1 ? <Location />
                       : pageNumber === 2 ? <Bedrooms />
-                      : pageNumber === 3 ? <Bathrooms />
+                      : pageNumber === 3 ? <Listing />
+                      : pageNumber === 4 ? <Bathrooms />
                       : <div> sorry, there was an error, please refresh page </div>
 
     return (
