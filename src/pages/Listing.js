@@ -5,6 +5,7 @@ import ContainerStyles from "../styles/form.module.css"
 import {submitListingData,switchPages} from '../actions'
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 class Listing extends React.Component {
   state = {
@@ -41,6 +42,7 @@ class Listing extends React.Component {
           <Input label="Minimum Stay:" name={"minimumNights"} value={this.state.minimumNights} handleInput={this.handleInput}/>
           <Input label="Is the host a superhost?" name={"hostIsSuperhost"} value={this.state.hostIsSuperhost} handleInput={this.handleInput}/>
           <Input label="Response Rate for the host?" name={"hostResponseRate"} value={this.state.hostResponseRate} handleInput={this.handleInput}/>
+          <Button onClick={() => { this.props.switchPages(2)}}> <ArrowBack />Bedrooms</Button>
           <Button disabled={disableButton} onClick={this.onSubmit}>Bathrooms <ArrowForward /></Button>
         </div>
     )

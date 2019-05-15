@@ -5,6 +5,7 @@ import ContainerStyles from "../styles/form.module.css"
 import {submitLocation,switchPages} from '../actions'
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 class Location extends React.Component {
   state = {
@@ -40,6 +41,7 @@ class Location extends React.Component {
           <Input label="Apartment Number (if any):" name={"apartmentNumber"} value={this.state.apartmentNumber} handleInput={this.handleInput} required/>
           <Input label="City:" name={"city"} value={this.state.city} handleInput={this.handleInput}/>
           <Input label="Zip Code:" name={"zipCode"} value={this.state.zipCode} handleInput={this.handleInput}/>
+          <Button onClick={() => { this.props.switchPages(0)}}> <ArrowBack /> Place Type</Button>
           <Button disabled={disableButton} onClick={this.onSubmit}>Bedrooms <ArrowForward /></Button>
         </div>
     )

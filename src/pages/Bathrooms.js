@@ -5,6 +5,7 @@ import ContainerStyles from "../styles/form.module.css"
 import {submitBathrooms,submitListing} from '../actions'
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import {sendListing} from "../utils/Listing"
 import dummyData from "../dummyData.json"
 
@@ -135,6 +136,7 @@ class Bathrooms extends React.Component {
         <div>
           <div className={ContainerStyles.formTitle}> Bathrooms </div>
           <Input label="How many bathrooms are there?" name={"bathrooms"} value={this.state.bathrooms} handleInput={this.handleInput}/>
+          <Button onClick={() => { this.props.switchPages(3)}}><ArrowBack /> ListingType </Button>
           <Button onClick={this.onSubmit}> Submit <ArrowForward /></Button>
           {/* {this.state.responseText} */}
           <br/>

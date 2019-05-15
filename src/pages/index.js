@@ -1,4 +1,5 @@
 import React from "react"
+// import { NavigateTo } from "gatsby"
 import { connect } from 'react-redux';
 import Layout from "../components/presentational/layout"
 import ContainerStyles from "../styles/form.module.css"
