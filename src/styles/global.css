@@ -2,3 +2,9 @@ html {
   background-color: #FBFBFF;
   font-family: 'Roboto', sans-serif;
 }
+
+button {
+ margin-left: 1rem!important;
+ margin-right: 1rem!important;
+}
+

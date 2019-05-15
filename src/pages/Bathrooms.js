@@ -7,7 +7,9 @@ import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import {sendListing} from "../utils/Listing"
-import dummyData from "../dummyData.json"
+import winterData from "../winterData.json"
+import summerData from "../summerData.json"
+
 
 class Bathrooms extends React.Component {
   state = {
@@ -32,13 +34,98 @@ class Bathrooms extends React.Component {
       bed_type: this.handleBedType(this.props.listing.placeType.roomType),
       bedrooms: this.props.listing.bedrooms.numOfBedrooms,
       beds: this.props.listing.bedrooms.numOfBedsAvailable,
-      property_type: this.handlePropertyType(this.props.listing.placeType.propertyType)
+      property_type: this.handlePropertyType(this.props.listing.placeType.propertyType),
+      number_of_reviews: this.props.listing.listing.numberOfRatings,
+      review_scores_rating: this.props.listing.listing.reviewScoresRating
     }
 
-    const coefficients = dummyData[this.props.listing.location.city]     
+    let winter = []
+    let summer = []
+    for(const neighborhood in winterData){
+      const {
+        accommodates,
+        beds,
+        bedrooms,
+        bathrooms,
+        bed_type,
+        property_type,
+        number_of_reviews,
+        review_scores_rating,
+        intercepts,
+        r_score
+      } = winterData[neighborhood]
+      winter.push({
+       location: neighborhood,
+       season: "winter",
+       models: [
+         {
+            name: "LRGBM",
+            coefficients : {
+              accommodates,
+              beds,
+              bedrooms,
+              bathrooms,
+              bed_type,
+              property_type,
+              number_of_reviews,
+              review_scores_rating,
+              intercepts,
+            },
+            accuracy: r_score
+         }
+        ] 
+      })  
+    }
+
+    for(const neighborhood in summerData){
+      const {
+        accommodates,
+        beds,
+        bedrooms,
+        bathrooms,
+        bed_type,
+        property_type,
+        number_of_reviews,
+        review_scores_rating,
+        intercepts,
+        r_score
+      } = summerData[neighborhood]
+      summer.push({
+       location: neighborhood,
+       season: "summer",
+       models: [
+         {
+            name: "LRGBM",
+            coefficients : {
+              accommodates,
+              beds,
+              bedrooms,
+              bathrooms,
+              bed_type,
+              property_type,
+              number_of_reviews,
+              review_scores_rating,
+              intercepts,
+            },
+            accuracy: r_score
+         }
+        ] 
+      })  
+    }
     
-    const price = this.calculatePrice(listing,coefficients)
-    this.setState({responseText: price})
+
+    let price ;
+    winter.find((item) => {
+      const coefficients = item.models[0].coefficients
+      if (item.location === this.props.listing.location.city.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase()      
+      && item.season === this.props.listing.listing.season){ 
+        price = this.calculatePrice(listing,coefficients)
+        this.setState({responseText: price})
+      }
+    })
+    
+    // const price = this.calculatePrice(listing,coefficients)
+    // this.setState({responseText: price})
     // console.log(this.parseLocations())
     // sendListing(`${process.env.API_URL}/listings`,listing)
     // .then((data) => {
@@ -55,9 +142,12 @@ class Bathrooms extends React.Component {
     const m4 = parseFloat(listing.bathrooms * coefficients.bathrooms)
     const m5 = parseFloat(listing.bed_type * coefficients.bed_type)
     const m6 = parseFloat(listing.property_type * coefficients.property_type)
-    // console.log(m1 + m2 + m3 + m4 + m5 + m6 )
+    const m7 = parseFloat(listing.number_of_reviews * coefficients.number_of_reviews)
+    const m8 = parseFloat(listing.review_scores_rating * coefficients.review_scores_rating)
+
+
     // return m1
-    return (m1 + m2 + m3 + m4 + m5 + m6 + coefficients.intercepts).toFixed(2)
+    return (m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + coefficients.intercepts).toFixed(2)
   }
 
   handlePropertyType = property => {

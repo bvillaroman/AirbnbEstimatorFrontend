@@ -10,10 +10,8 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 class Listing extends React.Component {
   state = {
     reviewScoresRating: "",
-    availability: "",
-    minimumNights: "",
-    hostIsSuperhost: "",
-    hostResponseRate: ""
+    season: "",
+    numberOfRatings: ""
   }
 
   handleInput = (evt) => {
@@ -32,16 +30,14 @@ class Listing extends React.Component {
   }
 
   render(){
-    const {reviewScoresRating, availability, minimumNights, hostIsSuperhost, hostResponseRate} = this.state
-    const disableButton = !(reviewScoresRating && availability && minimumNights && hostIsSuperhost && hostResponseRate)
+    const {reviewScoresRating, season, numberOfRatings} = this.state
+    const disableButton = !(reviewScoresRating && season && numberOfRatings)
     return (
         <div>
           <div className={ContainerStyles.formTitle}> Listing Information (optional) </div>
           <Input label="Owner Rating:" name={"reviewScoresRating"} value={this.state.reviewScoresRating} handleInput={this.handleInput} required/>
-          <Input label="Availability:" name={"availability"} value={this.state.availability} handleInput={this.handleInput} required/>
-          <Input label="Minimum Stay:" name={"minimumNights"} value={this.state.minimumNights} handleInput={this.handleInput}/>
-          <Input label="Is the host a superhost?" name={"hostIsSuperhost"} value={this.state.hostIsSuperhost} handleInput={this.handleInput}/>
-          <Input label="Response Rate for the host?" name={"hostResponseRate"} value={this.state.hostResponseRate} handleInput={this.handleInput}/>
+          <Input label="Season:" name={"season"} value={this.state.season} handleInput={this.handleInput} required/>
+          <Input label="Number of ratings on owner?" name={"numberOfRatings"} value={this.state.numberOfRatings} handleInput={this.handleInput} required/>
           <Button onClick={() => { this.props.switchPages(2)}}> <ArrowBack />Bedrooms</Button>
           <Button disabled={disableButton} onClick={this.onSubmit}>Bathrooms <ArrowForward /></Button>
         </div>

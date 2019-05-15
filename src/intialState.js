@@ -24,9 +24,7 @@ export const initialState = {
   },
   listing: {
     reviewScoresRating: "",
-    availability: "",
-    minimumNights: "",
-    hostIsSuperhost: "",
-    hostResponseRate: ""
+    season: "",
+    numberOfRatings: "",
   }
 }

@@ -1,5 +1,4 @@
 import React from "react"
-// import { NavigateTo } from "gatsby"
 import { connect } from 'react-redux';
 import Layout from "../components/presentational/layout"
 import ContainerStyles from "../styles/form.module.css"
@@ -19,7 +18,6 @@ class App extends React.Component {
                       : pageNumber === 3 ? <Listing />
                       : pageNumber === 4 ? <Bathrooms />
                       : <div> sorry, there was an error, please refresh page </div>
-
     return (
       <Layout>
         <div className={ContainerStyles.mainContainer}>

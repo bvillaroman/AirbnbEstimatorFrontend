@@ -4,10 +4,9 @@
 }
 
 .inputContainerDropDown{
-  width: 80%;
+  width: 60%;
   height: 50%;
   margin: 2rem auto!important ;
-  background-color: rgba(255,255,255,.2);
   display: flex;
 }
 
