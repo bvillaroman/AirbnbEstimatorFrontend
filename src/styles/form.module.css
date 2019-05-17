@@ -3,6 +3,7 @@
   margin: 3rem auto;
   max-width: 600px;
   height: 80%;
+  width: 80%;
   box-sizing: border-box;
   padding: 1rem 12px;
   border: 1px solid transparent;
@@ -13,6 +14,33 @@
   text-align: center;
 }
 
+.season {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+.seasonLabel {
+  width: 70%;
+  font-size: 1.2rem;
+  padding-right: 1.2rem;
+  color: black;
+  text-align: left;
+}
+.seasonDropDown {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.formPrice {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1.0rem;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: black;
+}
 .formTitle {
   font-size: 2rem;
   text-align: center;

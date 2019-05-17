@@ -32,15 +32,12 @@ class Location extends React.Component {
 
   render(){
     const {address,city,zipCode} = this.state
-    const disableButton = !(address && city && (zipCode.length === 5))
+    const disableButton = !( city )
 
     return (
         <div>
           <div className={ContainerStyles.formTitle}> Location </div>
-          <Input label="Address:" name={"address"} value={this.state.address} handleInput={this.handleInput} required/>
-          <Input label="Apartment Number (if any):" name={"apartmentNumber"} value={this.state.apartmentNumber} handleInput={this.handleInput} required/>
-          <Input label="City:" name={"city"} value={this.state.city} handleInput={this.handleInput}/>
-          <Input label="Zip Code:" name={"zipCode"} value={this.state.zipCode} handleInput={this.handleInput}/>
+          <Input label="Neighborhood:" name={"city"} value={this.state.city} handleInput={this.handleInput}/>
           <Button onClick={() => { this.props.switchPages(0)}}> <ArrowBack /> Place Type</Button>
           <Button disabled={disableButton} onClick={this.onSubmit}>Bedrooms <ArrowForward /></Button>
         </div>

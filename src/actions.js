@@ -8,7 +8,7 @@ import {
   SUBMIT_LISTING_ERROR,
   SWITCH_PAGES,
 } from './constants'
-import { sendListing } from "./utils/Listing"
+import { getModel } from "./utils/Listing"
 
 export const switchPages = pageNumber => dispatch => {
   dispatch({ 
@@ -52,37 +52,17 @@ export const submitListingData = data => dispatch => {
   })
 }
 
-export function submitListingWorker() {
-  return (dispatch,getState) => {
-    const listing = getState()
-    return sendListing(`${process.env.API_URL}/listings`,listing)
-        .then(response => response.json())
-        .then(json => dispatch(submitListingSuccess(json)))
-        .catch(err => dispatch(submitListingError(err)))
-  }
-}
-
-export function submitListing() {
+export function getCoefficients() {
 
   return (dispatch, getState) => {
-    const givenListing = getState().reducer;
-    const listing = {
-      bathrooms: givenListing.bathrooms,
-      bedrooms: givenListing.bedrooms,
-      location: givenListing.location,
-      placeType: givenListing.placeType,
+    const givenModel = getState().reducer;
+    const model = {
+      location: givenModel.location,
+      season: givenModel.season
     }
-    return sendListing(`${process.env.API_URL}/listings`,listing)
+    return getModel(`${process.env.API_URL}/models`,model)
             .then((res) => { dispatch(submitListingSuccess(res)) })
             .catch((err) => {dispatch(submitListingError(err))})
-
-    // if (shouldFetchPosts(getState(), subreddit)) {
-    //   // Dispatch a thunk from thunk!
-    //   return dispatch(fetchPosts(subreddit))
-    // } else {
-    //   // Let the calling code know there's nothing to wait for.
-    //   return Promise.resolve()
-    // }
   }
 }
 

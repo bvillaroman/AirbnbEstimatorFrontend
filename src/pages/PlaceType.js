@@ -11,7 +11,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-
 class PlaceType extends React.Component {
   state = {
     roomType:"",

@@ -2,19 +2,19 @@ import React from "react"
 import Input from "../components/presentational/Input"
 import { connect } from 'react-redux';
 import ContainerStyles from "../styles/form.module.css"
-import {submitBathrooms,submitListing} from '../actions'
+import {submitBathrooms,switchPages} from '../actions'
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import ArrowBack from '@material-ui/icons/ArrowBack';
-import {sendListing} from "../utils/Listing"
-import winterData from "../winterData.json"
-import summerData from "../summerData.json"
-
+import {getModel,sendModel} from "../utils/Listing"
 
 class Bathrooms extends React.Component {
   state = {
-    bathrooms:"", 
+    bathrooms:0, 
     responseText: "",
+    lr:"",
+    svr: "",
+
   }
 
   handleInput = (evt) => {
@@ -38,102 +38,32 @@ class Bathrooms extends React.Component {
       number_of_reviews: this.props.listing.listing.numberOfRatings,
       review_scores_rating: this.props.listing.listing.reviewScoresRating
     }
-
-    let winter = []
-    let summer = []
-    for(const neighborhood in winterData){
-      const {
-        accommodates,
-        beds,
-        bedrooms,
-        bathrooms,
-        bed_type,
-        property_type,
-        number_of_reviews,
-        review_scores_rating,
-        intercepts,
-        r_score
-      } = winterData[neighborhood]
-      winter.push({
-       location: neighborhood,
-       season: "winter",
-       models: [
-         {
-            name: "LRGBM",
-            coefficients : {
-              accommodates,
-              beds,
-              bedrooms,
-              bathrooms,
-              bed_type,
-              property_type,
-              number_of_reviews,
-              review_scores_rating,
-              intercepts,
-            },
-            accuracy: r_score
-         }
-        ] 
-      })  
-    }
-
-    for(const neighborhood in summerData){
-      const {
-        accommodates,
-        beds,
-        bedrooms,
-        bathrooms,
-        bed_type,
-        property_type,
-        number_of_reviews,
-        review_scores_rating,
-        intercepts,
-        r_score
-      } = summerData[neighborhood]
-      summer.push({
-       location: neighborhood,
-       season: "summer",
-       models: [
-         {
-            name: "LRGBM",
-            coefficients : {
-              accommodates,
-              beds,
-              bedrooms,
-              bathrooms,
-              bed_type,
-              property_type,
-              number_of_reviews,
-              review_scores_rating,
-              intercepts,
-            },
-            accuracy: r_score
-         }
-        ] 
-      })  
-    }
     
+    const model = { 
+      location: this.props.listing.location.city.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase() ,
+      season: this.props.listing.listing.season 
+    }
 
-    let price ;
-    winter.find((item) => {
-      const coefficients = item.models[0].coefficients
-      if (item.location === this.props.listing.location.city.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase()      
-      && item.season === this.props.listing.listing.season){ 
-        price = this.calculatePrice(listing,coefficients)
-        this.setState({responseText: price})
-      }
+    this.setState({
+      responseText: "loading..",
+    }, () => {
+      getModel(`${process.env.API_URL}/models/model`,model)
+      .then((model)=> {
+        const lr = model[0].models[0].coefficients
+        const svm = model[0].models[1].coefficients
+  
+        const lrtext = `$${this.calculatePrice(listing,lr)},\n  R^2 score: ${model[0].models[0].accuracy.toFixed(3)}`
+        const svrtext = `$${this.calculatePrice(listing,svm)},\n R^2 score: ${model[0].models[1].accuracy.toFixed(3)}`
+  
+        this.setState({responseText: "",lr:lrtext, svr: svrtext, })
+      })
+      .catch((err)=> {
+
+        this.setState({responseText: "sorry, pls try again"})
+      })
     })
-    
-    // const price = this.calculatePrice(listing,coefficients)
-    // this.setState({responseText: price})
-    // console.log(this.parseLocations())
-    // sendListing(`${process.env.API_URL}/listings`,listing)
-    // .then((data) => {
-    //   const price = data.Prediction ? `$ ${data.Prediction.LinearRegression.toFixed(2)}` : "";
-    //   this.setState({responseText: price})
-    // })
-
   }
+  
 
   calculatePrice = (listing,coefficients) => {
     const m1 = parseFloat(listing.accommodates * coefficients.accommodates)
@@ -144,7 +74,6 @@ class Bathrooms extends React.Component {
     const m6 = parseFloat(listing.property_type * coefficients.property_type)
     const m7 = parseFloat(listing.number_of_reviews * coefficients.number_of_reviews)
     const m8 = parseFloat(listing.review_scores_rating * coefficients.review_scores_rating)
-
 
     // return m1
     return (m1 + m2 + m3 + m4 + m5 + m6 + m7 + m8 + coefficients.intercepts).toFixed(2)
@@ -226,12 +155,29 @@ class Bathrooms extends React.Component {
         <div>
           <div className={ContainerStyles.formTitle}> Bathrooms </div>
           <Input label="How many bathrooms are there?" name={"bathrooms"} value={this.state.bathrooms} handleInput={this.handleInput}/>
-          <Button onClick={() => { this.props.switchPages(3)}}><ArrowBack /> ListingType </Button>
+          <Button onClick={() => { this.props.switchPages(3)}}><ArrowBack /> Listing </Button>
           <Button onClick={this.onSubmit}> Submit <ArrowForward /></Button>
-          {/* {this.state.responseText} */}
           <br/>
           <br/>
+          <div className={ContainerStyles.formTitle}> Listing Data </div>
           <div className={ContainerStyles.formTitle}> {this.state.responseText} </div>
+
+          <div className={ContainerStyles.formPrice}> Number of bedrooms: {this.props.listing.bedrooms.numOfBedrooms} </div>
+          <div className={ContainerStyles.formPrice}> Number of beds: {this.props.listing.bedrooms.numOfBedsAvailable} </div>
+          <div className={ContainerStyles.formPrice}> Number of bathrooms: {this.state.bathrooms} </div>
+          <div className={ContainerStyles.formPrice}> Number of guests: {this.props.listing.bedrooms.guests} </div>
+          <div className={ContainerStyles.formPrice}> Property Type: {this.props.listing.placeType.propertyType} </div>
+          <div className={ContainerStyles.formPrice}> Number of Reviews: {this.props.listing.listing.numberOfRatings} </div>
+          <div className={ContainerStyles.formPrice}> Review Score (out of 100%): {this.props.listing.listing.reviewScoresRating}% </div>
+          <div className={ContainerStyles.formPrice}> Neighborhood: {this.props.listing.location.city}</div>
+          <div className={ContainerStyles.formPrice}> Season: {this.props.listing.listing.season} </div>
+
+          <div className={ContainerStyles.formTitle}> {this.state.responseText} </div>
+
+          <div className={ContainerStyles.formTitle}> Price </div>
+          <div className={ContainerStyles.formPrice}> Linear Regression: {this.state.lr} </div>
+          <div className={ContainerStyles.formPrice}> Support Vector Regression: {this.state.svr} </div>
+
         </div>
     )
   }
@@ -245,7 +191,7 @@ const mapStateToProps = ({reducer}) => ({
 
 const mapDispatchToProps = dispatch => ({
   submitBathrooms: (data) => dispatch(submitBathrooms(data)),
-  submitListing: () => dispatch(submitListing())
+  switchPages: (pageNumber) => dispatch(switchPages(pageNumber)),
  })
 export default connect(mapStateToProps, mapDispatchToProps)(Bathrooms);
 
